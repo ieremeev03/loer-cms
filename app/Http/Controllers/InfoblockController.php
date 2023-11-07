@@ -16,6 +16,7 @@ use App\Models\Menu\Menu;
 use App\Models\Page;
 use App\Repositories\InfoblockRepository;
 use App\Repositories\PageRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -135,6 +136,33 @@ class InfoblockController extends Controller
             InfoblockPropertyValue::where('infoblock_id', $infoblock->id)->delete();
         }
 
+        return $this->index();
+    }
+
+    public function copy(Request $request)
+    {
+        $infoblock = Infoblock::find($request->id);
+        $newInfoblock = Infoblock::create([
+            'name' => $infoblock->name.'_copy',
+            'type' => $infoblock->type,
+            'array' => $infoblock->array,
+            'title' => $infoblock->title.' (копия)',
+            'content' =>  $infoblock->content,
+            'created_at' => Carbon::now()
+
+        ]);
+
+        if($newInfoblock) {
+            $values = InfoblockPropertyValue::where('infoblock_id', $infoblock->id)->get();
+
+            foreach ($values as $value) {
+                InfoblockPropertyValue::create([
+                    'infoblock_id' => $newInfoblock->id,
+                    'property_id' => $value->property_id,
+                    'value' => $value->value
+                ]);
+            }
+        }
         return $this->index();
     }
 

@@ -1,4 +1,11 @@
+<style > /* don't add "scoped"; note that this will also globalize the CSS for all editors in your project */
+.ck-editor__editable {
+    min-height: 200px;
+}
+</style>
+
 <script setup>
+
 import { ref, watch } from 'vue';
 import { component as CKEditor} from '@ckeditor/ckeditor5-vue';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -6,8 +13,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const editorData = ref(props.modelValue || '')
 const editorConfig = ref(
     {
-        height: "300px",
-        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+        toolbar: [ 'heading', '|', '|','bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
         heading: {
             options: [
                 { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
@@ -36,3 +42,5 @@ const emit = defineEmits(['update:modelValue'])
 <template>
     <CKEditor :editor="ClassicEditor" v-model="editorData" :config="editorConfig" class="rounded"></CKEditor>
 </template>
+
+

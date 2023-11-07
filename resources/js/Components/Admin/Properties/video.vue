@@ -58,9 +58,8 @@ function onFileChanged($event, item_id, field_id) {
 <template>
     <div class="">
         <InputLabel for="title" :value="title" />
-        <div class="text-xs text-gray-400 ">Файл в формате JPG, PNG, WEBP</div>
-        <div class="relative w-[300px] group" v-if="field_value && field_value!==''">
-            <img class="mb-3" :src='field_value' width="300" />
+        <div class="text-xs text-gray-400">Файл в формате MP4</div>
+        <div class="relative w-auto w-[300px] group" v-if="field_value && field_value!==''">
             <div class="absolute bottom-0 right-0 m-2 cursor-pointer ">
                 <div class="bg-gray-200 p-2 rounded-full w-full text-red-500 hover:bg-white hover:border-gray-600" @click="field_value=null; removeFile(field_value)">
                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

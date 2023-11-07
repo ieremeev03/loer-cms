@@ -14,7 +14,7 @@ class InfoblockRepository
         return Infoblock::all();
     }
 
-    public function getPropertiesInfoblock($infoblock, $page) {
+    public function getPropertiesInfoblock($infoblock, $page = null) {
         $propertires = [];
         $propertiresRaw = $infoblock->properties->sortBy('sort');
 
@@ -33,7 +33,7 @@ class InfoblockRepository
         return $propertires;
     }
 
-    public function getItemsInfoblock($infoblock, $page) {
+    public function getItemsInfoblock($infoblock, $page = null) {
         $items = [];
 
         if($page!=null) {
@@ -81,10 +81,18 @@ class InfoblockRepository
                 $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
                 $block[$infoblock->name]['properties'][$property->name] = $value == null ? $property->default : $value->value;
             }
-            $block[$infoblock->name]['items'] = $this->getItemsInfoblock($infoblock, $page->id);
+            $items = $this->getItemsInfoblock($infoblock, $page->id);
+
+            //dd($infoblock);
+
+            if(count($items) > 0 ) {
+                $block[$infoblock->name]['items'] = $items;
+            } else {
+                $block[$infoblock->name]['items'] = $this->getItemsInfoblock($infoblock);
+            }
 
         }
-    //dd($block);
+        //dd($block);
         return $block;
     }
 

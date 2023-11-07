@@ -23,7 +23,7 @@ class UpdatePageRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'slug' => 'required|max:255|min:3',
+            'slug' => 'required|max:255|min:1',
             'parent_id' => '',
             'content' => '',
             'blocks' => '',

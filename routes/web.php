@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->get('/InfoBlocks/getProperties', [InfoblockController::class, 'getProperties']);
 Route::middleware('auth')->get('/InfoBlocks/getItems', [InfoblockController::class, 'getItems']);
 Route::middleware('auth')->post('/InfoBlocks/addItems', [InfoblockController::class, 'addItems']);
+Route::middleware('auth')->get('/InfoBlocks/copy', [InfoblockController::class, 'copy']);
 Route::middleware('auth')->post('/fileUpload', [InfoblockController::class, 'upload']);
 Route::get('/{pSlug}', [PageController::class, 'getPage'])->name('pages.getPage');
 

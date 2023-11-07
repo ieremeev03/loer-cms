@@ -103,7 +103,7 @@
                 <div class="relative bg-white rounded-lg shadow-2xl ">
                     <!-- Modal header -->
                     <form id="fItems" @submit.prevent="formItems.post('/InfoBlocks/addItems'); openModalEdit= false" >
-                    <div class="flex items-start justify-between p-4  rounded-t dark:border-gray-600">
+                    <div class="flex items-start justify-between pl-4 pr-4 pt-4  rounded-t dark:border-gray-600">
                         <h3 class="text-xl font-semibold  ">
                            {{modalTitle}}
                         </h3>
@@ -115,7 +115,7 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <div  class="p-6 space-y-6">
+                    <div v-if="Object.keys(formItems.properties).length > 0" class="p-6 space-y-6">
                         <template v-for="(block, index) in formItems.properties">
                             <component
                                 v-bind:is="component_type(block.type)"
@@ -131,7 +131,7 @@
                     </div>
                     <div v-if="infoblockArray" class="p-6 space-y-6">
                         <template v-for="(item, index_i) in formItems.items"  :key="index_i">
-                            <div class="p-4 bg-gray-50 rounded-lg" :id="'item_'+index_i">
+                            <div class="p-4 bg-gray-50 rounded-lg space-y-2" :id="'item_'+index_i">
                                 <template v-for="(block, index_b) in item.fields">
                                     <component
                                         v-bind:is="component_type(block.field.type)"
@@ -180,6 +180,7 @@ import { Link, useForm, usePage, Head, router } from '@inertiajs/vue3';
 import { onMounted, ref } from 'vue';
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import Image from "@/Components/Admin/Properties/image.vue";
+import Video from "@/Components/Admin/Properties/video.vue";
 import Text from "@/Components/Admin/Properties/text.vue";
 import Radio from "@/Components/Admin/Properties/radio.vue";
 import Content from "@/Components/Admin/Properties/content.vue";
@@ -195,6 +196,7 @@ const openModalEdit = ref(false)
 
 const components = {
     'Image': Image,
+    'Video': Video,
     'Text': Text,
     'Radio': Radio,
     'Content': Content

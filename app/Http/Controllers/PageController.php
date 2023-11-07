@@ -51,7 +51,7 @@ class PageController extends Controller
 
       $blocks = $this->infoblockRepository->getItemWithPage($page);
 
-      //dd($block);
+      //dd($blocks);
 
       return inertia('Page', compact('page','menus', 'blocks'));
     }
@@ -128,6 +128,7 @@ class PageController extends Controller
      */
     public function update(UpdatePageRequest $request, Page $page)
     {
+
         $validated = $request->validated();
         $page->update($validated);
         $blocks = $request->blocks;

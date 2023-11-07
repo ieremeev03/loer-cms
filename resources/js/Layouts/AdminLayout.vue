@@ -20,8 +20,9 @@ const showMenu = ref(false)
     </button>
     <aside id="sidebar-multi-level-sidebar" :class="{'-translate-x-0': showSidebar }" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-            <div class="w-full h-16 flex px-4 items-center mb-8">
+            <div class="w-full h-16 flex flex-col px-4 items-center mb-8">
                 <p class="font-semibold text-3xl text-orange-600 pl-4">LOER CMS</p>
+                <div class="text-white text-xs ">for Takman</div>
             </div>
             <ul class="space-y-2 font-medium" >
                 <li>

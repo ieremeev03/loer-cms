@@ -46,7 +46,7 @@
                         </template>
                     </div>
 
-                    <div  class="space-y-6">
+                    <div v-if="block.array" class="space-y-6" >
                         <h2 class="text-lg font-medium text-black-50 mb-2">Элементы</h2>
 
                         <template v-for="(item, index_i) in form.items"  :key="index_i">

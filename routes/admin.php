@@ -14,3 +14,4 @@ use Inertia\Inertia;
         Route::resource('menus', MenuController::class);
         Route::resource('infoblocks', InfoblockController::class);
 
+
