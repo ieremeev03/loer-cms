@@ -7,8 +7,12 @@
                 </picture>
             </a>
             <div class="section__slider-slide-text">
-                <h2 class="section__slider-slide-title">{{title}}</h2>
-                <div class="section__slider-slide-descr" v-html="content"></div>
+                <h2 v-if="!properties.title_prop" class="section__slider-slide-title">{{ title }} </h2>
+                <h2 v-if="properties.title_prop" class="section__slider-slide-title">{{ properties.title_prop }} </h2>
+
+                <div v-if="!properties.content" class="section__slider-slide-descr" v-html="content"></div>
+                <div v-if="properties.content" class="section__slider-slide-descr" v-html="properties.content"></div>
+
                 <a v-if="properties.link" :href="properties.link" class="button__more">{{properties.link_text}}</a>
             </div>
         </div>
