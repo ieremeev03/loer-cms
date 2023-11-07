@@ -23,7 +23,7 @@
                         </picture>
                     </div>
                     <h3 class="section__services-slide-title">{{item.fields.title.value}}</h3>
-                    <div class="section__services-slide-text">{{item.fields.description.value}}</div>
+                    <div class="section__services-slide-text" v-html="item.fields.description.value"></div>
                 </a>
             </swiper-slide>
 
