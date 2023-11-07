@@ -35,8 +35,8 @@
                                         {{page.title}}
                                     </td>
                                     <td class="flex items-center px-6 py-4 space-x-3">
-                                        <a :href="`/pages/${page.id}/edit`" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
-                                        <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Удалить</a>
+                                        <a :href="`/admin/pages/${page.id}/edit`" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
+                                        <a href="#" @click="destroy(page.id)" class="font-medium text-red-600 dark:text-red-500 hover:underline">Удалить</a>
                                     </td>
                                 </tr>
 
@@ -48,8 +48,8 @@
                                        <span class="pl-5"> - {{child.title}}</span>
                                     </td>
                                     <td class="flex items-center px-6 py-4 space-x-3">
-                                        <a :href="`/pages/${child.id}/edit`" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
-                                        <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Удалить</a>
+                                        <a :href="`/admin/pages/${child.id}/edit`" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
+                                        <a href="#" @click="destroy(child.id)" class="font-medium text-red-600 dark:text-red-500 hover:underline">Удалить</a>
                                     </td>
                                 </tr>
 
@@ -66,10 +66,17 @@
 
 <script setup>
 import AdminLayout from '@/Layouts/AdminLayout.vue';
-import {Head, usePage} from '@inertiajs/vue3';
+import {Head, router, usePage} from '@inertiajs/vue3';
 
 const pages = usePage().props.pages;
 
+
+function destroy(id) {
+    console.log(id)
+    if (confirm('Вы действительно хотите удалить страницу?')) {
+        router.delete(route('pages.destroy', id))
+    }
+}
 </script>
 
 

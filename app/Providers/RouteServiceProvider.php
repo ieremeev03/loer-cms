@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Infoblock\Infoblock;
 use App\Models\Page;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -18,14 +19,14 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const HOME = '/admin';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
     public function map()
     {
-        //$this->mapAdminRoutes();
+        $this->mapAdminRoutes();
         $this->mapApiRoutes();
         $this->mapWebRoutes();
     }
@@ -43,16 +44,29 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/api.php'));
     }
 
+    protected function mapAdminRoutes(){
+        Route::middleware('admin')
+            ->prefix('admin')
+            ->group(base_path('routes/admin.php'));
+    }
+
+
+
     public function boot(): void
     {
         $this->bootRouteModelBinders();
         $this->configureRateLimiting();
         $this->bootRouteParameterBinders();
+        Route::model('infoblock', Infoblock::class);
     }
 
     protected function configureRateLimiting()
     {
         RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+
+        RateLimiter::for('admin', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
     }

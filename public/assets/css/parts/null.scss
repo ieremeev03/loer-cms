@@ -1,0 +1,153 @@
+/*Обнуление*/
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+  *, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  :focus, :active {
+    outline: none;
+  }
+  
+  a:focus, a:active {
+    outline: none;
+  }
+  
+  nav, footer, header, aside {
+    display: block;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 100%;
+    font-size: 16px;
+    font-family: 'Formular';
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+
+  }
+  
+  input, button, textarea {
+    font-family: inherit;
+  }
+  
+  input::-ms-clear {
+    display: none;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+  
+  a, a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: none;
+  }
+  
+  ul li {
+    list-style: none;
+  }
+  
+  img {
+    vertical-align: top;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: 400;
+  }
+
+
+  
+  /*-------------------------------------------------------------------------------------------------------*/
+  @import 'fonts.scss';  
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-feature-settings: 'liga' off;
+    font-family: 'Formular';
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 133.333% */
+
+ }
+ 
+  .main {
+    flex: 1 1 100%;
+    // margin-top:128px ;
+  }
+
+  .section__black {
+    background: #181F26;
+  }
+  .section__white {
+    background: #FFF;
+  }
+  .container{
+    max-width: 2560px;
+    margin: 0 auto;
+}
+
+  // @media(max-width:1360px){
+  //   .main {
+  //     margin-top:119.27px ;
+  //   }
+  // }
+  // @media(max-width:1140px){
+  //   .main {
+  //     margin-top:112px ;
+  //   }
+  // }
+  // @media(max-width:768px){
+  //   .main {
+  //     margin-top:72px ;
+  //   }
+  // }
+// ._lock{
+//   overflow: hidden;
+//   padding-right: 17px;
+//   .header{
+//     padding-right: 17px;
+//   }
+
+// }
+._lock{
+  overflow: hidden;
+  padding-right: 17px;
+  .header{
+    padding-right: 17px;
+  }
+}
+
+
+@media(max-width:1024px){
+  ._lock{
+    overflow: hidden;
+    padding-right: 0px;
+  }
+}
+  
+//   }
+//   .lock{
+//     overflow: hidden;
+//     padding-right: 0px;
+//   }
+// }

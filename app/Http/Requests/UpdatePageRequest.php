@@ -26,6 +26,7 @@ class UpdatePageRequest extends FormRequest
             'slug' => 'required|max:255|min:3',
             'parent_id' => '',
             'content' => '',
+            'blocks' => '',
         ];
     }
 }

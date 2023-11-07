@@ -6,6 +6,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const editorData = ref(props.modelValue || '')
 const editorConfig = ref(
     {
+        height: "300px",
         toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
         heading: {
             options: [

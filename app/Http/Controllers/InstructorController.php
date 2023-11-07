@@ -13,7 +13,7 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        //
+        return inertia('Admin/Instructors/Index');
     }
 
     /**

@@ -26,7 +26,7 @@ defineExpose({ focus: () => input.value.focus() });
                  @input="$emit('update:modelValue', $event.target.value)"
                  ref="input"
         >
-        <option  value>Не указан</option>
+        <option value="null" selected>Не указан</option>
         <option v-for="parent in parents" v-bind:value="parent.id">{{ parent.title }}</option>
     </select>
 </template>

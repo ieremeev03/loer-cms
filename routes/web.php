@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\InfoblockController;
+use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use Illuminate\Foundation\Application;
@@ -17,19 +21,15 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+require __DIR__.'/auth.php';
+
+Route::get('/', [PageController::class, 'home']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', [PageController::class, 'index'])->name('pages.index');
+
 });
 
-
-Route::get('admin', [PageController::class, 'index'])->name('pages.index');
-
-Route::resource('pages', PageController::class);
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,8 +39,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::middleware('auth')->get('/InfoBlocks/getProperties', [InfoblockController::class, 'getProperties']);
+Route::middleware('auth')->get('/InfoBlocks/getItems', [InfoblockController::class, 'getItems']);
+Route::middleware('auth')->post('/InfoBlocks/addItems', [InfoblockController::class, 'addItems']);
+Route::middleware('auth')->post('/fileUpload', [InfoblockController::class, 'upload']);
 Route::get('/{pSlug}', [PageController::class, 'getPage'])->name('pages.getPage');
 
 
-require __DIR__.'/auth.php';
+
+
+

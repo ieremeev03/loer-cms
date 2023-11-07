@@ -1,0 +1,126 @@
+
+.section__rules-rules {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    row-gap:20px ;
+}
+.section__rules-rule {
+    color: #FFF;
+    font-feature-settings: 'liga' off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; /* 177.778% */
+    position: relative;
+    text-decoration: underline;
+    padding-left: 28px;
+    display: inline-block;
+    align-self: flex-start;
+    &::after{
+        position: absolute;
+        left: 0;
+        bottom:0 ;
+        top: 0;
+        margin: auto 0;
+        content: '';
+        width: 18px;
+        height: 24px;
+        background-size: cover;
+    }
+
+}
+.rule-pdf {
+    &::after{
+        background-image: url(../img/pdf.svg);
+    }
+}
+.rule-docx {
+    &::after{
+        background-image: url(../img/docx.svg);
+    }
+}
+
+.section__rules-ttile-second {
+    margin-top: 80px;
+}
+.section__rules-text {
+    width: 100%;
+    max-width: 1170px ;
+    color: #181F26;
+    font-feature-settings: 'liga' off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+    margin-top: 40px;
+}
+.section__white{
+    .section__rules-rule {
+        color: #181F26;
+       
+    
+    }
+    .section__rules-text {
+        color: #181F26;
+    }
+}
+.section__black{
+    .section__rules-text {
+        color: #fff;
+    }
+}
+@media(max-width:1024px){
+    .section__rules-rules {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        row-gap:20px ;
+    }
+    .section__rules-rule {
+        font-size: 16px;
+        line-height: 28px; 
+        padding-left: 28px;
+        &::after{
+            width: 18px;
+            height: 24px;
+        }
+    
+    }
+    .section__rules-ttile-second {
+        margin-top: 32px;
+    }
+    .section__rules-text {
+        max-width: 1170px ;
+        font-size: 16px;
+        margin-top: 40px;
+        line-height: 22px; /* 133.333% */
+    }
+}
+@media(max-width:576px){
+    .section__rules-rules {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        row-gap:17px ;
+    }
+    .section__rules-rule {
+        font-size: 12px;
+        line-height: 16px; 
+        padding-left: 20 px;
+        &::after{
+            width: 12px;
+            height: 16px;
+        }
+    
+    }
+    .section__rules-ttile-second {
+        margin-top: 32px;
+    }
+    .section__rules-text {
+        max-width: 1170px ;
+        font-size: 12 px;
+        margin-top: 10px;
+        line-height: 16px; /* 133.333% */
+    }
+}

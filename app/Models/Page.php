@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Base\SluggableModel;
+use App\Models\Infoblock\Infoblock;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,5 +33,10 @@ class Page extends SluggableModel
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function infoblocks()
+    {
+        return $this->belongsToMany(Infoblock::class, 'page_infoblock', 'page_id', 'infoblock_id')->withPivot('sort');;
     }
 }

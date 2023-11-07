@@ -1,0 +1,267 @@
+.section__how-block-100{
+    max-width: none;
+    width: 100%;
+}
+
+.section__how-to-container {
+    padding: 80px;
+}
+
+.section__how-to-title {
+    color: #181F26;
+    font-feature-settings: 'liga' off;
+    font-family: 'Montserrat';
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px; /* 111.111% */
+}
+.section__how-to-items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+.section__how-to-item {
+    .button__more {
+        align-self: flex-start;
+        display: inline-block;
+    }
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding:80px 0px;
+    border-bottom: 1px solid rgba(24, 31, 38, 0.20); 
+    &:first-child{
+        padding-top: 0px;
+    }
+    &:last-child{
+        border-bottom: 0px solid rgba(24, 31, 38, 0.20); 
+    }
+}
+.section__how-to-item-left {
+    width: 100%;
+    max-width: 700px;
+}
+.section__how-to-item-left-title {
+    color: #181F26;
+    font-feature-settings: 'liga' off;
+    font-family: 'Montserrat';
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px; /* 112.5% */
+}
+.section__how-to-item-left-srcs {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.section__how-to-item-left-src {
+    color: #181F26;
+    font-feature-settings: 'liga' off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px; /* 177.778% */
+    text-decoration: underline;
+}
+.section__how-to-item-left-src-nobb {
+
+    text-decoration: none;
+}
+.section__how-to-item-left-srcs-second{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+
+}
+.section__how-to-item-left-text {
+    color: #181F26;
+    font-feature-settings: 'liga' off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+    width: 100%;
+    max-width: 630px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.section__how-to-item-icon {
+    img{
+        width: 100%;
+        height: 100%;
+         
+    }
+}
+.section__how-to-item-icon-mobile{
+    display: none;
+}
+.section__black{
+
+    
+    .section__how-to-title {
+        color: #fff;
+    }
+
+    .section__how-to-item {
+
+
+        border-bottom: 1px solid #fff;; 
+     
+        &:last-child{
+            border-bottom: 0px solid  #fff;; 
+        }
+    }
+
+    .section__how-to-item-left-title {
+        color: #fff;
+    }
+
+    .section__how-to-item-left-src {
+        color: #fff;
+    }
+
+    .section__how-to-item-left-text {
+        color: #fff;
+    }
+}
+@media(max-width:1160px){
+    .section__how-to-container {
+        padding: 80px;
+    }
+    
+    .section__how-to-title {
+        font-size: 48px;
+        line-height: 54px; /* 111.111% */
+    }
+    .section__how-to-items {
+        margin-top: 40px;
+    }
+    .section__how-to-item {
+        .button__more {
+            align-self: flex-start;
+            display: inline-block;
+        }
+        padding: 40px 0px;
+        border-bottom: 1px solid rgba(24, 31, 38, 0.20); 
+        &:first-child{
+            padding-top: 0px;
+        }
+    }
+    .section__how-to-item-left {
+        max-width: 470px;
+    }
+    .section__how-to-item-left-title {
+        font-size: 32px;
+        line-height: 40px; /* 112.5% */
+    }
+    .section__how-to-item-left-srcs {
+        margin-top: 24px;
+    }
+    .section__how-to-item-left-src {
+        font-size: 16px;
+        line-height: 28px; 
+    }
+    .section__how-to-item-left-srcs-second{
+        margin-top: 40px;
+    
+    }
+    .section__how-to-item-left-text {
+        font-size: 16px;
+        line-height: 22px; 
+        max-width: none;
+        row-gap: 8px;
+    }
+
+    .section__how-to-item-icon-first{
+        width: 160px;
+        height: 71px;
+    }
+    .section__how-to-item-icon-last{
+        width: 156px;
+        height: 156px;
+    }
+}
+@media(max-width:768px){
+    .section__how-to-container {
+        padding: 60px;
+    }
+    .section__how-to-item-icon {
+        display: none;
+
+
+    }
+    .section__how-to-item-icon-mobile{
+        display: block;
+        margin-top: 20px;
+    }
+    .section__how-to-item-icon-first{
+        width: 160px;
+        height: 71px;
+    }
+    .section__how-to-item-icon-last{
+        width: 156px;
+        height: 156px;
+    }
+}
+
+@media(max-width:576px){
+    .section__how-to-container {
+        padding: 32px 24px;
+    }
+    
+    .section__how-to-title {
+        font-size: 24px;
+        line-height: 30px; /* 111.111% */
+    }
+    .section__how-to-items {
+        margin-top: 20px;
+    }
+    .section__how-to-item {
+        .button__more {
+            align-self: flex-start;
+            display: inline-block;
+        }
+        padding: 32px 0px;
+        &:first-child{
+            padding-top: 0px;
+        }
+    }
+    .section__how-to-item-left {
+        max-width: none;
+    }
+    .section__how-to-item-left-title {
+        font-size: 20px;
+        line-height: 24px; /* 112.5% */
+    }
+    .section__how-to-item-left-srcs {
+        margin-top: 20px;
+        row-gap: 8px;
+    }
+    .section__how-to-item-left-src {
+        font-size: 12px;
+        line-height: 16px; 
+    }
+    .section__how-to-item-left-srcs-second{
+        margin-top: 21px;
+    
+    }
+    .section__how-to-item-left-text {
+        font-size: 12px;
+        line-height: 16px; 
+        max-width: none;
+        row-gap: 8px;
+    }
+
+    .section__how-to-item-icon-first{
+        width: 135px;
+        height:60px;
+    }
+    .section__how-to-item-icon-last{
+        width:60px;
+        height:60px;
+    }
+}
