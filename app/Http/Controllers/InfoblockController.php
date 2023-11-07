@@ -209,7 +209,7 @@ class InfoblockController extends Controller
     public function upload(Request $request) {
         //dd($request->file);
         $request->validate([
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp,avif',
+            'file' => 'required',
         ]);
 
         $imageName = uniqid(time()).'.'.$request->file->extension();
