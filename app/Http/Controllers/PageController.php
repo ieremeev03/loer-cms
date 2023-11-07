@@ -9,6 +9,7 @@ use App\Models\Infoblock\InfoblockFieldValue;
 use App\Models\Infoblock\PagesHasInfoblocks;
 use App\Models\Menu\Menu;
 use App\Models\Page;
+use App\Models\Setting;
 use App\Repositories\InfoblockRepository;
 use App\Repositories\PageRepository;
 use Illuminate\Database\Eloquent\Collection;
@@ -26,8 +27,9 @@ class PageController extends Controller
 
     public function home()
     {
-        $page = Page::find(12);
-        return $this->getPage($page);
+        $home_id = Setting::where('name', 'home_page')->first()->value;
+        $home_page = Page::find($home_id);
+        return $this->getPage($home_page);
     }
 
     /**
