@@ -61,6 +61,7 @@ function onFileChanged($event, item_id, field_id) {
     <div class="">
         <InputLabel for="title" :value="title" />
         <div class="text-xs text-gray-400">Файл в формате MP4</div>
+        {{field_value}}
         <div class="relative w-auto w-[300px] group" v-if="field_value && field_value!==''">
             <div class="absolute bottom-0 right-0 m-2 cursor-pointer ">
                 <div class="bg-gray-200 p-2 rounded-full w-full text-red-500 hover:bg-white hover:border-gray-600" @click="field_value=null; removeFile(field_value)">
@@ -76,7 +77,7 @@ function onFileChanged($event, item_id, field_id) {
         </div>
 
         <div class="flex flex-row items-center gap-2">
-            <input  class="m-0 text-xs" v-if="field_value === null || field_value==='' || !loading"
+            <input  class="m-0 text-xs" v-if="field_value === null || field_value==='' "
                     type="file"
                     @change="onFileChanged($event, item_id, field_id)"
             >

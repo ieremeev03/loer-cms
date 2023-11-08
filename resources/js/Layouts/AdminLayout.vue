@@ -71,14 +71,14 @@ const showMenu = ref(false)
 
                     <ul class="ml-5 text-sm">
                         <li>
-                            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <a href="/admin/instructors" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <span class="flex-1 ml-3 whitespace-nowrap">Инструкторы</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                                <span class="flex-1 ml-3 whitespace-nowrap">Проживание</span>
+                            <a href="/admin/skipasses" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <span class="flex-1 ml-3 whitespace-nowrap">Скипасы</span>
                             </a>
                         </li>
 

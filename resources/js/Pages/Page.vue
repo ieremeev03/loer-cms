@@ -48,6 +48,7 @@ import LiveBlockTextBottom from "@/Components/Web/LiveBlock-TextBottom.vue";
 import Photo from "@/Components/Web/Photo.vue";
 import Poster from "@/Components/Web/Poster.vue";
 import Events from "@/Components/Web/Events.vue";
+import Reserv from "@/Components/Web/Reserv.vue";
 export default {
     name: "Page",
     props: [
@@ -57,6 +58,7 @@ export default {
     ],
 
     components: {
+        Reserv,
         Poster,
         Events,
         Photo,

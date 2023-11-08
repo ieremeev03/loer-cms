@@ -239,7 +239,7 @@ const formDelete = useForm({
 function addItem() {
     let item = [];
     console.log(formItems.items)
-    formItems.items[Object.keys(formItems.items).length] = fields
+    formItems.items[Object.keys(formItems.items).length+999] = fields
     console.log(formItems.items)
 }
 
