@@ -114,6 +114,7 @@ import AdminLayout from "@/Layouts/AdminLayout.vue";
 import SecondaryButton
     from "../../../../../vendor/laravel/breeze/stubs/inertia-vue-ts/resources/js/Components/SecondaryButton.vue";
 import Image from "@/Components/Admin/Properties/image.vue";
+import Video from "@/Components/Admin/Properties/video.vue";
 import Text from "@/Components/Admin/Properties/text.vue";
 import Radio from "@/Components/Admin/Properties/radio.vue";
 import Content from "@/Components/Admin/Properties/content.vue";
@@ -122,7 +123,7 @@ const components = {
     'Image': Image,
     'Text': Text,
     'Radio': Radio,
-    'Video': Image,
+    'Video': Video,
     'Content' : Content
 };
 
