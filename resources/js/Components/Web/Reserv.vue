@@ -6,8 +6,9 @@
 </template>
 
 <script setup>
-import Reservation from "../../../../config/boards-main/resources/js/Components/Reservation.vue";
+
 import {ref} from "vue";
+import Reservation from "@/Components/Reservation.vue";
 
 const props = defineProps({
     title: String,
