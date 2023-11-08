@@ -32,7 +32,7 @@ function removeFile(field_value) {
     emit('update:modelValue', field_value)
 }
 function onFileChanged($event, item_id, field_id) {
-    this.loading = true;
+    loading.value = true;
     let files = $event.target.files || $event.dataTransfer.files;
     console.log(files[0]);
     let formData = new FormData();
@@ -44,11 +44,11 @@ function onFileChanged($event, item_id, field_id) {
     }).then(response => {
         console.log(response.data, item_id, field_id)
         emit('files-dropped', [response.data, item_id, field_id])
-        this.loading = false;
+        loading.value = false;
     })
         .catch(err => {
             console.log(err)
-            this.loading = false;
+            loading.value = false;
         })
 
 
