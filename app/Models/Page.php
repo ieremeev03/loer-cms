@@ -37,6 +37,6 @@ class Page extends SluggableModel
 
     public function infoblocks()
     {
-        return $this->belongsToMany(Infoblock::class, 'page_infoblock', 'page_id', 'infoblock_id')->withPivot('sort');;
+        return $this->belongsToMany(Infoblock::class, 'page_infoblock', 'page_id', 'infoblock_id')->withPivot('sort', 'bunch');;
     }
 }

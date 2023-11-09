@@ -119,6 +119,7 @@ class PageController extends Controller
                 'name' => 'empty'
             ]);
         }
+
         $all_infoblocks = $this->infoblockRepository->getAllInfoblock();
         return inertia('Admin/EditPage', compact('page','pages', 'infoblocks', 'all_infoblocks'));
     }
@@ -134,12 +135,13 @@ class PageController extends Controller
         $blocks = $request->blocks;
         if($blocks != null) {
             $pib = PagesHasInfoblocks::where('page_id', $page->id)->delete();
-            foreach ($blocks as $key=>$block) {
 
+            foreach ($blocks as $key=>$block) {
                 PagesHasInfoblocks::create([
                     'page_id' => $page->id,
                     'infoblock_id' => $block['id'],
-                    'sort' => $key
+                    'sort' => $key,
+                    'bunch' => (!isset($block['pivot']) || $block['pivot']['bunch'] == null) ? uniqid() : $block['pivot']['bunch']
                 ]);
             }
 

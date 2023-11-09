@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PagesHasInfoblocks extends Model
 {
     use HasFactory;
-    protected $fillable = ['page_id', 'infoblock_id','sort' ];
+    protected $fillable = ['page_id', 'infoblock_id','sort', 'bunch' ];
     public $timestamps = false;
     protected $table = "page_infoblock";
 }

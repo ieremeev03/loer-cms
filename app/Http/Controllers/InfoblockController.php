@@ -182,9 +182,10 @@ class InfoblockController extends Controller
         $infoblock = Infoblock::find($request->id);
         $fields = $this->infoblockRepository->getFieldsItem($infoblock);
         $page = isset($request->page) ? $request->page : null;
-        $properties = $this->infoblockRepository->getPropertiesInfoblock($infoblock, $page);
+        $uuid = isset($request->uuid) ? $request->uuid : null;
+        $properties = $this->infoblockRepository->getPropertiesInfoblock($infoblock, $page, $uuid);
         $items = [];
-        if($infoblock) $items = $this->infoblockRepository->getItemsInfoblock($infoblock, $page);
+        if($infoblock) $items = $this->infoblockRepository->getItemsInfoblock($infoblock, $page, $uuid);
         $data['items'] = $items;
         $data['fields'] = $fields;
         $data['properties'] = $properties;
@@ -195,14 +196,15 @@ class InfoblockController extends Controller
         $items = $request->items;
         $infoblock = Infoblock::find($request->infoblock);
         $page = isset($request->page) ? $request->page : null;
+        $bunch =isset($request->infoblock_bunch) ? $request->infoblock_bunch : null;
         $properties = $request->properties;
        //dd($page);
         if (count($items) >0 ) {
-            $this->infoblockRepository->updateOrCteateItems($items,$infoblock,$page);
+            $this->infoblockRepository->updateOrCteateItems($items,$infoblock,$page,$bunch);
         }
 
         if (count($properties) >0 ) {
-            $this->infoblockRepository->updateOrCreateProperties($properties, $infoblock, $page);
+            $this->infoblockRepository->updateOrCreateProperties($properties, $infoblock, $page, $bunch);
         }
     }
 

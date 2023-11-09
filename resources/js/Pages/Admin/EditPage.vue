@@ -38,8 +38,17 @@
                                     </div>
 
                                     <div v-else class="p-3 border-2 bg-lime-200 rounded-md mb-2 relative flex flex-row items-center justify-between group">
-                                        {{item.title}}
-                                        <a class="group-hover:block hidden cursor-pointer" @click="openModalEdit = true; showModalEdit(item.id);">
+                                        <div class="flex flex-col">
+                                            <div>{{item.title}}</div>
+                                            <div class="text-xs text-gray-400 h-5">{{item?.pivot?.bunch}}</div>
+                                        </div>
+                                        <div class="" v-if="loading">
+                                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                        </div>
+                                        <a class="group-hover:block hidden cursor-pointer" @click="showModalEdit(item.id, item?.pivot?.bunch);">
                                             <svg class="text-gray-500" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M4 5L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M4 8H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -118,7 +127,7 @@
                     <div v-if="Object.keys(formItems.properties).length > 0" class="p-6 space-y-6">
                         <template v-for="(block, index) in formItems.properties">
                             <component
-                                v-bind:is="component_type(block.type)"
+                                :is="component_type(block.type)"
                                 :title="block.title"
                                 :list="JSON.parse(block.list)"
                                 :item_id="parseInt(index)"
@@ -131,7 +140,6 @@
                     </div>
                     <div v-if="infoblockArray" class="p-6 space-y-6">
                         <template v-for="(item, index_i) in formItems.items"  :key="index_i">
-
                             <div class="p-4 bg-gray-50 rounded-lg space-y-2" :id="'item_'+index_i">
                                 <template v-for="(block, index_b) in item.fields">
                                     <component
@@ -194,7 +202,7 @@ defineProps({
 });
 
 const openModalEdit = ref(false)
-
+const loading = ref(false)
 const components = {
     'Image': Image,
     'Video': Video,
@@ -215,6 +223,9 @@ let properties = [];
 let modalTitle = "";
 let infoblockArray = false;
 
+
+
+
 const form = useForm({
     title: page.title,
     content: page.content,
@@ -230,7 +241,8 @@ const formItems = useForm({
   items: [],
   properties: [],
   infoblock: 0,
-  page: 0
+  page: 0,
+  infoblock_bunch: ''
 });
 
 const formDelete = useForm({
@@ -276,22 +288,27 @@ console.log(page)
         router.delete(route('pages.destroy', page.id))
     }
 }
-function showModalEdit(id) {
+function showModalEdit(id, uuid) {
+    loading.value = true
     formItems['infoblock'] = id
+    formItems['infoblock_bunch'] = uuid
     formItems['page'] = page.id
     infoblockArray = infoblocks.find(block => block.id === id).array
     modalTitle = infoblockArray?'Элементы':'Настройки'
     axios
-        .get('/InfoBlocks/getItems?id='+id+'&page='+page.id)
+        .get('/InfoBlocks/getItems?id='+id+'&page='+page.id+'&uuid='+uuid)
         .then(response => {
             formItems.items = response.data['items']
             fields = response.data['fields']
             formItems.properties = response.data['properties']
-            console.log(formItems.items)
+            console.log(formItems)
             console.log(fields)
             console.log(properties)
+            loading.value = false
+            openModalEdit.value = true;
         })
         .catch(err => {
+            loading.value = false
             console.log(err)
         })
 }

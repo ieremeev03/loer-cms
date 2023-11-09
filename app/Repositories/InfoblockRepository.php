@@ -14,14 +14,14 @@ class InfoblockRepository
         return Infoblock::all();
     }
 
-    public function getPropertiesInfoblock($infoblock, $page = null) {
+    public function getPropertiesInfoblock($infoblock, $page = null, $uuid = null) {
         $propertires = [];
         $propertiresRaw = $infoblock->properties->sortBy('sort');
 
         foreach ($propertiresRaw as $property) {
 
             if($page!=null) {
-                $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('page_id',$page)->first();
+                $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('page_id',$page)->where('infoblock_bunch',$uuid)->first();
             } else {
                 $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
             }
@@ -33,11 +33,11 @@ class InfoblockRepository
         return $propertires;
     }
 
-    public function getItemsInfoblock($infoblock, $page = null) {
+    public function getItemsInfoblock($infoblock, $page = null, $uuid = null) {
         $items = [];
 
         if($page!=null) {
-            $itemsRaw =  $infoblock->items->where('page_id',$page);
+            $itemsRaw =  $infoblock->items->where('page_id',$page)->where('infoblock_bunch', $uuid);
         } else {
             $itemsRaw = $infoblock->items->where('page_id', null);
         }
@@ -72,26 +72,26 @@ class InfoblockRepository
         $block = [];
 
         foreach ($infoblocks as $infoblock) {
-            $block[$infoblock->name]['type'] = $infoblock->type;
-            $block[$infoblock->name]['title'] = $infoblock->title;
-            $block[$infoblock->name]['content'] = $infoblock->content;
-            $block[$infoblock->name]['button_text'] = $infoblock->button_text;
-            $block[$infoblock->name]['button_link'] = $infoblock->button_link;
+            $block[$infoblock->pivot->bunch]['type'] = $infoblock->type;
+            $block[$infoblock->pivot->bunch]['title'] = $infoblock->title;
+            $block[$infoblock->pivot->bunch]['content'] = $infoblock->content;
+            $block[$infoblock->pivot->bunch]['button_text'] = $infoblock->button_text;
+            $block[$infoblock->pivot->bunch]['button_link'] = $infoblock->button_link;
             $properties = $this->getPropertiesInfoblock($infoblock, $page->id);
             if($properties==null) $block[$infoblock->name]['properties'] = null;
             foreach ($properties as $property) {
                 $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
-                $block[$infoblock->name]['properties'][$property->name] = $value == null ? $property->default : $value->value;
+                $block[$infoblock->pivot->bunch]['properties'][$property->name] = $value == null ? $property->default : $value->value;
             }
             //dd($page->id);
-            $items = $this->getItemsInfoblock($infoblock, $page->id);
+            $items = $this->getItemsInfoblock($infoblock, $page->id, $infoblock->pivot->bunch);
 
             //dd($infoblock);
 
             if(count($items) > 0 ) {
-                $block[$infoblock->name]['items'] = $items;
+                $block[$infoblock->pivot->bunch]['items'] = $items;
             } else {
-                $block[$infoblock->name]['items'] = $this->getItemsInfoblock($infoblock);
+                $block[$infoblock->pivot->bunch]['items'] = $this->getItemsInfoblock($infoblock);
             }
 
         }
@@ -118,7 +118,8 @@ class InfoblockRepository
         return $fields;
     }
 
-    public function updateOrCteateItems($items, $block, $page = null) {
+    public function updateOrCteateItems($items, $block, $page = null, $bunch = null) {
+
         foreach ($items as $item) {
             $key = $item['id'] ?? null;
             $InfoblockItem =  InfoblockItem::find($key);
@@ -129,14 +130,16 @@ class InfoblockRepository
                 if($InfoblockItem) {
                     $InfoblockItem->update([
                         'title' => $item['fields']['title']['value'],
-                        'description' => $item['fields']['description']['value']
+                        'description' => $item['fields']['description']['value'],
+                        'infoblock_bunch' => $bunch
                     ]);
                 } else {
                     $newItem = InfoblockItem::create([
                         'infoblock_id' =>$block->id,
                         'page_id' => $page,
                         'title' => $item['fields']['title']['value'],
-                        'description' => $item['fields']['description']['value']
+                        'description' => $item['fields']['description']['value'],
+                        'infoblock_bunch' => $bunch
                     ]);
                 }
 
@@ -169,22 +172,24 @@ class InfoblockRepository
 
     }
 
-    public function updateOrCreateProperties($props, $block, $page = null) {
+    public function updateOrCreateProperties($props, $block, $page = null, $bunch = null) {
         foreach ($props as $prop) {
             if(isset($prop['file'])) {
                 $prop['value'] = '/images/temp/'.$prop['file'];
             }
-            $ex = InfoblockPropertyValue::where('infoblock_id',$block->id)->where('property_id', $prop['id'])->where('page_id', $page)->first();
+            $ex = InfoblockPropertyValue::where('infoblock_id',$block->id)->where('property_id', $prop['id'])->where('infoblock_bunch', $bunch)->first();
             if($ex) {
                 $ex->update([
-                    'value' => $prop['value']
+                    'value' => $prop['value'],
+                    'infoblock_bunch' => $bunch
                 ]);
             } else {
                 InfoblockPropertyValue::create([
                     'infoblock_id' => $block->id,
                     'property_id' => $prop['id'],
                     'value' => $prop['value'],
-                    'page_id' => $page
+                    'page_id' => $page,
+                    'infoblock_bunch' => $bunch
                 ]);
             }
         }
