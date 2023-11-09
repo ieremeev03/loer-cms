@@ -42,24 +42,27 @@ class InfoblockRepository
             $itemsRaw = $infoblock->items;
         }
 
-        foreach ($itemsRaw as $key=>$item) {
+
+        $n = 0;
+        foreach ($itemsRaw as $item) {
             $fields = $infoblock->fields;
-            $items[$key]['id'] = $item->id;
-            $items[$key]['updated_at'] = $item->updated_at;
-            $items[$key]['fields']['title']['value'] = $item->title;
-            $items[$key]['fields']['description']['value'] = $item->description;
-            $items[$key]['fields']['title']['field']['title'] = "Заголовок";
-            $items[$key]['fields']['description']['field']['title'] = "Анонс";
-            $items[$key]['fields']['title']['field']['type'] = "Text";
-            $items[$key]['fields']['description']['field']['type'] = "Content";
-            $items[$key]['fields']['title']['field']['list'] = null;
-            $items[$key]['fields']['description']['field']['list'] = null;
+            $items[$n]['id'] = $item->id;
+            $items[$n]['updated_at'] = $item->updated_at;
+            $items[$n]['fields']['title']['value'] = $item->title;
+            $items[$n]['fields']['description']['value'] = $item->description;
+            $items[$n]['fields']['title']['field']['title'] = "Заголовок";
+            $items[$n]['fields']['description']['field']['title'] = "Анонс";
+            $items[$n]['fields']['title']['field']['type'] = "Text";
+            $items[$n]['fields']['description']['field']['type'] = "Content";
+            $items[$n]['fields']['title']['field']['list'] = null;
+            $items[$n]['fields']['description']['field']['list'] = null;
 
             foreach ($fields as $field) {
                 $value =  InfoblockFieldValue::where('item_id',$item->id)->where('field_id',$field->id)->first();
-                $items[$key]['fields'][$field->name]['value'] = $value == null ? null : $value->value;
-                $items[$key]['fields'][$field->name]['field'] = $field;
+                $items[$n]['fields'][$field->name]['value'] = $value == null ? null : $value->value;
+                $items[$n]['fields'][$field->name]['field'] = $field;
             }
+            $n++;
         }
 
         return $items;

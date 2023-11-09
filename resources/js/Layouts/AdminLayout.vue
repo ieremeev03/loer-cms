@@ -4,6 +4,7 @@ import Sidebar from '@/Components/Admin/Sidebar.vue';
 import { Link } from '@inertiajs/vue3';
 import { ref, watch } from 'vue';
 import MenuItem from "@/Components/Admin/MenuItem.vue";
+import '../../css/app.css';
 
 const showSidebar = ref(false)
 const showMenu = ref(false)

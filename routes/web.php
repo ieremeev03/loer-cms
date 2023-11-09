@@ -59,7 +59,7 @@ Route::get('/payment-success', function () {
 Route::get('/payment-error', function () {
     return Inertia::render('Payment/Error');
 })->name('payment-error');
-Route::any('/payment-status', [HomeController::class, 'paymentStatus'])->name('payment-status');
+Route::any('/payment-status', [FrontInstructorController::class, 'paymentStatus'])->name('payment-status');
 
 Route::post('/get-card-price', [SkipassController::class, 'getCardPrice'])->name('get-card-price');
 Route::post('/get-tariffs', [SkipassController::class, 'getTariffs'])->name('get-tariffs');
@@ -67,8 +67,8 @@ Route::post('/topup-skipass', [SkipassController::class, 'topup'])->name('topup-
 Route::post('/create-skipass', [SkipassController::class, 'create'])->name('create-skipass');
 Route::get('/get-disciplines', [FrontInstructorController::class, 'index'])->name('get-disciplines');
 
-
 Route::get('/{pSlug}', [PageController::class, 'getPage'])->name('pages.getPage');
+
 
 
 

@@ -131,6 +131,7 @@
                     </div>
                     <div v-if="infoblockArray" class="p-6 space-y-6">
                         <template v-for="(item, index_i) in formItems.items"  :key="index_i">
+
                             <div class="p-4 bg-gray-50 rounded-lg space-y-2" :id="'item_'+index_i">
                                 <template v-for="(block, index_b) in item.fields">
                                     <component
@@ -239,7 +240,7 @@ const formDelete = useForm({
 function addItem() {
     let item = [];
     console.log(formItems.items)
-    formItems.items[Object.keys(formItems.items).length+999] = fields
+    formItems.items[Object.keys(formItems.items).length] = fields
     console.log(formItems.items)
 }
 

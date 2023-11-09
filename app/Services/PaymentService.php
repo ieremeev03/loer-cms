@@ -14,12 +14,11 @@ class PaymentService
         $data['failUrl'] = route('payment-error');
         $url = config('sberbank.url') . '/register.do';
 
-        $payment = Http::asForm()->withHeaders([
-            'Authorization' => config('lime.token'),
-        ])
+        $payment = Http::asForm()
             ->withOptions(["verify"=>false])
             ->post($url, $data)
             ->json();
+
 
         return $payment;
     }

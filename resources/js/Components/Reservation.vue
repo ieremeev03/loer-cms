@@ -179,7 +179,35 @@ mounted: {
 }
 </script>
 
-<style>
+<style scoped>
+
+.vs__selected {
+    display: flex;
+    align-items: center;
+    background-color: var(--vs-selected-bg);
+    border: var(--vs-selected-border-width) var(--vs-selected-border-style) var(--vs-selected-border-color);
+    border-radius: var(--vs-border-radius);
+    color: var(--vs-selected-color);
+
+    margin: 0;
+    padding: 0 0.25em;
+    z-index: 0;
+    font-feature-settings: "liga" off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.vs__dropdown-menu {
+
+    font-feature-settings: "liga" off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
 .section__bron-row-input {
     background-color: transparent;
     color: #FFF;
@@ -187,6 +215,23 @@ mounted: {
     border: 2px solid #FFF;
     height: 54px;
     outline: 0;
+    padding-left: 40px !important;
+}
+
+.section__bron-row-input::placeholder {
+
+    font-feature-settings: "liga" off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    color: #FFF;
+    opacity: 1; /* Firefox */
+}
+
+.dp__input_icon {
+    color: #FFF;
+    opacity: 1; /* Firefox */
 }
 .popup__cancel {
     z-index: 1;
@@ -223,6 +268,10 @@ mounted: {
 .section__bron-row .vs__dropdown-option--highlight {
     background: #181F26;
 }
+
+.dp__active_date {
+
+}
 </style>
 
 <template>
@@ -241,6 +290,7 @@ mounted: {
                     @cleared="clearDate"
                     locale="ru"
                     :min-date="new Date()"
+                    auto-apply
                 >
                 </VueDatePicker>
 
@@ -250,6 +300,7 @@ mounted: {
                     selected="index === 0"
                     @option:selected="selectCount"
                     :searchable="false"
+
                 ></v-select>
 
                 <v-select v-model="data.selectedDiscpline"
@@ -259,6 +310,8 @@ mounted: {
                     :clearable="false"
                     :searchable="false"
                 ></v-select>
+
+
             </form>
 
             <div v-if="data.instructors && data.instructors.length" class="section__bron-instruktors-block">
