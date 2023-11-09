@@ -1,8 +1,10 @@
 <template>
     <section class="section__slider container">
         <div class="section__slider-content">
-            <h2 class="section__slider-slide-title">{{title}}</h2>
-            <div class="section__slider-slide-descr" v-html="content"></div>
+            <h2 v-if="!properties.title_prop" class="section__slider-slide-title">{{title}}</h2>
+            <h2 v-if="properties.title_prop" class="section__slider-slide-title">{{ properties.title_prop }}</h2>
+            <div  v-if="!properties.content" class="section__slider-slide-descr" v-html="content"></div>
+            <div v-if="properties.content" class="section__slider-slide-descr" v-html="properties.content"></div>
         </div>
         <swiper
             :modules="modules"
