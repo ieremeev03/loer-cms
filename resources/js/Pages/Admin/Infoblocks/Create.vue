@@ -21,7 +21,7 @@
                         <InputError class="mt-2" :message="form.errors.title" />
                     </div>
 
-                    <div >
+                    <div class="hidden">
                         <InputLabel for="title" value="Символьный код" />
                         <TextInput
                             id="name"
@@ -35,7 +35,7 @@
                         <InputError class="mt-2" :message="form.errors.title" />
                     </div>
 
-                    <div>
+                    <div class="hidden">
                         <InputLabel for="content" value="Текст анонса" class="mb-1"/>
                         <TextArea v-model="form.content" class="mt-1 block w-full h-50"/>
                         <InputError class="mt-2" :message="form.errors.title" />
@@ -208,11 +208,7 @@ const types = ref({
         'title': 'Фото',
         'image' : 'photo.png'
     },
-    'Hotels': {
-        'id' : 'Hotels',
-        'title': 'Отели',
-        'image' : 'photo.png'
-    },
+
 
 });
 
@@ -243,9 +239,8 @@ function setType(event, blocks) {
     axios
         .get('/InfoBlocks/getProperties?id='+type)
         .then(response => {
-            this.form.blocks = response.data
+            form.blocks = response.data
             form.properties = response.data
-            console.log(form.properties['color'])
         })
         .catch(err => {
             console.log(err)

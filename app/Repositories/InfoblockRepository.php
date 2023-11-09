@@ -39,9 +39,8 @@ class InfoblockRepository
         if($page!=null) {
             $itemsRaw =  $infoblock->items->where('page_id',$page);
         } else {
-            $itemsRaw = $infoblock->items;
+            $itemsRaw = $infoblock->items->where('page_id', null);
         }
-
 
         $n = 0;
         foreach ($itemsRaw as $item) {
@@ -84,6 +83,7 @@ class InfoblockRepository
                 $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
                 $block[$infoblock->name]['properties'][$property->name] = $value == null ? $property->default : $value->value;
             }
+            //dd($page->id);
             $items = $this->getItemsInfoblock($infoblock, $page->id);
 
             //dd($infoblock);

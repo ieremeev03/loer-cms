@@ -11,6 +11,7 @@
             :slides-per-view="1"
             :space-between="0"
             :speed="1200"
+            :autoplay="true"
             navigation
             :pagination="{ clickable: true }"
             :mousewheel="false"
@@ -43,7 +44,7 @@
 <script>
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import {Pagination} from 'swiper/modules';
+import {Pagination, Autoplay} from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -56,7 +57,7 @@ export default {
     },
     setup() {
         return {
-            modules: [Pagination],
+            modules: [Pagination, Autoplay],
         };
     },
 };
