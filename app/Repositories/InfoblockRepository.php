@@ -18,6 +18,8 @@ class InfoblockRepository
         $propertires = [];
         $propertiresRaw = $infoblock->properties->sortBy('sort');
 
+
+
         foreach ($propertiresRaw as $property) {
 
             if($page!=null) {
@@ -77,10 +79,19 @@ class InfoblockRepository
             $block[$infoblock->pivot->bunch]['content'] = $infoblock->content;
             $block[$infoblock->pivot->bunch]['button_text'] = $infoblock->button_text;
             $block[$infoblock->pivot->bunch]['button_link'] = $infoblock->button_link;
-            $properties = $this->getPropertiesInfoblock($infoblock, $page->id);
+            if($infoblock->pivot->bunch != null ) {
+                $properties = $this->getPropertiesInfoblock($infoblock, $page->id, $infoblock->pivot->bunch);
+            } else {
+                $properties = $this->getPropertiesInfoblock($infoblock, $page->id);
+            }
+
             if($properties==null) $block[$infoblock->name]['properties'] = null;
             foreach ($properties as $property) {
-                $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
+                if($infoblock->pivot->bunch != null ) {
+                    $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('infoblock_bunch',$infoblock->pivot->bunch)->first();
+                } else {
+                    $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
+                }
                 $block[$infoblock->pivot->bunch]['properties'][$property->name] = $value == null ? $property->default : $value->value;
             }
             //dd($page->id);
