@@ -12,7 +12,7 @@ class Infoblock extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['title', 'content', 'name', 'type' ];
+    protected $fillable = ['title', 'content', 'name', 'type' , 'array'];
     //public $timestamps = false;
 
     public function items(): HasMany

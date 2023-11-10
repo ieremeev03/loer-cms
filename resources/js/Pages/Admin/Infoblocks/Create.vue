@@ -41,18 +41,7 @@
                         <InputError class="mt-2" :message="form.errors.title" />
                     </div>
 
-                    <div class="flex flex-row gap-10">
-                        <div>
-                            <InputLabel for="type" value="Тип блока" />
-                            <select  class="border-gray-300 rounded-md shadow-sm"
-                                     v-model="form.type_sp"
-                                     ref="input"
-                                     @change="setType($event, form.blocks)"
-                            >
-                                <option v-for="type in types_sp" v-bind:value="type.id" >{{ type.title }}</option>
-                            </select>
-                        </div>
-                    </div>
+
 
                     <div class="flex flex-row gap-10">
                         <div>
@@ -150,6 +139,7 @@ const form = useForm({
     title: '',
     content: '',
     name: '',
+    array: false,
     type: '',
     type_sp: '',
     properties: {},
@@ -160,69 +150,66 @@ const types = ref({
     'Slider-top': {
         'id' : 'Slider-top',
         'title': 'Слайдер на весь экран',
-        'image' : 'full_slider.png'
+        'image' : 'full_slider.png',
+        'array' : true
     },
     'Poster': {
         'id' : 'Poster',
-        'title': 'Слайдер с описанием',
-        'image' : 'poster.png'
+        'title': 'Карусель с заголовками',
+        'image' : 'poster.png',
+        'array' : true
     },
     'ContentBlock': {
         'id' : 'ContentBlock',
         'title': 'Текстовый блок',
-        'image' : 'content.png'
+        'image' : 'content.png',
+        'array' : false
     },
 
     'Events': {
         'id' : 'Events',
-        'title': 'Афиша',
-        'image' : 'afisha.png'
+        'title': 'Карусель без заголовков',
+        'image' : 'afisha.png',
+        'array' : true
     },
 
     'LiveBlockTextTop': {
         'id' : 'LiveBlockTextTop',
         'title': 'Фото с текстом (текст сверху)',
-        'image' : 'alive.png'
+        'image' : 'alive.png',
+        'array' : false
     },
 
     'LiveBlockTextBottom': {
         'id' : 'LiveBlockTextBottom',
         'title': 'Фото с текстом (текст снизу)',
-        'image' : 'text_bottom.png'
+        'image' : 'text_bottom.png',
+        'array' : false
+
     },
 
     'HowBlock': {
         'id' : 'HowBlock',
         'title': 'Двойной блок',
-        'image' : 'two.png'
+        'image' : 'two.png',
+        'array' : false
     },
 
     'Slider-text': {
         'id' : 'Slider-text',
-        'title': 'Слайдер с общим текстом',
-        'image' : 'full_slider.png'
+        'title': 'Слайдер со статичным текстом',
+        'image' : 'full_slider.png',
+        'array' : true
     },
 
     'Photo': {
         'id' : 'Photo',
         'title': 'Фото',
-        'image' : 'photo.png'
+        'image' : 'photo.png',
+        'array' : false
     },
 
 
-});
-
-const types_sp = ref({
-    'Site': {
-        'id' : 'Site',
-        'title': 'Инфоблок для сайта',
-        'image' : 'full_slider.png'
-    },
-    'Page': {
-        'id' : 'Page',
-        'title': 'Инфоблок для страницы',
-        'image' : 'poster.png'
-    },
 });
 
 
@@ -235,6 +222,7 @@ function  getUploadedDataProp(file) {
 function setType(event, blocks) {
     let type = event.target.value
     block_image = types.value[type].image;
+    form.array = types.value[type].array;
     console.log(type)
     axios
         .get('/InfoBlocks/getProperties?id='+type)

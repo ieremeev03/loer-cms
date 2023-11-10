@@ -26,6 +26,7 @@ class StoreInfoblockRequest extends FormRequest
             'name' => 'required|max:255',
             'content' => '',
             'type' => 'required|max:255',
+            'array' => 'required',
         ];
     }
 }
