@@ -389,7 +389,7 @@ h1, h2, h3, h4, h5, h6 {
           box-shadow: 0px 0px 8px 6px rgba(255, 183, 2, 0.2862745098);
 }
 
-@media (min-width: 1480px) {
+@media (min-width: 1780px) {
     .section__services-slide {
         max-width: 760px !important;
         height: 100% !important;
