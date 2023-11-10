@@ -269,10 +269,10 @@ function uniqid(prefix = "", random = false) {
     return `${prefix}${id}${random ? `.${Math.trunc(Math.random() * 100000000)}`:""}`;
 };
 function  getUploadedData(file) {
-    console.log(file[0][0], file[1],  file[2])
+    console.log(file)
     let item = file[1];
     let field = file[2];
-    console.log(form.items)
+
     formItems.items[item]['fields'][field]['file'] = file[0];
 }
 

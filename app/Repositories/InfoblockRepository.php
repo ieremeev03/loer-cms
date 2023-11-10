@@ -95,8 +95,8 @@ class InfoblockRepository
                 } else {
                     $value = $valueWithoutBunch;
                 }
-
-                $block[$infoblock->pivot->bunch]['properties'][$property->name] = $value == null ? $valueWithoutBunch->value : $value->value;
+                $default = ($valueWithoutBunch==null) ? $property->default : $valueWithoutBunch->value;
+                $block[$infoblock->pivot->bunch]['properties'][$property->name] = ($value == null) ? $default : $value->value;
             }
             //dd($page->id);
             $items = $this->getItemsInfoblock($infoblock, $page->id, $infoblock->pivot->bunch);
@@ -160,7 +160,7 @@ class InfoblockRepository
 
                 foreach ($item['fields'] as $field) {
                     if(isset($field['file'])) {
-                        $field['value'] = '/images/temp/'.$field['file'];
+                        $field['value'] = $field['file'];
                     }
                     if(isset($field['field']['id'])) {
                         $ex = InfoblockFieldValue::where('item_id',$key)->where('field_id', $field['field']['id'])->first();

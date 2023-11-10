@@ -43,7 +43,7 @@ function onFileChanged($event, item_id, field_id) {
     console.log(files[0]);
     let formData = new FormData();
     formData.append("file", files[0]);
-    formData.append("folder", props.folder);
+    if(props.folder!==undefined) formData.append("folder", props.folder);
     axios.post('/fileUpload', formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
@@ -51,6 +51,7 @@ function onFileChanged($event, item_id, field_id) {
     }).then(response => {
         console.log(response.data, item_id, field_id)
         emit('files-dropped', [response.data, item_id, field_id])
+        emit('update:modelValue', response.data)
         loading.value = false;
     })
         .catch(err => {
