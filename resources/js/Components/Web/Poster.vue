@@ -1,5 +1,5 @@
 <template>
-    <section class="section__services" style="height: 100vh" v-bind:class="'section__'+properties.color">
+    <section class="section__services"  v-bind:class="'section__'+properties.color">
         <div class="container section__services-container">
             <h2 v-if="!properties?.title_prop" class="section__services-title">{{ title }} </h2>
             <h2 v-if="properties?.title_prop" class="section__services-title">{{ properties?.title_prop }} </h2>

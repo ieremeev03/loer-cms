@@ -1152,7 +1152,7 @@ h1, h2, h3, h4, h5, h6 {
 .section__services-swiper {
   max-width: 2560px;
   margin: 0 auto;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   position: relative;
 }
@@ -1172,7 +1172,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 80px 100px 80px 80px;
   position: relative;
   width: 100%;
-  max-width: 760px;
+  max-width: calc(100vh/5*4);
   height: 100%;
   overflow: hidden;
 }
