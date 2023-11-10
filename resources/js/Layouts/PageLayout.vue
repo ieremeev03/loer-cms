@@ -8,7 +8,10 @@ const showAnimation = ref(true)
 
 </script>
 
-<style scoped>
+<style>
+section {
+    pointer-events: none;
+}
 .preloader {
     position: fixed;
     top: 0;
