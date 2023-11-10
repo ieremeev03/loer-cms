@@ -63,7 +63,7 @@ class InfoblockController extends Controller
         if($block) {
             $props = $request->properties;
             foreach ($props as $prop) {
-                if(isset($prop['file'])) $prop['value'] = '/images/temp/'.$prop['file'];
+                if(isset($prop['file'])) $prop['value'] = $prop['file'];
 
                     InfoblockPropertyValue::create([
                         'infoblock_id' => $block->id,
