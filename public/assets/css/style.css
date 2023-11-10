@@ -389,10 +389,25 @@ h1, h2, h3, h4, h5, h6 {
           box-shadow: 0px 0px 8px 6px rgba(255, 183, 2, 0.2862745098);
 }
 
+@media (min-width: 1480px) {
+    .section__services-slide {
+        max-width: 760px !important;
+    }
+
+    .section__services-swiper {
+
+        height: 940px !important;
+
+    }
+}
+
 @media (max-width: 1480px) {
    body {
 
    }
+
+
+
   .header__right {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1176,6 +1191,9 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   overflow: hidden;
 }
+
+
+
 .section__services-slide:hover .section__services-slide-img img {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
