@@ -391,7 +391,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 1480px) {
    body {
-       zoom: 80%;
+
    }
   .header__right {
     display: -webkit-box;
@@ -1152,7 +1152,7 @@ h1, h2, h3, h4, h5, h6 {
 .section__services-swiper {
   max-width: 2560px;
   margin: 0 auto;
-  height: 940px;
+  height: 100%;
   width: 100%;
   position: relative;
 }
@@ -1952,7 +1952,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .section__card {
-  height: 844px;
+  height: calc(100vh - 128px);
   position: relative;
 }
 
