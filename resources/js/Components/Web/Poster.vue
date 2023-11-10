@@ -1,9 +1,12 @@
 <template>
     <section class="section__services" v-bind:class="'section__'+properties.color">
         <div class="container section__services-container">
-            <h2 class="section__services-title">{{ title }}</h2>
-            <div class="section__services-text" v-html="content"></div>
-            <a :href="properties.link" class="button__more">{{properties.link_text}}</a>
+            <h2 v-if="!properties?.title_prop" class="section__services-title">{{ title }} </h2>
+            <h2 v-if="properties?.title_prop" class="section__services-title">{{ properties?.title_prop }} </h2>
+
+            <div v-if="!properties?.content" class="section__services-text" v-html="content"></div>
+            <div v-if="properties?.content" class="section__services-text" v-html="properties?.content"></div>
+            <a v-if="properties?.link" :href="properties?.link" class="button__more">{{properties?.link_text}}</a>
         </div>
     </section>
     <slider-h :items="items"/>
