@@ -9,9 +9,9 @@
             <a v-if="properties?.link" :href="properties?.link" class="button__more">{{properties?.link_text}}</a>
 
         </div>
-        <slider-h-wd :items="items"/>
-    </section>
 
+    </section>
+    <slider-h-wd :items="items"/>
 </template>
 
 <script>

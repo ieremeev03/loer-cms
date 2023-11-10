@@ -8,9 +8,8 @@
             <div v-if="properties?.content" class="section__services-text" v-html="properties?.content"></div>
             <a v-if="properties?.link" :href="properties?.link" class="button__more">{{properties?.link_text}}</a>
         </div>
-        <slider-h :items="items"/>
     </section>
-
+    <slider-h :items="items"/>
 </template>
 
 <script>
