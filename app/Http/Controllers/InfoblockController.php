@@ -213,10 +213,11 @@ class InfoblockController extends Controller
         $request->validate([
             'file' => 'required',
         ]);
-
+        $folder = isset($request->folder) ? $request->folder :'temp';
+        $path = '/images/'.$folder;
         $imageName = uniqid(time()).'.'.$request->file->extension();
-        $request->file->move(public_path('images/temp'), $imageName);
+        $request->file->move(public_path($path), $imageName);
 
-       return $imageName;
+        return $path.'/'.$imageName;
     }
 }

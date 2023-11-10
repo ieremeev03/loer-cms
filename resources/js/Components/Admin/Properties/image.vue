@@ -1,7 +1,7 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import {onMounted, ref, toRefs} from 'vue';
 import InputLabel from '@/Components/InputLabel.vue';
-defineProps({
+const props =  defineProps({
     modelValue: {
         type: String,
     },
@@ -17,8 +17,12 @@ defineProps({
     },
     field_value: {
         type: String,
+    },
+    folder: {
+        type: String,
     }
 });
+
 
 const emit = defineEmits(['files-dropped'])
 
@@ -28,6 +32,8 @@ const loading = ref(false)
 
 defineExpose({ focus: () => input.value.focus() });
 
+
+console.log(props.field_value)
 function removeFile(field_value) {
     emit('update:modelValue', field_value)
 }
@@ -37,6 +43,7 @@ function onFileChanged($event, item_id, field_id) {
     console.log(files[0]);
     let formData = new FormData();
     formData.append("file", files[0]);
+    formData.append("folder", props.folder);
     axios.post('/fileUpload', formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
@@ -50,9 +57,6 @@ function onFileChanged($event, item_id, field_id) {
             console.log(err)
             loading.value = false;
         })
-
-
-
 }
 
 </script>
@@ -77,7 +81,8 @@ function onFileChanged($event, item_id, field_id) {
         </div>
 
         <div class="flex flex-row items-center gap-2">
-            <input  class="m-0 text-xs" v-if="field_value === null || field_value==='' || !loading"
+
+            <input  class="m-0 text-xs" v-if="field_value === null || field_value==='' || field_value===undefined"
                    type="file"
                    @change="onFileChanged($event, item_id, field_id)"
             >
