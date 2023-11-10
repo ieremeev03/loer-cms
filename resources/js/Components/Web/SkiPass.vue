@@ -2,10 +2,17 @@
 import {reactive} from 'vue';
 import SkiPassTab from './SkiPassTab.vue';
 
+const props = defineProps({
+    title: String,
+    content: String,
+    properties: Object
+});
+
 const data = reactive({
     popup: false,
     tab: 1,
 });
+
 </script>
 
 <style>
@@ -29,9 +36,12 @@ const data = reactive({
 
     <section class="section__services section__black">
         <div class="container section__services-container">
-            <h2 class="section__services-title">Ски-пасс на весь сезон</h2>
-            <div class="section__services-text">Если покупать ски-пасс сразу на весь сезон, <br> можно здорово сэкономить!!</div>
-            <a href="#" @click="data.popup = true" class="button__more">Купить/Пополнить</a>
+            <h2 v-if="!properties?.title_prop" class="section__services-title">{{ title }} </h2>
+            <h2 v-if="properties?.title_prop" class="section__services-title">{{ properties?.title_prop }} </h2>
+
+            <div v-if="!properties?.content" class="section__services-text" v-html="content"></div>
+            <div v-if="properties?.content" class="section__services-text" v-html="properties?.content"></div>
+            <a href="#" @click="data.popup = true" class="button__more">{{properties?.link_text}}</a>
         </div>
 
     </section>
