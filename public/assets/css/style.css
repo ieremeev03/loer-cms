@@ -1187,8 +1187,8 @@ h1, h2, h3, h4, h5, h6 {
   padding: 80px 100px 80px 80px;
   position: relative;
   width: 100%;
-  max-width: calc(100vh/5*4);
-  height: 100%;
+  max-width: calc(100vh/5*3.5);
+  height: calc(100% - 190px);
   overflow: hidden;
 }
 
