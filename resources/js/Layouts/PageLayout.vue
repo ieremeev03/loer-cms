@@ -9,7 +9,7 @@ const showAnimation = ref(true)
 
 <style>
 section {
-    pointer-events: none;
+
 }
 .preloader {
     position: fixed;

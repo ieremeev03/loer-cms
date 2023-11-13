@@ -67,6 +67,9 @@ Route::post('/topup-skipass', [SkipassController::class, 'topup'])->name('topup-
 Route::post('/create-skipass', [SkipassController::class, 'create'])->name('create-skipass');
 Route::get('/get-disciplines', [FrontInstructorController::class, 'index'])->name('get-disciplines');
 
+Route::get('/test', [FrontInstructorController::class, 'test']);
+
+
 Route::get('/{pSlug}', [PageController::class, 'getPage'])->name('pages.getPage');
 
 

@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderRequest;
+use App\Mail\SkipassShipped;
 use App\Models\Discipline;
 use App\Models\Instructor;
 use App\Models\InstructorPrice;
 use App\Models\Order;
 use App\Models\OrderSchedule;
 use App\Models\Schedule;
+use App\Models\Skipass;
 use App\Services\PaymentService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class InstructorController extends Controller
 {
@@ -215,6 +220,22 @@ class InstructorController extends Controller
     public function paymentStatus(Request $request)
     {
         Log::info($request);
+    }
+
+    public function test() {
+        $cardId = "158935";
+        $qr = Http::withHeaders([
+            'Authorization' => config('lime.token'),
+        ])
+            ->get(config('lime.url').'/CashdeskServer/GenerateQr', [
+                'cardId' => $cardId
+            ])
+            ->json();
+        dd($qr);
+
+        Mail::raw($qr, function($msg) {$msg->to('i.eremeev@loer.pro')->subject('Test Email'); });
+
+
     }
 
 
