@@ -1169,6 +1169,7 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 2560px;
   margin: 0 auto;
   height: calc(100vh - 128px);
+    max-height: 800px;
   width: 100%;
   position: relative;
 }
