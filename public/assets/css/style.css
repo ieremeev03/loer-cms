@@ -391,14 +391,12 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1780px) {
     .section__services-slide {
-        max-width: 760px !important;
+        max-width: 640px !important;
         height: 100% !important;
     }
 
     .section__services-swiper {
-
         height: 940px !important;
-
     }
 }
 
