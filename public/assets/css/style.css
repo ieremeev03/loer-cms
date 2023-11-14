@@ -4881,7 +4881,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-
 .vs__selected-options {
     position: relative;
     display: inline-block;
@@ -5093,6 +5092,9 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #FFF !important;
     margin-top: 0px !important;
 }
+.vs__search:focus {
+    border: 3px solid #FFF !important;
+}
 
 .dp__input_wrap {
     cursor: pointer;
@@ -5139,6 +5141,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 .dp__input::placeholder {
     color: #fff !important;
+}
+
+.vs__dropdown-menu {
+    position: relative;
+    background: #181F26;
+    width: 100%;
+    max-width: none;
+    border: 2px solid #fff !important;
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    z-index: 5;
+    width: 100%;
+    border-radius: 2px;
+    padding: 13px 0px;
+}
+
+.vs__dropdown-option {
+    padding: 6.5px 22px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    color: #FFF;
+    -webkit-font-feature-settings: "liga" off;
+    font-feature-settings: "liga" off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 133.333% */
 }
 
 @media (max-width: 1024px) {
@@ -5223,6 +5253,18 @@ h1, h2, h3, h4, h5, h6 {
         border-radius: 2px;
         border: 2px solid #FFF;
     }
+    .vs__dropdown-menu {
+        background: #181F26;
+        min-width: 141px;
+        border: 2px solid #fff;
+        border-radius: 2px;
+        padding: 7px 0px;
+    }
+    .vs__dropdown-option {
+        padding: 3.5px 12px;
+        font-size: 12px;
+        line-height: 16px; /* 133.333% */
+    }
 }
 .popup__content .vs__selected-options {
     position: relative;
@@ -5299,6 +5341,7 @@ h1, h2, h3, h4, h5, h6 {
     fill: #181F26;
 }
 .popup__content .dp__input {
+    line-height: 20px;
     padding: 11px 16px 13px !important;
     color: #181F26;
     font-weight: 400;
@@ -5325,6 +5368,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .popup__content .popup__content-tab-content-form-row-input-inner-date::after {
     display: none;
+}
+.popup__content .vs__dropdown-menu {
+    background: #fff;
+    border: 2px solid rgba(24, 31, 38, 0.5) !important;
+}
+.popup__content .vs__dropdown-option {
+    color: rgb(24, 31, 38);
 }
 
 @media (max-width: 576px) {
@@ -5427,5 +5477,12 @@ h1, h2, h3, h4, h5, h6 {
     .popup__content .dp__input::placeholder {
         color: rgba(24, 31, 38, 0.5) !important;
         font-weight: 400 !important;
+    }
+    .vs__dropdown-menu {
+        background: #fff;
+        border: 2px solid rgba(24, 31, 38, 0.5) !important;
+    }
+    .vs__dropdown-option {
+        color: rgb(24, 31, 38);
     }
 }
