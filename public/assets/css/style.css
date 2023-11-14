@@ -4879,13 +4879,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-.vs__selected-options{
+
+
+.vs__selected-options {
     position: relative;
     display: inline-block;
     width: 100%;
     max-width: 180px;
     position: relative;
 }
+
 .vs__selected-options::after {
     position: absolute;
     content: "";
@@ -4897,7 +4900,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 14px;
 }
 
-.vs__selected{
+.vs__selected {
     position: absolute;
     top: 13px;
     left: 23px;
@@ -4911,10 +4914,11 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 24px;
 }
 
-.vs__actions{
+.vs__actions {
     display: none;
 }
-.vs__search{
+
+.vs__search {
     background-color: rgba(250, 250, 250, 0);
     padding: 13px 33px 13px 22px;
     cursor: pointer;
@@ -4930,39 +4934,37 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid #FFF;
 }
 
-
-.dp__input_wrap{
+.dp__input_wrap {
     cursor: pointer;
     position: relative;
     width: 100%;
     max-width: 158px;
 }
-.dp__input_wrap svg{
+
+.dp__input_wrap svg {
+    display: block;
     position: absolute;
     content: "";
     top: 18px;
     right: 18px;
     width: 20px;
     height: 20px;
-    fill:#FFF
+    fill: #FFF;
 }
 
-
 @media (max-width: 1024px) {
-
     .dp__input_wrap {
         max-width: 158px;
     }
-    .dp__input_wrap svg{
+    .dp__input_wrap svg {
         position: absolute;
         content: "";
         top: 18px;
         right: 18px;
         width: 20px;
         height: 20px;
-        fill:#FFF
+        fill: #FFF;
     }
-
     .vs__selected-options {
         max-width: 180px;
     }
@@ -4976,29 +4978,26 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 18px;
         line-height: 24px;
     }
-    .vs__search{
+    .vs__search {
         padding: 13px 33px 13px 22px;
         font-size: 18px;
         line-height: 24px; /* 133.333% */
         border-radius: 2px;
         border: 2px solid #FFF;
     }
-
 }
-
 @media (max-width: 576px) {
-
     .dp__input_wrap {
         max-width: 115px;
     }
-    .dp__input_wrap svg{
+    .dp__input_wrap svg {
         position: absolute;
         content: "";
         top: 12px;
         right: 12px;
         width: 15px;
         height: 15px;
-        fill:#FFF
+        fill: #FFF;
     }
     .section__bron-row-input {
         font-size: 12px;
@@ -5019,14 +5018,13 @@ h1, h2, h3, h4, h5, h6 {
         top: 12px;
         right: 11px;
     }
-
     .vs__selected {
         top: 10px;
         left: 14px;
         font-size: 12px;
         line-height: 16px; /* 133.333% */
     }
-    .vs__search{
+    .vs__search {
         padding: 7px 12px;
         font-size: 12px;
         line-height: 16px; /* 133.333% */
@@ -5034,5 +5032,391 @@ h1, h2, h3, h4, h5, h6 {
         border: 2px solid #FFF;
     }
 }
+.dp__main {
+    max-width: 158px !important;
+}
 
+.vs__selected-options {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 180px;
+    position: relative;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px !important;
+}
 
+.vs__selected-options::after {
+    position: absolute;
+    content: "";
+    width: 24px;
+    background-image: url(../img/arr-calendar.svg);
+    background-size: cover;
+    height: 15px;
+    top: 20px;
+    right: 14px;
+}
+
+.vs__selected {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    display: block !important;
+    color: #FFF;
+    -webkit-font-feature-settings: "liga" off;
+    font-feature-settings: "liga" off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.vs__actions {
+    display: none;
+}
+
+.vs__search {
+    background-color: rgba(250, 250, 250, 0);
+    padding: 13px 33px 13px 22px !important;
+    cursor: pointer;
+    color: #FFF;
+    -webkit-font-feature-settings: "liga" off;
+    font-feature-settings: "liga" off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 133.333% */
+    border-radius: 2px;
+    width: 100% !important;
+    border: 2px solid #FFF !important;
+    margin-top: 0px !important;
+}
+
+.dp__input_wrap {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    max-width: 158px !important;
+}
+
+.dp__input_wrap svg {
+    position: absolute;
+    content: "";
+    top: 18px;
+    left: auto;
+    right: 18px;
+    width: 20px;
+    height: 20px;
+    fill: #FFF;
+}
+
+.vs__dropdown-toggle {
+    padding: 0 0 0px;
+    border: 0px;
+}
+
+.dp__input {
+    color: #fff;
+}
+.dp__input::-webkit-input-placeholder {
+    color: #fff !important;
+}
+.dp__input::-moz-placeholder {
+    color: #fff !important;
+}
+.dp__input:-ms-input-placeholder {
+    color: #fff !important;
+}
+.dp__input::-ms-input-placeholder {
+    color: #fff !important;
+}
+.dp__input::placeholder {
+    color: #fff !important;
+}
+
+@media (max-width: 1024px) {
+    .dp__input_wrap {
+        max-width: 158px;
+    }
+    .dp__input_wrap svg {
+        position: absolute;
+        content: "";
+        top: 18px;
+        right: 18px;
+        width: 20px;
+        height: 20px;
+        fill: #FFF;
+    }
+    .vs__selected-options {
+        max-width: 180px;
+    }
+    .vs__selected-options::after {
+        width: 24px;
+        height: 15px;
+        top: 20px;
+        right: 14px;
+    }
+    .vs__selected {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .vs__search {
+        padding: 13px 33px 13px 22px;
+        font-size: 18px;
+        line-height: 24px; /* 133.333% */
+        border-radius: 2px;
+        border: 2px solid #FFF;
+    }
+}
+@media (max-width: 576px) {
+    .dp__input_wrap {
+        max-width: 115px;
+    }
+    .dp__input_wrap svg {
+        position: absolute;
+        content: "";
+        top: 12px;
+        right: 12px;
+        width: 15px;
+        height: 15px;
+        fill: #FFF;
+    }
+    .section__bron-row-input {
+        font-size: 12px;
+        line-height: 16px; /* 137.5% */
+        border-radius: 2px;
+        border: 2px solid #FFF;
+        padding: 7px 12px;
+    }
+    .vs__selected-options {
+        max-width: 141px;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 120px;
+        flex: 1 1 120px;
+    }
+    .vs__selected-options::after {
+        width: 12px;
+        height: 6px;
+        top: 12px;
+        right: 11px;
+    }
+    .vs__selected {
+        top: 10px;
+        left: 14px;
+        font-size: 12px;
+        line-height: 16px; /* 133.333% */
+    }
+    .vs__search {
+        padding: 7px 12px;
+        font-size: 12px;
+        line-height: 16px; /* 133.333% */
+        border-radius: 2px;
+        border: 2px solid #FFF;
+    }
+}
+.popup__content .vs__selected-options {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: none;
+    position: relative;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px !important;
+}
+.popup__content .vs__selected-options::after {
+    position: absolute;
+    content: "";
+    width: 24px;
+    background-image: url(../img/arr-calendar-gray.svg);
+    background-size: cover;
+    height: 15px;
+    top: 20px;
+    right: 14px;
+}
+.popup__content .vs__selected {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    display: block !important;
+    color: rgba(24, 31, 38, 0.5);
+    -webkit-font-feature-settings: "liga" off;
+    font-feature-settings: "liga" off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 0px;
+    margin: 0px;
+}
+.popup__content .vs__actions {
+    display: none;
+}
+.popup__content .vs__search {
+    background-color: #fff;
+    padding: 11px 16px 13px !important;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+    color: #181F26;
+    font-style: normal;
+    font-weight: 450;
+    border-radius: 2px;
+    width: 100% !important;
+    margin-top: 0px !important;
+    border: 0px solid rgba(24, 31, 38, 0.5) !important;
+}
+.popup__content .vs__search::-webkit-input-placeholder {
+    color: rgba(24, 31, 38, 0.5);
+}
+.popup__content .vs__search::-moz-placeholder {
+    color: rgba(24, 31, 38, 0.5);
+}
+.popup__content .vs__search:-ms-input-placeholder {
+    color: rgba(24, 31, 38, 0.5);
+}
+.popup__content .vs__search::-ms-input-placeholder {
+    color: rgba(24, 31, 38, 0.5);
+}
+.popup__content .vs__search::placeholder {
+    color: rgba(24, 31, 38, 0.5);
+}
+.popup__content .vs__dropdown-toggle {
+    border: 2px solid rgba(24, 31, 38, 0.5) !important;
+    height: auto;
+}
+.popup__content .dp__input_wrap svg {
+    fill: #181F26;
+}
+.popup__content .dp__input {
+    padding: 11px 16px 13px !important;
+    color: #181F26;
+    font-weight: 400;
+}
+.popup__content .dp__input::-webkit-input-placeholder {
+    color: rgba(24, 31, 38, 0.5) !important;
+    font-weight: 400 !important;
+}
+.popup__content .dp__input::-moz-placeholder {
+    color: rgba(24, 31, 38, 0.5) !important;
+    font-weight: 400 !important;
+}
+.popup__content .dp__input:-ms-input-placeholder {
+    color: rgba(24, 31, 38, 0.5) !important;
+    font-weight: 400 !important;
+}
+.popup__content .dp__input::-ms-input-placeholder {
+    color: rgba(24, 31, 38, 0.5) !important;
+    font-weight: 400 !important;
+}
+.popup__content .dp__input::placeholder {
+    color: rgba(24, 31, 38, 0.5) !important;
+    font-weight: 400 !important;
+}
+.popup__content .popup__content-tab-content-form-row-input-inner-date::after {
+    display: none;
+}
+
+@media (max-width: 576px) {
+    .popup__content .vs__selected-options {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        max-width: none;
+        position: relative;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin: 0px !important;
+    }
+    .popup__content .vs__selected-options::after {
+        position: absolute;
+        content: "";
+        width: 18px;
+        height: 11px;
+        top: 9px;
+        right: 14px;
+    }
+    .popup__content .vs__selected {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        display: block !important;
+        color: rgba(24, 31, 38, 0.5);
+        -webkit-font-feature-settings: "liga" off;
+        font-feature-settings: "liga" off;
+        font-size: 12px;
+        line-height: 16px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .popup__content .vs__actions {
+        display: none;
+    }
+    .popup__content .vs__search {
+        background-color: #fff;
+        padding: 7px 10px !important;
+        font-size: 12px;
+        line-height: 16px;
+        cursor: pointer;
+        color: #181F26;
+        font-style: normal;
+        font-weight: 450;
+        border-radius: 2px;
+        width: 100% !important;
+        margin-top: 0px !important;
+        border: 0px solid rgba(24, 31, 38, 0.5) !important;
+    }
+    .popup__content .vs__search::-webkit-input-placeholder {
+        color: rgba(24, 31, 38, 0.5);
+    }
+    .popup__content .vs__search::-moz-placeholder {
+        color: rgba(24, 31, 38, 0.5);
+    }
+    .popup__content .vs__search:-ms-input-placeholder {
+        color: rgba(24, 31, 38, 0.5);
+    }
+    .popup__content .vs__search::-ms-input-placeholder {
+        color: rgba(24, 31, 38, 0.5);
+    }
+    .popup__content .vs__search::placeholder {
+        color: rgba(24, 31, 38, 0.5);
+    }
+    .popup__content .vs__dropdown-toggle {
+        border: 2px solid rgba(24, 31, 38, 0.5) !important;
+        height: auto;
+    }
+    .popup__content .dp__input_wrap {
+        max-width: 134px !important;
+    }
+    .popup__content .dp__input_wrap svg {
+        fill: #181F26;
+    }
+    .popup__content .dp__input {
+        padding: 7px 10px !important;
+        color: #181F26;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .popup__content .dp__input::-webkit-input-placeholder {
+        color: rgba(24, 31, 38, 0.5) !important;
+        font-weight: 400 !important;
+    }
+    .popup__content .dp__input::-moz-placeholder {
+        color: rgba(24, 31, 38, 0.5) !important;
+        font-weight: 400 !important;
+    }
+    .popup__content .dp__input:-ms-input-placeholder {
+        color: rgba(24, 31, 38, 0.5) !important;
+        font-weight: 400 !important;
+    }
+    .popup__content .dp__input::-ms-input-placeholder {
+        color: rgba(24, 31, 38, 0.5) !important;
+        font-weight: 400 !important;
+    }
+    .popup__content .dp__input::placeholder {
+        color: rgba(24, 31, 38, 0.5) !important;
+        font-weight: 400 !important;
+    }
+}
