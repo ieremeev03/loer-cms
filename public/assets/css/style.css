@@ -4881,6 +4881,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+
 .vs__selected-options {
     position: relative;
     display: inline-block;
@@ -5103,12 +5104,17 @@ h1, h2, h3, h4, h5, h6 {
 .dp__input_wrap svg {
     position: absolute;
     content: "";
-    top: 18px;
+    top: 16px;
     left: auto;
     right: 18px;
     width: 20px;
     height: 20px;
     fill: #FFF;
+    padding: 0px;
+    margin: 0px;
+    -webkit-transform: translate(0) !important;
+    -ms-transform: translate(0) !important;
+    transform: translate(0) !important;
 }
 
 .vs__dropdown-toggle {
@@ -5170,13 +5176,16 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 @media (max-width: 576px) {
+    .dp__main {
+        max-width: 115px !important;
+    }
     .dp__input_wrap {
-        max-width: 115px;
+        max-width: 115px !important;
     }
     .dp__input_wrap svg {
         position: absolute;
         content: "";
-        top: 12px;
+        top: 8px;
         right: 12px;
         width: 15px;
         height: 15px;
@@ -5202,13 +5211,13 @@ h1, h2, h3, h4, h5, h6 {
         right: 11px;
     }
     .vs__selected {
-        top: 10px;
-        left: 14px;
+        top: 4px;
+        left: 8px;
         font-size: 12px;
         line-height: 16px; /* 133.333% */
     }
     .vs__search {
-        padding: 7px 12px;
+        padding: 7px 12px !important;
         font-size: 12px;
         line-height: 16px; /* 133.333% */
         border-radius: 2px;
