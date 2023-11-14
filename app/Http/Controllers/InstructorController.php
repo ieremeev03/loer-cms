@@ -223,17 +223,6 @@ class InstructorController extends Controller
     }
 
     public function test() {
-        $cardId = "158935";
-        $qr = Http::withHeaders([
-            'Authorization' => config('lime.token'),
-        ])
-            ->get(config('lime.url').'/CashdeskServer/GenerateQr', [
-                'cardId' => $cardId
-            ])
-            ->json();
-        dd($qr);
-
-        Mail::raw($qr, function($msg) {$msg->to('i.eremeev@loer.pro')->subject('Test Email'); });
 
 
     }
