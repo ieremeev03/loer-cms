@@ -1756,6 +1756,10 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+.content__block {
+    padding-bottom: 80px;
+}
+
 .section__how-block-columns {
   margin-top: 20px;
   display: -webkit-box;
