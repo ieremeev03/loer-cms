@@ -5077,7 +5077,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .vs__selected {
     position: absolute;
-    top: 13px;
+    top: 14px;
     left: 22px;
     display: block !important;
     color: #FFF;
@@ -5149,6 +5149,7 @@ h1, h2, h3, h4, h5, h6 {
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
+    padding: 13px 33px 13px 22px;
 }
 .dp__input::-webkit-input-placeholder {
     color: #fff !important;
@@ -5167,7 +5168,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .vs__dropdown-menu {
-    position: relative;
     background: #181F26;
     width: 100%;
     max-width: none;
