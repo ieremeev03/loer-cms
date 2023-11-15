@@ -1195,7 +1195,7 @@ h1, h2, h3, h4, h5, h6 {
       -ms-flex-direction: column;
           flex-direction: column;
   row-gap: 20px;
-  padding: 80px 100px 80px 80px;
+  padding: 64px 80px 64px 64px;
   position: relative;
   width: calc((100vh - 128px) /5*3.5);
   max-width: 600px;
