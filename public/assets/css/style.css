@@ -307,6 +307,19 @@ h1, h2, h3, h4, h5, h6 {
   transition: width 0.5s; /* Время эффекта */
 }
 
+.header__nav ul li .sun:hover::before {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px; /* Высота линии */
+    background-color: #FFB802; /* Цвет подчеркивания при появлении линии*/
+    -webkit-transition: width 0.5s;
+    transition: width 0.5s; /* Время эффекта */
+}
+
 .sun {
   position: relative;
   padding-right: 27px;
