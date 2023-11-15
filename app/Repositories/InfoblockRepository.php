@@ -16,24 +16,38 @@ class InfoblockRepository
     }
 
     public function getPropertiesInfoblock($infoblock, $page = null, $uuid = null) {
-        $propertires = [];
-        $propertiresRaw = $infoblock->properties->sortBy('sort');
+        $properties = [];
+        $propertiesRaw = $infoblock->properties->sortBy('sort');
 
-
-
-        foreach ($propertiresRaw as $property) {
-
+        foreach ($propertiesRaw as $property) {
             if($page!=null) {
                 $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('page_id',$page)->where('infoblock_bunch',$uuid)->first();
             } else {
                 $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
             }
 
-            $propertires[$property->name] = $property;
-            $propertires[$property->name]['value'] = $value == null ? $property->default : $value->value;
+            $property->value = $value == null ? $property->default : $value->value;
+
+            if(!json_decode($property->list)) {
+                switch ($property->list) {
+                       case "Instructors": {
+                           $property->list = Instructor::all()->pluck('name', 'id')->toJson();
+                           $property->model = Instructor::find($value);
+                           break;
+                       }
+
+                    default: {
+
+                        break;
+                    }
+
+                }
+            }
+
+            $properties[$property->name] = $property;
         }
 
-        return $propertires;
+        return $properties;
     }
 
     public function getItemsInfoblock($infoblock, $page = null, $uuid = null) {
@@ -97,14 +111,18 @@ class InfoblockRepository
                     $value = $valueWithoutBunch;
                 }
                 $default = ($valueWithoutBunch==null) ? $property->default : $valueWithoutBunch->value;
-                $block[$infoblock->pivot->bunch]['properties'][$property->name] = ($value == null) ? $default : $value->value;
+                $block[$infoblock->pivot->bunch]['properties'][$property->name]['value'] = ($value == null) ? $default : $value->value;
+                if(isset($property->model)) {
+                    $block[$infoblock->pivot->bunch]['properties'][$property->name]['model'] = $property->model;
+                }
+
             }
             //dd($page->id);
 
             switch ($infoblock->type) {
                 case "Instructors":
                     {
-                        $block[$infoblock->pivot->bunch]['items'] = Instructor::all();
+                        $block[$infoblock->pivot->bunch]['items'] = Instructor::all()->sortBy('name');
                     }
                     break;
 

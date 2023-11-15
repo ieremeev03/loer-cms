@@ -216,6 +216,13 @@ const types = ref({
         'array' : false
     },
 
+    'Instructor': {
+        'id' : 'Instructor',
+        'title': 'Отдельный инструктор',
+        'image' : 'instructors.png',
+        'array' : false
+    },
+
 
 });
 

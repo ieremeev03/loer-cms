@@ -3,7 +3,7 @@
         <div class=" section__slider-slide">
             <a href="" class="section__slider-slide-img">
                 <picture>
-                    <img :src="properties.photo" alt="">
+                    <img :src="properties.photo.value" alt="">
                 </picture>
             </a>
             <div class="section__slider-slide-text">
@@ -13,7 +13,7 @@
                 <div v-if="!properties.content" class="section__slider-slide-descr" v-html="content"></div>
                 <div v-if="properties.content" class="section__slider-slide-descr" v-html="properties.content"></div>
 
-                <a v-if="properties.link" :href="properties.link" class="button__more">{{properties.link_text}}</a>
+                <a v-if="properties.link.value" :href="properties.link.value" class="button__more">{{properties.link_text.value}}</a>
             </div>
         </div>
         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></section>

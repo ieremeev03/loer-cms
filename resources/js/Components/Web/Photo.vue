@@ -3,7 +3,7 @@
         <div class=" section__slider-slide">
             <a href="" class="section__slider-slide-img">
                 <picture>
-                    <img :src="properties.photo" alt="">
+                    <img :src="properties.photo.value" alt="">
                 </picture>
             </a>
 

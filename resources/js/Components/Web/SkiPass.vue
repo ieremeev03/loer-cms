@@ -41,7 +41,7 @@ const data = reactive({
 
             <div v-if="!properties?.content" class="section__services-text" v-html="content"></div>
             <div v-if="properties?.content" class="section__services-text" v-html="properties?.content"></div>
-            <a href="#" @click="data.popup = true" class="button__more">{{properties?.link_text}}</a>
+            <a href="#" @click="data.popup = true" class="button__more">{{properties?.link_text.value}}</a>
         </div>
 
     </section>
