@@ -4898,6 +4898,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+
 .vs__selected-options {
     position: relative;
     display: inline-block;
@@ -5161,7 +5162,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .vs__dropdown-menu {
-    position: relative;
     background: #181F26;
     width: 100%;
     max-width: none;
