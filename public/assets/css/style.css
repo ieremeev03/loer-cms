@@ -4898,7 +4898,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
-
 .vs__selected-options {
     position: relative;
     display: inline-block;
@@ -5079,7 +5078,7 @@ h1, h2, h3, h4, h5, h6 {
 .vs__selected {
     position: absolute;
     top: 13px;
-    left: 15px;
+    left: 22px;
     display: block !important;
     color: #FFF;
     -webkit-font-feature-settings: "liga" off;
@@ -5088,6 +5087,8 @@ h1, h2, h3, h4, h5, h6 {
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
+    margin: 0px !important;
+    padding: 0px !important;
 }
 
 .vs__actions {
@@ -5144,6 +5145,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .dp__input {
     color: #fff;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
 }
 .dp__input::-webkit-input-placeholder {
     color: #fff !important;
@@ -5162,6 +5167,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .vs__dropdown-menu {
+    position: relative;
     background: #181F26;
     width: 100%;
     max-width: none;
@@ -5258,8 +5264,8 @@ h1, h2, h3, h4, h5, h6 {
         right: 11px;
     }
     .vs__selected {
-        top: 4px;
-        left: 8px;
+        top: 10px;
+        left: 12px;
         font-size: 12px;
         line-height: 16px; /* 133.333% */
     }
@@ -5324,7 +5330,7 @@ h1, h2, h3, h4, h5, h6 {
 .popup__content .vs__search {
     background-color: #fff;
     padding: 11px 16px 13px !important;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 24px;
     cursor: pointer;
     color: #181F26;
@@ -5354,34 +5360,45 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid rgba(24, 31, 38, 0.5) !important;
     height: auto;
 }
+.popup__content .dp__main {
+    width: 100%;
+    max-width: none !important;
+}
+.popup__content .dp__input_wrap {
+    width: 100%;
+    max-width: none !important;
+}
 .popup__content .dp__input_wrap svg {
     fill: #181F26;
 }
 .popup__content .dp__input {
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 24px;
     padding: 11px 16px 13px !important;
     color: #181F26;
     font-weight: 400;
+    width: 100%;
+    max-width: none !important;
 }
 .popup__content .dp__input::-webkit-input-placeholder {
     color: rgba(24, 31, 38, 0.5) !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
 .popup__content .dp__input::-moz-placeholder {
     color: rgba(24, 31, 38, 0.5) !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
 .popup__content .dp__input:-ms-input-placeholder {
     color: rgba(24, 31, 38, 0.5) !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
 .popup__content .dp__input::-ms-input-placeholder {
     color: rgba(24, 31, 38, 0.5) !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
 .popup__content .dp__input::placeholder {
     color: rgba(24, 31, 38, 0.5) !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
 }
 .popup__content .popup__content-tab-content-form-row-input-inner-date::after {
     display: none;
@@ -5394,6 +5411,46 @@ h1, h2, h3, h4, h5, h6 {
     color: rgb(24, 31, 38);
 }
 
+@media (max-width: 1360px) {
+    .popup__content .vs__selected-options {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        max-width: none;
+        position: relative;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin: 0px !important;
+    }
+    .popup__content .vs__selected-options::after {
+        position: absolute;
+        content: "";
+        width: 24px;
+        background-image: url(../img/arr-calendar-gray.svg);
+        background-size: cover;
+        height: 15px;
+        top: 20px;
+        right: 14px;
+    }
+    .popup__content .vs__selected {
+        position: absolute;
+        top: 10px;
+        left: 15px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .popup__content .vs__actions {
+        display: none;
+    }
+    .popup__content .vs__search {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .popup__content .dp__input {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
 @media (max-width: 576px) {
     .popup__content .vs__selected-options {
         position: relative;
@@ -5463,7 +5520,7 @@ h1, h2, h3, h4, h5, h6 {
         height: auto;
     }
     .popup__content .dp__input_wrap {
-        max-width: 134px !important;
+        max-width: none !important;
     }
     .popup__content .dp__input_wrap svg {
         fill: #181F26;
