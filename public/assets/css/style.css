@@ -1184,8 +1184,8 @@ h1, h2, h3, h4, h5, h6 {
   row-gap: 20px;
   padding: 80px 100px 80px 80px;
   position: relative;
-  width: 100%;
-  max-width: calc((100vh - 128px) /5*3.5);
+  width: calc((100vh - 128px) /5*3.5);
+  max-width: 600px;
   height: calc(100vh - 128px);
   max-height: 800px;
   overflow: hidden;
