@@ -6,6 +6,7 @@ use App\Models\Infoblock\Infoblock;
 use App\Models\Infoblock\InfoblockFieldValue;
 use App\Models\Infoblock\InfoblockItem;
 use App\Models\Infoblock\InfoblockPropertyValue;
+use App\Models\Instructor;
 use App\Models\Page;
 
 class InfoblockRepository
@@ -85,7 +86,7 @@ class InfoblockRepository
                 $properties = $this->getPropertiesInfoblock($infoblock, $page->id);
             }
 
-            if($properties==null) $block[$infoblock->name]['properties'] = null;
+            if($properties==null) $block[$infoblock->pivot->bunch]['properties'] = null;
             foreach ($properties as $property) {
                 $valueWithBunch = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('infoblock_bunch',$infoblock->pivot->bunch)->first();
                 $valueWithoutBunch = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
@@ -99,15 +100,26 @@ class InfoblockRepository
                 $block[$infoblock->pivot->bunch]['properties'][$property->name] = ($value == null) ? $default : $value->value;
             }
             //dd($page->id);
-            $items = $this->getItemsInfoblock($infoblock, $page->id, $infoblock->pivot->bunch);
 
-            //dd($infoblock);
+            switch ($infoblock->type) {
+                case "Instructors":
+                    {
+                        $block[$infoblock->pivot->bunch]['items'] = Instructor::all();
+                    }
+                    break;
 
-            if(count($items) > 0 ) {
-                $block[$infoblock->pivot->bunch]['items'] = $items;
-            } else {
-                $block[$infoblock->pivot->bunch]['items'] = $this->getItemsInfoblock($infoblock);
+                default:
+                {
+                    $items = $this->getItemsInfoblock($infoblock, $page->id, $infoblock->pivot->bunch);
+                    if(count($items) > 0 ) {
+                        $block[$infoblock->pivot->bunch]['items'] = $items;
+                    } else {
+                        $block[$infoblock->pivot->bunch]['items'] = $this->getItemsInfoblock($infoblock);
+                    }
+                    break;
+                }
             }
+
 
         }
         //dd($block);

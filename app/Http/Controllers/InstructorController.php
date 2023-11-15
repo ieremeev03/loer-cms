@@ -222,8 +222,12 @@ class InstructorController extends Controller
         Log::info($request);
     }
 
-    public function test() {
+    public function getAllIntstructors() {
+        $items = Instructor::all();
 
+    }
+
+    public function test() {
 
     }
 

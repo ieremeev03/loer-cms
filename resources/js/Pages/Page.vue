@@ -50,6 +50,7 @@ import Poster from "@/Components/Web/Poster.vue";
 import Events from "@/Components/Web/Events.vue";
 import Reserv from "@/Components/Web/Reserv.vue";
 import SkiPass from "@/Components/Web/SkiPass.vue";
+import Instructors from "@/Components/Web/Instructors.vue";
 export default {
     name: "Page",
     props: [
@@ -61,6 +62,7 @@ export default {
     components: {
         Reserv,
         SkiPass,
+        Instructors,
         Poster,
         Events,
         Photo,

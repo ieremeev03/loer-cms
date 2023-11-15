@@ -2215,6 +2215,18 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
 }
+
+.instructors .section__events-item {
+    width: 100%;
+    max-width: 50%;
+    position: relative;
+    height: 100vh;
+    max-height: 800px;
+    min-height: auto !important;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
 .section__events-item:hover .section__events-item-img img {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
