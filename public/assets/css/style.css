@@ -302,7 +302,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   bottom: -3px;
   height: 2px; /* Высота линии */
-  background-color: #FFB802; /* Цвет подчеркивания при появлении линии*/
+  background-color: #FFFFFF; /* Цвет подчеркивания при появлении линии*/
   -webkit-transition: width 0.5s;
   transition: width 0.5s; /* Время эффекта */
 }
