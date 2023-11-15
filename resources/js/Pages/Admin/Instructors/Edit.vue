@@ -7,8 +7,6 @@
                 <div class="space-y-6">
 
                     <div class="mb-2">
-
-
                         <InputLabel for="name" value="Имя" />
                         <TextInput
                             id="name"
@@ -22,7 +20,20 @@
                     </div>
 
                     <div class="mb-2">
-                      <Image
+                        <InputLabel for="description" value="Описание" />
+                        <TextArea
+                            id="description"
+                            type="text"
+                            class="mt-1 block w-full"
+                            v-model="instructor.description"
+                            autofocus
+                            autocomplete="description"
+                        />
+
+                    </div>
+
+                    <div class="mb-2">
+                        <Image
                           :title="'Фото инструктора'"
                           :item_id="0"
                           :field_id="'image'"
@@ -31,8 +42,6 @@
                           folder="instructors"
                           @files-dropped="getUploadedDataProp"
                       />
-
-
                     </div>
 
                     <div class="mb-2">
@@ -125,6 +134,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import Image from "@/Components/Admin/Properties/image.vue";
+import TextArea from "@/Components/TextArea.vue";
 const props = defineProps({
     instructor: Object,
     disciplines: Object,
@@ -180,6 +190,7 @@ const save = () => {
         instructor_id: props.instructor.id,
         instructor_name: props.instructor.name,
         instructor_image: props.instructor.image,
+        instructor_description: props.instructor.description,
         disciplines: props.disciplines,
     })
         .then(response => {

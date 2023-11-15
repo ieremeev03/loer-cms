@@ -85,6 +85,7 @@ class InstructorController extends Controller
         $instructorId = $request->input('instructor_id', null);
         $instructorName = $request->input('instructor_name');
         $instructorImage = $request->input('instructor_image');
+        $instructorDescription = $request->input('instructor_description');
         $selectedDate = $request->input('selected_date');
         $activeTimes = $request->input('active_times');
         $disciplines = $request->input('disciplines');
@@ -93,6 +94,7 @@ class InstructorController extends Controller
             $instructor = Instructor::where('id', $instructorId)->firstOrNew();
             $instructor->name = $instructorName;
             $instructor->image = $instructorImage;
+            $instructor->description = $instructorDescription;
             $instructor->save();
 
             if ($instructor) {
