@@ -1970,6 +1970,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .section__card {
   height: calc(100vh - 128px);
+    max-height: 800px;
   position: relative;
 }
 
