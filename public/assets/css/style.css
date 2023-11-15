@@ -1252,10 +1252,10 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-font-feature-settings: "liga" off;
           font-feature-settings: "liga" off;
   font-family: "Montserrat";
-  font-size: 38px;
+  font-size: 4.5vh;
   font-style: normal;
   font-weight: 700;
-  line-height: 38px; /* 125% */
+  line-height: 4.5vh; /* 125% */
   max-width: none;
 }
 
