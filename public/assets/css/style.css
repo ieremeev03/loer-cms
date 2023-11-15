@@ -1177,7 +1177,7 @@ h1, h2, h3, h4, h5, h6 {
 .section__services-swiper {
   max-width: 100%;
   margin: 0 auto;
-  height: calc(100vh - 128px);
+  height: calc(100vh - 95px);
     max-height: 800px;
   width: 100%;
   position: relative;
@@ -1197,9 +1197,9 @@ h1, h2, h3, h4, h5, h6 {
   row-gap: 20px;
   padding: 64px 80px 64px 64px;
   position: relative;
-  width: calc((100vh - 128px) /5*3.5);
+  width: calc((100vh - 95px) /5*4);
   max-width: 600px;
-  height: calc(100vh - 128px);
+  height: calc(100vh - 95px);
   max-height: 800px;
   overflow: hidden;
 }
@@ -1986,7 +1986,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .section__card {
-  height: calc(100vh - 128px);
+  height: calc(100vh - 95px);
     max-height: 800px;
   position: relative;
 }
