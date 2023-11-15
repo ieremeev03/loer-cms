@@ -383,10 +383,10 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid #FFF;
 }
 .button__buy:hover {
-  background-color: #FFB802;
-  border: 2px solid #FFB802;
-  -webkit-box-shadow: 0px 0px 8px 6px rgba(255, 183, 2, 0.2862745098);
-          box-shadow: 0px 0px 8px 6px rgba(255, 183, 2, 0.2862745098);
+  background-color: #FFF;
+  border: 2px solid #FFFFFF;
+  color: #000;
+
 }
 
 @media (min-width: 1780px) {
