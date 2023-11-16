@@ -227,6 +227,13 @@ const types = ref({
         'id' : 'TourBlock',
         'title': 'Список с изображением',
         'image' : 'tours.png',
+        'array' : true
+    },
+
+    'ImageContent': {
+        'id' : 'ImageContentList',
+        'title': 'Изображение с описанием',
+        'image' : 'image_content.png',
         'array' : false
     },
 

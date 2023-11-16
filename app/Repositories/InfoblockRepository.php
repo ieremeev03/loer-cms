@@ -53,11 +53,15 @@ class InfoblockRepository
     public function getItemsInfoblock($infoblock, $page = null, $uuid = null) {
         $items = [];
 
+
+
         if($page!=null) {
             $itemsRaw =  $infoblock->items->where('page_id',$page)->where('infoblock_bunch', $uuid);
         } else {
             $itemsRaw = $infoblock->items->where('page_id', null);
         }
+
+
 
         $n = 0;
         foreach ($itemsRaw as $item) {
@@ -128,7 +132,15 @@ class InfoblockRepository
 
                 default:
                 {
-                    $items = $this->getItemsInfoblock($infoblock, $page->id, $infoblock->pivot->bunch);
+                    if($infoblock->include) {
+                        $infoblock_include = Infoblock::find($infoblock->include);
+                        $block[$infoblock->pivot->bunch]['include'] = $infoblock->include;
+                        //$block[$infoblock->pivot->bunch]['include_bunch'] = $infoblock_include->pivot->bunch;
+                        $items = $this->getItemsInfoblock($infoblock_include);
+                    } else {
+                        $items = $this->getItemsInfoblock($infoblock, $page->id, $infoblock->pivot->bunch);
+                    }
+
                     if(count($items) > 0 ) {
                         $block[$infoblock->pivot->bunch]['items'] = $items;
                     } else {

@@ -178,12 +178,17 @@ class InfoblockController extends Controller
     public function getItems(Request $request) {
         $data = [];
         $infoblock = Infoblock::find($request->id);
+        /*if($infoblock->include!=null) {
+            echo $infoblock->include;
+            $infoblock = Infoblock::find($infoblock->include);
+        }*/
         $fields = $this->infoblockRepository->getFieldsItem($infoblock);
         $page = isset($request->page) ? $request->page : null;
         $uuid = isset($request->uuid) ? $request->uuid : null;
         $properties = $this->infoblockRepository->getPropertiesInfoblock($infoblock, $page, $uuid);
         $items = [];
         if($infoblock) $items = $this->infoblockRepository->getItemsInfoblock($infoblock, $page, $uuid);
+        //$data['include'] = $infoblock->include;
         $data['items'] = $items;
         $data['fields'] = $fields;
         $data['properties'] = $properties;
