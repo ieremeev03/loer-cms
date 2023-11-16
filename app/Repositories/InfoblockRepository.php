@@ -220,7 +220,7 @@ class InfoblockRepository
     public function updateOrCreateProperties($props, $block, $page = null, $bunch = null) {
         foreach ($props as $prop) {
             if(isset($prop['file'])) {
-                $prop['value'] = '/images/temp/'.$prop['file'];
+                $prop['value'] = $prop['file'];
             }
             $ex = InfoblockPropertyValue::where('infoblock_id',$block->id)->where('property_id', $prop['id'])->where('infoblock_bunch', $bunch)->first();
             if($ex) {

@@ -2,7 +2,7 @@
     <section class="section__map container">
         <a href="" data-fancybox="" data-caption="" class="section__map-img">
             <picture>
-                <source srcset="properties.photo.value" type="image/avif">
+                <source :srcset="properties.photo.value" type="image/avif">
                 <img :src="properties.photo.value" alt="">
             </picture>
         </a>
