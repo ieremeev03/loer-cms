@@ -2466,10 +2466,6 @@ h1, h2, h3, h4, h5, h6 {
   background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.6)), color-stop(53.16%, rgba(0, 0, 0, 0)));
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 53.16%);
 }
-.section__slider-slide:hover .section__slider-slide-img img {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
 
 .section__slider-slide-img {
   overflow: hidden;
