@@ -595,7 +595,7 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 0;
   }
   ._active::after, ._active::before {
-    background-color: #FFB802;
+    background-color: #FFFFFF;
   }
   .menu__icon {
     display: block;
@@ -1164,7 +1164,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section__services-text {
-  margin-top: 0px;
+  margin-top: 20px;
   color: #FFF;
   -webkit-font-feature-settings: "liga" off;
           font-feature-settings: "liga" off;
