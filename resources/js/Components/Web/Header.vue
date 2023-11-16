@@ -26,8 +26,6 @@
                         </div>
                     </div>
                 </nav>
-            </div>
-            <div class="header__right">
                 <div class="header__socials">
                     <a href="" class="header__social">
                         <img src="assets/img/vk.svg" alt="">
@@ -40,10 +38,13 @@
                     </a>
                 </div>
                 <button type="button" id="btn-buy" class="button__buy">Купить онлайн</button>
+
+            </div>
+
                 <div class="menu__icon">
                     <span></span>
                 </div>
-            </div>
+
         </div>
     </header>
 </template>
@@ -51,6 +52,7 @@
 <script >
 import { usePage } from '@inertiajs/vue3'
 const page = usePage()
+let showMenu = false;
 export default {
     name: "Header",
     props: [

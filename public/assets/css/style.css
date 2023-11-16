@@ -219,9 +219,9 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-column-gap: 25px;
-     -moz-column-gap: 25px;
-          column-gap: 25px;
+  -webkit-column-gap: 0px;
+     -moz-column-gap: 0px;
+          column-gap: 0px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -229,7 +229,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .header__left {
   width: 100%;
-  max-width: 1125px;
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -359,9 +359,9 @@ h1, h2, h3, h4, h5, h6 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-column-gap: 40px;
-     -moz-column-gap: 40px;
-          column-gap: 40px;
+  -webkit-column-gap: 15px;
+     -moz-column-gap: 15px;
+          column-gap: 15px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -451,6 +451,7 @@ h1, h2, h3, h4, h5, h6 {
   .button__buy {
     font-size: 16px;
     padding: 15px 17px 15px 17px;
+      min-width: 170px;
   }
   .header__social {
     width: 30px;
@@ -469,7 +470,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 24px 60px;
   }
   .header__left {
-    width: auto;
+    width: 100%;
   }
   .header__right {
     max-width: none;
@@ -485,6 +486,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .button__buy {
     font-size: 18px;
+    margin-right: 25px;
   }
   .header__social {
     width: 36px;
@@ -626,7 +628,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 24px 60px;
   }
   .header__left {
-    width: auto;
+    width: 100%;
   }
   .header__right {
     max-width: none;

@@ -18,7 +18,6 @@
             :grabCursor="false"
             :loop="false"
             class="swiper-wrapper"
-
         >
             <swiper-slide v-for="item in items" href="#" class="swiper-slide section__slider-slide">
 
