@@ -29,7 +29,13 @@
                 </a>
                 <a v-else class="section__slider-slide-img">
                     <picture>
-                        <img :src="item.fields.photo?.value" alt="">
+                        <source :srcset="item.fields.photo1?.value" media="(min-width: 320px) and (max-width: 480px)">
+                        <source :srcset="item.fields.photo2?.value" media="(min-width: 481px) and (max-width: 767px)">
+                        <source :srcset="item.fields.photo3?.value" media="(min-width: 768px) and (max-width: 1024px) and (orientation: landscape)">
+                        <source :srcset="item.fields.photo4?.value" media="(min-width: 768px) and (max-width: 1024px)">
+                        <source :srcset="item.fields.photo5?.value" media="(min-width: 1025px) and (max-width: 1280px)">
+                        <source :srcset="item.fields.photo?.value" media="(min-width: 1281px)">
+                        <img loading="lazy" :src="item.fields.photo?.value" alt="">
                     </picture>
                 </a>
             </swiper-slide>
