@@ -180,6 +180,8 @@ mounted: {
 
 <style scoped>
 
+
+
 .vs__selected {
     display: flex;
     align-items: center;
@@ -322,7 +324,7 @@ mounted: {
                     >
                         <input type="radio" @change="getTimes" :value="instructor.id" :checked="instructor.id === data.selectedInstructor" v-model="data.selectedInstructor" class="hidden">
                         <div class="section__bron-instruktors-block-instruktor-img">
-                            <img src="/assets/img/instruktor1.png" alt="">
+                            <img :src="instructor.image" alt="">
                         </div>
                         <div class="section__bron-instruktors-block-instruktor-name">{{ instructor.name }}</div>
                     </label>
