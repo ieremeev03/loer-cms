@@ -5,7 +5,7 @@
             :slidesPerView="'auto'"
             :space-between="0"
             :speed="1200"
-
+            :autoplay="true"
             :navigation="{
               prevEl: prev,
               nextEl: next,
