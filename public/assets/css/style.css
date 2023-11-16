@@ -2217,8 +2217,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .instructors .section__events-item {
-    width: 100%;
-    max-width: 50%;
+
     position: relative;
     height: 100vh;
     max-height: 800px;
