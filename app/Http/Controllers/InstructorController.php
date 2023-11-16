@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrderRequest;
 use App\Mail\SkipassShipped;
 use App\Models\Discipline;
+use App\Models\Infoblock\InfoblockPropertyValue;
+use App\Models\Infoblock\PagesHasInfoblocks;
 use App\Models\Instructor;
 use App\Models\InstructorPrice;
 use App\Models\Order;
 use App\Models\OrderSchedule;
+use App\Models\Page;
 use App\Models\Schedule;
 use App\Models\Skipass;
 use App\Services\PaymentService;
@@ -32,7 +35,13 @@ class InstructorController extends Controller
     }
 
     public function getById($id) {
-        $instructor = Instructor::findOrFail($id);
+        $uuid = InfoblockPropertyValue::where('value', $id)->where('infoblock_id', 41)->first()->infoblock_bunch;
+        $page_id = PagesHasInfoblocks::where('bunch',$uuid)->first()->page_id;
+        $page = Page::find($page_id);
+
+        return redirect('/'.$page->slug);
+
+       /* $instructor = Instructor::findOrFail($id);
         $instructor->disciplines = $instructor->disciplines->map(function($item) {
             return [
                 'id' => $item->id,
@@ -42,7 +51,7 @@ class InstructorController extends Controller
         return Inertia::render('ReserveInstructor', [
             'disciplines' => $instructor->disciplines,
             'instructor' => $instructor
-        ]);
+        ]);*/
     }
 
     private function getPrice($selectedDate)

@@ -14,7 +14,7 @@
                 <div class="section__events-item-text section__white">
                     <h2 class="section__services-title">{{item.name}}</h2>
                     <div class="section__services-text" v-html="item.description"></div>
-                    <a href="#" class="button__more">Забронировать</a>
+                    <a :href="'/instructor/'+item.id" class="button__more">Забронировать</a>
                 </div>
             </div>
         </div>
