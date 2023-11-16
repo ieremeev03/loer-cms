@@ -223,6 +223,13 @@ const types = ref({
         'array' : false
     },
 
+    'TourBlock': {
+        'id' : 'TourBlock',
+        'title': 'Список с изображением',
+        'image' : 'tours.png',
+        'array' : false
+    },
+
 
 });
 

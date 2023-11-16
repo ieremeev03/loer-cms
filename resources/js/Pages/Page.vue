@@ -52,6 +52,7 @@ import Reserv from "@/Components/Web/Reserv.vue";
 import SkiPass from "@/Components/Web/SkiPass.vue";
 import Instructors from "@/Components/Web/Instructors.vue";
 import Instructor from "@/Components/Web/Instructor.vue";
+import TourBlock from "@/Components/Web/TourBlock.vue";
 export default {
     name: "Page",
     props: [
@@ -64,6 +65,7 @@ export default {
         Reserv,
         SkiPass,
         Instructors,
+        TourBlock,
         Instructor,
         Poster,
         Events,
