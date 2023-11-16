@@ -1204,12 +1204,6 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
-
-
-.section__services-slide:hover .section__services-slide-img img {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
 .section__services-slide::after {
   position: absolute;
   content: "";
@@ -2227,11 +2221,6 @@ h1, h2, h3, h4, h5, h6 {
     min-height: auto !important;
     -webkit-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
-}
-
-.section__events-item:hover .section__events-item-img img {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
 }
 
 .section__events-item-img {
