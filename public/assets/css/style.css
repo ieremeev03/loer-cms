@@ -2609,6 +2609,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (max-width: 576px) {
 
+    .instructors .section__events-item  {
+       height: 468px;
+    }
+
+
     .section__slider .section__slider-content {
        left: 24px !important;
    }
