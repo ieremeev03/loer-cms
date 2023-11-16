@@ -273,6 +273,10 @@ mounted: {
 .dp__active_date {
 
 }
+
+.hidden {
+    display: none;
+}
 </style>
 
 <template>
