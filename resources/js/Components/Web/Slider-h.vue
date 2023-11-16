@@ -16,7 +16,7 @@
             class="swiper-wrapper">
 
 
-            <swiper-slide v-for="item in items"  class="swiper-slide section__services-slide">
+            <swiper-slide v-for="item in items" @click="goToEvents(item.fields.link?.value)" class="swiper-slide section__services-slide">
                 <a href="#">
                     <div class="section__services-slide-img">
                         <picture>
@@ -61,6 +61,13 @@ export default {
             next,
             modules: [Navigation, Autoplay],
         };
+    },
+    methods: {
+        goToEvents: function (link) {
+            if(link !== undefined && link!==null) {
+                location.href='/'+link
+            }
+        }
     },
 };
 </script>
