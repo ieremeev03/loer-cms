@@ -2,7 +2,6 @@
 import { ref, reactive, watch } from 'vue';
 
 const props = defineProps({
-
     instructor: {
         type: Object,
         default: null

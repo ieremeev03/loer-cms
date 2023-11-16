@@ -1,14 +1,12 @@
 <template>
-    <section class="section__slider container section__slider-no-slide swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-        <div class=" section__slider-slide">
-            <a href="" class="section__slider-slide-img">
-                <picture>
-                    <img :src="properties.photo.value" alt="">
-                </picture>
-            </a>
-
-        </div>
-        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></section>
+    <section class="section__map container">
+        <a href="" data-fancybox="" data-caption="" class="section__map-img">
+            <picture>
+                <source srcset="properties.photo.value" type="image/avif">
+                <img :src="properties.photo.value" alt="">
+            </picture>
+        </a>
+    </section>
 </template>
 
 <script>
