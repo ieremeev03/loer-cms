@@ -5438,3 +5438,23 @@ h1, h2, h3, h4, h5, h6 {
     height: auto;
     min-height: 0px;
 }
+
+@media (max-width: 992px) {
+    .desctop_price {
+        display: none;
+    }
+
+    .mobile_price {
+        display: block;
+    }
+}
+
+@media (min-width: 993px) {
+    .desctop_price {
+        display: block;
+    }
+
+    .mobile_price {
+        display: none;
+    }
+}
