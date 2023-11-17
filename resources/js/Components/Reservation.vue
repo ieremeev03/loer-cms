@@ -159,7 +159,7 @@ const addOrder = () => {
         date: data.selectedDate,
         discipline_id: data.selectedDiscpline?.id,
         instructor_id: data.selectedInstructor,
-        selected_count: data.selectedCount.value,
+        selected_count: data.selectedCount['id'],
         time_ids: selectedTime,
     })
     .then(response => {
