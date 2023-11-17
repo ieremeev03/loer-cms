@@ -372,7 +372,7 @@ mounted: {
                         <div class="popup__content-tab-content-form-row">
                             <div class="popup__content-tab-content-form-row-left">ФИО</div>
                             <div class="popup__content-tab-content-form-row-input-inner">
-                                <input v-model="form.name" type="text" class="popup__content-tab-content-form-row-input" placeholder="Иванов Сидор Петрович">
+                                <input v-model="form.name" type="text" class="popup__content-tab-content-form-row-input" placeholder="Иванов Иван Иванович">
                             </div>
                         </div>
 
