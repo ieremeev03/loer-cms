@@ -181,7 +181,7 @@ const purchase = () => {
                     v-model="date"
                     :enable-time-picker="false"
                     position="left"
-                    placeholder="Заезд"
+                    placeholder="Выберите дату"
                     input-class-name="popup__content-tab-content-form-row-input"
                     @update:model-value="selectDate"
                     @cleared="clearDate"

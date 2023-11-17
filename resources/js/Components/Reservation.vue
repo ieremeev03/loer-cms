@@ -21,9 +21,9 @@ const data = reactive({
     instructors: null,
     times: null,
     counts: [
-                {value: 1, label: "1 человек" },
-                {value: 2, label: "2 человека" },
-                {value: 3, label: "3 человека" },
+                {id: 1, label: "1 человек" },
+                {id: 2, label: "2 человека" },
+                {id: 3, label: "3 человека" },
             ],
     price: 0,
     sum: 0,
