@@ -10,7 +10,10 @@
                     <div class="footer__text-srcs">
                         <a :href="item.link" class="footer__text-src" v-for="item in menu.items" :key="item.id">{{item.title}}</a>
                     </div>
-                    <div class="footer__text-text">© ООО «Движение» 2023. Все права защищены.</div>
+                    <div class="footer__text-text">© ООО «Движение» 2023. Все права защищены. <br>
+                        Разработано в <a href="https://www.loer.pro" class="loer" target="_blank">LOER</a>
+                    </div>
+
                 </div>
             </div>
             <div class="section__how-block section__white">
@@ -40,5 +43,8 @@ export default {
 
 
 <style scoped>
-
+.loer {
+    color: #fff;
+    text-decoration: underline;
+}
 </style>
