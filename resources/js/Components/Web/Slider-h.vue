@@ -4,7 +4,7 @@
             :modules="modules"
             :slidesPerView="'auto'"
             :space-between="0"
-            :speed="1500"
+            :speed="Math.random() * (1500 - 1100) + 1100"
             :autoplay="true"
             :navigation="{
               prevEl: prev,

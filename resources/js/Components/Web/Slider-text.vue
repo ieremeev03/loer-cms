@@ -10,7 +10,7 @@
             :modules="modules"
             :slides-per-view="1"
             :space-between="0"
-            :speed="1300"
+            :speed="Math.random() * (1500 - 1100) + 1100"
             :autoplay="true"
             navigation
             :pagination="{ clickable: true }"
