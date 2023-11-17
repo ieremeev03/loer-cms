@@ -17,6 +17,9 @@
         <meta name="twitter:image" content="assets/img/logo.svg">
     </Head>
     <PageLayout>
+        <div v-if="show" class="preloader" >
+            <img src="assets/img/logo.svg" alt="">
+        </div>
         <main class="main">
             <template v-for="block in blocks">
                <component
@@ -63,7 +66,6 @@ export default {
        'menus',
        'blocks'
     ],
-
     components: {
         ImageContentList,
         Reserv,
@@ -87,9 +89,26 @@ export default {
         PageLayout,
         Link,
         Head
-    }
-}
+    },
+    data() {
+        return {
+            show: true,
+        }
+    },
 
+    mounted(){
+        setTimeout(() => {
+            this.show = false
+            console.log(111)
+        }, 700)
+    },
+    methods: {
+        showToggle(){
+
+        }
+    },
+
+}
 
 </script>
 
