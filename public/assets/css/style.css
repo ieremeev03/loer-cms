@@ -2705,11 +2705,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section__map-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 .section__map-img img {
   width: 100%;
@@ -5420,4 +5419,21 @@ h1, h2, h3, h4, h5, h6 {
     .vs__dropdown-option {
         color: rgb(24, 31, 38);
     }
+}
+
+@media (min-width: 1921px) {
+    .section__map {
+        min-height: 1050px;
+        height: auto;
+    }
+}
+@media (max-width: 1920px) {
+    .section__map {
+        max-height: 1050px;
+        height: auto;
+    }
+}
+.section__events-item {
+    height: auto;
+    min-height: 0px;
 }

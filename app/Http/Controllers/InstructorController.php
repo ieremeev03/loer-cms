@@ -76,7 +76,7 @@ class InstructorController extends Controller
         $discpline = $request->input('discpline');
         $currentDay = Carbon::now()->timezone('Asia/Yekaterinburg');
 
-        $instructors = Instructor::select(['id', 'name'])
+        $instructors = Instructor::select(['id', 'name', 'image'])
             ->whereHas('disciplineIds', function ($query) use ($discpline) {
                 $query->where('discipline_id', $discpline);
             })

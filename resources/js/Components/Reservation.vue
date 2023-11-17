@@ -14,13 +14,17 @@ const date = ref();
 const data = reactive({
     error: {},
     selectedDate: null,
-    selectedCount: 1,
+    selectedCount: {id: 1, label: "1 человек" },
     selectedDiscpline: disciplines[0],
     selectedInstructor: props.instructor?.id ?? null,
     selectedInstructorName: props.instructor?.name ?? null,
     instructors: null,
     times: null,
-    counts: [1,2,3],
+    counts: [
+                {value: 1, label: "1 человек" },
+                {value: 2, label: "2 человека" },
+                {value: 3, label: "3 человека" },
+            ],
     price: 0,
     sum: 0,
     popup: false,
@@ -315,17 +319,19 @@ mounted: {
                     :clearable="false"
                     :searchable="false"
                 ></v-select>
-
-
             </form>
 
+            <div>{{data.error}}</div>
+
             <div v-if="data.instructors && data.instructors.length" class="section__bron-instruktors-block">
+
                 <h3 class="section__bron-instruktors-block-title">Доступные инструкторы</h3>
                 <div class="section__bron-instruktors-block-instruktors">
                     <label v-for="instructor in data.instructors"
                         class="section__bron-instruktors-block-instruktor"
                         :class="{'section__bron-instruktors-block-instruktor-active': data.selectedInstructor === instructor.id}"
                     >
+
                         <input type="radio" @change="getTimes" :value="instructor.id" :checked="instructor.id === data.selectedInstructor" v-model="data.selectedInstructor" class="hidden">
                         <div class="section__bron-instruktors-block-instruktor-img">
                             <img :src="instructor.image" alt="">
