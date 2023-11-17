@@ -36,9 +36,8 @@ const form = reactive({
     'email': null,
 })
 
-console.log(data)
-watch(data, function (val) {
 
+watch(data, function (val) {
     if (val?.times) {
         calculateSum();
     }
@@ -84,7 +83,7 @@ const selectDate = (modelData) => {
 const calculateSum = () => {
     if (data.price && data.times) {
         let count = data.times.filter((time) => time.selected === true).length;
-        console.log(data.selectedCount)
+        console.log(data)
         data.sum = data.price[data.selectedCount.value] * count;
     }
 }
