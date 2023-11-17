@@ -2,7 +2,7 @@
     <section class="section__how">
         <div class="container section__how-container">
             <div class="section__how-block section__white">
-                <h2 class="section__services-title"><a href="">Как добраться</a></h2>
+                <h2 class="section__services-title"><a href="/howtoget">Как добраться</a></h2>
                 <div class="section__services-text">Скорый электропоезд "Ласточка" довезет Вас до Чусового,где производится пересадка на автобусный трансфер до Горнолыжного курорта "Такман".</div>
             </div>
             <div class="section__how-block section__black">
