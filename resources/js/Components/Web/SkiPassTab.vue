@@ -279,9 +279,9 @@ const purchase = () => {
                     {{ data.error.skipass }}
                 </div>
                 <input v-model="data.skipass" type="text"
-                        v-maska data-maska="**** ****"
+                        v-maska data-maska="********"
                         class="popup__content-tab-content-form-row-input"
-                        placeholder="2345 3456">
+                        placeholder="XXXXXXXX">
             </div>
         </div>
         <div class="popup__content-tab-content-form-row-input-inner custom__chexbox-inner">
