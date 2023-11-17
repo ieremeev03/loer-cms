@@ -5,6 +5,7 @@
             :slidesPerView="'auto'"
             :space-between="0"
             :speed="1200"
+            :autoplay="true"
             :navigation="{
               prevEl: prev,
               nextEl: next,
@@ -37,7 +38,7 @@
 import { ref } from 'vue';
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import {Navigation} from 'swiper/modules';
+import {Navigation, Autoplay} from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -56,7 +57,7 @@ export default {
         return {
             prev,
             next,
-            modules: [Navigation],
+            modules: [Navigation, Autoplay],
         };
     },
 };
