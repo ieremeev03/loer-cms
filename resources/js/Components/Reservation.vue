@@ -84,6 +84,7 @@ const calculateSum = () => {
     if (data.price && data.times) {
         let count = data.times.filter((time) => time.selected === true).length;
         console.log(data)
+        console.log(data.selectedCount)
         data.sum = data.price[data.selectedCount['id']] * count;
     }
 }
