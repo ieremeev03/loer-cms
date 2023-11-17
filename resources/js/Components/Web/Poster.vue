@@ -1,7 +1,7 @@
 <template>
     <section class="section__services"  v-bind:class="'section__'+properties.color.value">
         <div class="container section__services-container">
-            <h2 v-if="!properties?.title_prop?.value" class="section__services-title">{{ title }} </h2>
+            <h2 v-if="!properties?.title_prop?.value" class="section__services-title">{{ title_block }} </h2>
             <h2 v-if="properties?.title_prop?.value" class="section__services-title">{{ properties?.title_prop?.value }} </h2>
 
             <div v-if="!properties?.content?.value" class="section__services-text" v-html="content"></div>
@@ -17,7 +17,7 @@ import SliderH from "@/Components/Web/Slider-h.vue";
 
 export default {
     components: {SliderH},
-    props: ['title', 'content', 'link', 'link_text', 'color', 'items','properties' ],
+    props: ['title_block', 'content', 'link', 'link_text', 'color', 'items','properties' ],
     name: "Poster"
 }
 </script>

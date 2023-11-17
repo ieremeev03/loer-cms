@@ -25,7 +25,7 @@
 
 <script>
 export default {
-    props: ['title', 'content', 'link', 'link_text', 'properties' ],
+    props: ['title_block', 'content', 'link', 'link_text', 'properties' ],
     name: "ContentBlock"
 }
 </script>

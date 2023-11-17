@@ -8,7 +8,7 @@
                 </picture>
             </a>
             <div class="section__slider-slide-text">
-                <h2 class="section__slider-slide-title">{{title}}</h2>
+                <h2 class="section__slider-slide-title">{{title_block}}</h2>
                 <div class="section__slider-slide-descr">{{content}}</div>
 
                 <a v-if="properties.link.value" :href="properties.link.value" class="button__more">{{properties.link_text.value}}</a>
@@ -22,7 +22,7 @@
 <script>
 export default {
     name: "ImageContentBlock",
-    props: ['title', 'content', 'properties' ],
+    props: ['title_block', 'content', 'properties' ],
 }
 </script>
 

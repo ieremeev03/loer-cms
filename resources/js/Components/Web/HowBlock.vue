@@ -16,7 +16,7 @@
 <script>
 export default {
     name: "HowBlock",
-    props: ['title', 'content', 'properties' ],
+    props: ['title_block', 'content', 'properties' ],
 }
 </script>
 

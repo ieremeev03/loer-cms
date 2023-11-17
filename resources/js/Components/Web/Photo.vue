@@ -12,7 +12,7 @@
 <script>
 export default {
     name: "Photo",
-    props: ['title', 'content', 'properties' ],
+    props: ['title_block', 'content', 'properties' ],
 }
 </script>
 

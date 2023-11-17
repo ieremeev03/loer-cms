@@ -7,7 +7,7 @@
                 </picture>
             </a>
             <div class="section__slider-slide-text">
-                <h2 v-if="!properties.title_prop" class="section__slider-slide-title">{{ title }} </h2>
+                <h2 v-if="!properties.title_prop" class="section__slider-slide-title">{{ title_block }} </h2>
                 <h2 v-if="properties.title_prop" class="section__slider-slide-title">{{ properties.title_prop }} </h2>
 
                 <div v-if="!properties.content" class="section__slider-slide-descr" v-html="content"></div>
@@ -22,7 +22,7 @@
 <script>
 export default {
     name: "LiveBlockTextBottom",
-    props: ['title', 'content', 'properties' ],
+    props: ['title_block', 'content', 'properties' ],
 }
 </script>
 

@@ -21,7 +21,7 @@
             <template v-for="block in blocks">
                <component
                     :is="block.type"
-                    :title="block.title"
+                    :title_block="block.title"
                     :properties="block.properties"
                     :content="block.content"
                     :items="block.items"
