@@ -3970,6 +3970,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .popup__content-tab-content-form {
   width: 100%;
+  padding-top: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
