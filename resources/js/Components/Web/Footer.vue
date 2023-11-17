@@ -16,7 +16,7 @@
             <div class="section__how-block section__white">
                 <h2 class="section__services-title">Контакты</h2>
                 <div class="section__services-text">
-                    <p>618206, Пермский край, г. Чусовой, ул. Мира, 17, оф. 401</p>
+                    <p><a href="https://yandex.ru/maps/?rtext=~58.353239,57.772856">618206, Пермский край, г. Чусовой, ул. Мира, 17, оф. 401</a></p>
                     <p> <a href="mailto:takman59@mail.ru">takman59@mail.ru</a></p>
                     <p><a href="tel:+7 (342) 256-95-83"></a>+7 (342) 256-95-83</p>
                 </div>
