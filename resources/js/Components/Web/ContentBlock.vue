@@ -4,7 +4,7 @@
 
             <h2 class="section__services-title">{{ properties.title_prop.value }} </h2>
 
-            <div class="desctop_price">
+            <div :class="{ desctop_price: properties.photo.value }">
                 <div v-if="!properties.content.value" class="section__services-text" v-html="content"></div>
                 <div v-if="properties.content.value" class="section__services-text" v-html="properties.content.value"></div>
                 <a v-if="properties.link.value" :href="properties.link.value" class="button__more">{{properties.link_text.value}}</a>
@@ -13,7 +13,7 @@
         </div>
     </section>
 
-    <section class="section__map container mobile_price" >
+    <section v-if="properties.photo.value" class="section__map container mobile_price" >
         <a href="" data-fancybox="" data-caption="" class="section__map-img">
             <picture>
                 <source :srcset="properties.photo.value" type="image/avif">
