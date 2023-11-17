@@ -36,8 +36,8 @@
                                     {{ time.discipline }}
                                     <div v-if="time.order?.payed">
                                         <hr>
-                                        <div>Человек: {{ time.order.count }}</div>
-                                        <div>{{ time.order.email }} {{ time.order.phone }} {{ time.order.name }}</div>
+                                        <div>Кол-во чел.: {{ time.order.count }}</div>
+                                        <div>{{ time.order.email }} <br>{{ time.order.phone }} <br>{{ time.order.name }}</div>
                                     </div>
                                 </td>
                             </tr>

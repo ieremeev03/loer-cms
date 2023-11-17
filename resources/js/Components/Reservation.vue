@@ -84,7 +84,8 @@ const selectDate = (modelData) => {
 const calculateSum = () => {
     if (data.price && data.times) {
         let count = data.times.filter((time) => time.selected === true).length;
-        data.sum = data.price[data.selectedCount] * count;
+        console.log(data.selectedCount)
+        data.sum = data.price[data.selectedCount.value] * count;
     }
 }
 
@@ -158,7 +159,7 @@ const addOrder = () => {
         date: data.selectedDate,
         discipline_id: data.selectedDiscpline?.id,
         instructor_id: data.selectedInstructor,
-        selected_count: data.selectedCount,
+        selected_count: data.selectedCount.value,
         time_ids: selectedTime,
     })
     .then(response => {
@@ -321,7 +322,7 @@ mounted: {
                 ></v-select>
             </form>
 
-            <div>{{data.error}}</div>
+
 
             <div v-if="data.instructors && data.instructors.length" class="section__bron-instruktors-block">
 
