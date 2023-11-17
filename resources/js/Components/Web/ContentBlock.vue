@@ -1,8 +1,8 @@
 <template>
     <section class="section__services" v-bind:class="'section__'+properties.color.value">
         <div class="container section__services-container content__block">
-            <h2 v-if="!properties.title_prop.value" class="section__services-title">{{ title }} </h2>
-            <h2 v-if="properties.title_prop.value" class="section__services-title">{{ properties.title_prop.value }} </h2>
+
+            <h2 class="section__services-title">{{ properties.title_prop.value }} </h2>
 
             <div class="desctop_price">
                 <div v-if="!properties.content.value" class="section__services-text" v-html="content"></div>

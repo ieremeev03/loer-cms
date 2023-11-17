@@ -237,8 +237,8 @@ const types = ref({
         'array' : false
     },
 
-    'FileList': {
-        'id' : 'FileList',
+    'FileListContent': {
+        'id' : 'FileListContent',
         'title': 'Список файлов',
         'image' : 'filelist.png',
         'array' : true
