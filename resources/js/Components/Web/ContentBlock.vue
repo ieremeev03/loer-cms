@@ -9,6 +9,15 @@
             <a v-if="properties.link.value" :href="properties.link.value" class="button__more">{{properties.link_text.value}}</a>
         </div>
     </section>
+
+    <section class="section__map container">
+        <a href="" data-fancybox="" data-caption="" class="section__map-img">
+            <picture>
+                <source :srcset="properties.photo.value" type="image/avif">
+                <img :src="properties.photo.value" alt="">
+            </picture>
+        </a>
+    </section>
 </template>
 
 <script>
