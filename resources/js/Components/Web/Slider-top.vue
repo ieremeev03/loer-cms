@@ -4,7 +4,7 @@
             :modules="modules"
             :slides-per-view="1"
             :space-between="0"
-            :speed="1200"
+            :speed="1100"
             navigation
             :autoplay="true"
             :pagination="{ clickable: true }"

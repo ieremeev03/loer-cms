@@ -10,7 +10,7 @@
             :modules="modules"
             :slides-per-view="1"
             :space-between="0"
-            :speed="1200"
+            :speed="1300"
             :autoplay="true"
             navigation
             :pagination="{ clickable: true }"

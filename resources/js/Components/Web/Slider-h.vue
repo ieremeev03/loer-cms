@@ -4,7 +4,7 @@
             :modules="modules"
             :slidesPerView="'auto'"
             :space-between="0"
-            :speed="1200"
+            :speed="1500"
             :autoplay="true"
             :navigation="{
               prevEl: prev,
