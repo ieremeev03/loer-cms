@@ -237,6 +237,13 @@ const types = ref({
         'array' : false
     },
 
+    'FileList': {
+        'id' : 'FileList',
+        'title': 'Список файлов',
+        'image' : 'filelist.png',
+        'array' : true
+    },
+
 
 });
 

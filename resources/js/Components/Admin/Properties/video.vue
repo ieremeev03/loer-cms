@@ -60,7 +60,7 @@ function onFileChanged($event, item_id, field_id) {
 <template>
     <div class="">
         <InputLabel for="title" :value="title" />
-        <div class="text-xs text-gray-400">Файл в формате MP4</div>
+        <div class="text-xs text-gray-400"></div>
         {{field_value}}
         <div class="relative w-auto w-[300px] group" v-if="field_value && field_value!==''">
             <div class="absolute bottom-0 right-0 m-2 cursor-pointer ">

@@ -54,6 +54,8 @@ import Instructors from "@/Components/Web/Instructors.vue";
 import Instructor from "@/Components/Web/Instructor.vue";
 import TourBlock from "@/Components/Web/TourBlock.vue";
 import ImageContentList from "@/Components/Web/ImageContentList.vue";
+import FileListContent from "@/Components/Web/FileListContent.vue";
+
 export default {
     name: "Page",
     props: [
@@ -66,6 +68,7 @@ export default {
         ImageContentList,
         Reserv,
         SkiPass,
+        FileListContent,
         Instructors,
         TourBlock,
         Instructor,
