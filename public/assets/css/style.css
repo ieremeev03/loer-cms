@@ -4984,6 +4984,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dp__input_wrap svg {
+
     position: absolute;
     content: "";
     top: 16px;
@@ -5457,4 +5458,8 @@ h1, h2, h3, h4, h5, h6 {
     .mobile_price {
         display: none;
     }
+}
+
+.dp__clear_icon {
+    display: none;
 }
