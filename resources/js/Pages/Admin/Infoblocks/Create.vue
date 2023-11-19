@@ -243,6 +243,12 @@ const types = ref({
         'image' : 'filelist.png',
         'array' : true
     },
+    'Certificate': {
+        'id' : 'Certificate',
+        'title': 'Продажа сертификата',
+        'image' : '',
+        'array' : false
+    },
 
 
 });

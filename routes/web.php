@@ -12,6 +12,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\InstructorController as FrontInstructorController;
+use App\Http\Controllers\CertificateController as FrontCertificateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,7 @@ Route::post('/get-tariffs', [SkipassController::class, 'getTariffs'])->name('get
 Route::post('/topup-skipass', [SkipassController::class, 'topup'])->name('topup-skipass');
 Route::post('/create-skipass', [SkipassController::class, 'create'])->name('create-skipass');
 Route::get('/get-disciplines', [FrontInstructorController::class, 'index'])->name('get-disciplines');
-
+Route::post('/buy-certificate', [FrontCertificateController::class, 'buy'])->name('buy-certificate');
 
 
 

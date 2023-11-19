@@ -11,19 +11,6 @@ class Instructor extends Model
 {
     use HasFactory;
 
-    const PRICE = [
-        'weekdays' => [
-            1 => 1400,
-            2 => 2400,
-            3 => 3400
-        ],
-        'weekend' => [
-            1 => 1600,
-            2 => 2800,
-            3 => 3900
-        ],
-    ];
-
     public function disciplineIds(): HasMany
     {
         return $this->hasMany(InstructorDiscipline::class);

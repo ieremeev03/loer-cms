@@ -31,6 +31,9 @@
                 >
                 </component>
             </template>
+            <Certificate>
+
+            </Certificate>
         </main>
     </PageLayout>
 
@@ -58,6 +61,7 @@ import Instructor from "@/Components/Web/Instructor.vue";
 import TourBlock from "@/Components/Web/TourBlock.vue";
 import ImageContentList from "@/Components/Web/ImageContentList.vue";
 import FileListContent from "@/Components/Web/FileListContent.vue";
+import Certificate from "@/Components/Web/Certificate.vue";
 
 export default {
     name: "Page",
@@ -68,6 +72,7 @@ export default {
     ],
     components: {
         ImageContentList,
+        Certificate,
         Reserv,
         SkiPass,
         FileListContent,

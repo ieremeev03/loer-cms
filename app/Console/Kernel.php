@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('reserv-payment-status')->everyMinute();
         $schedule->command('send-qr-code')->everyMinute();
         $schedule->command('sync-price')->dailyAt('00:00');
+        $schedule->command('cert-payment-status')->everyMinute();
 
     }
 
