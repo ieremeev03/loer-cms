@@ -401,7 +401,7 @@ mounted: {
                             <div class="popup__content-tab-content-form-row-input-inner">
                                 <div v-if="data.error?.name" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active">{{ data.error.name }}</div>
                                 <div v-if="data.error?.name" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active">{{ data.error.name }}</div>
-                                <input v-model="form.name" type="text" class="popup__content-tab-content-form-row-input" placeholder="Иванов Сидор Петрович">
+                                <input v-model="form.name" type="text" class="popup__content-tab-content-form-row-input" placeholder="Иванов Иван Иванович">
                             </div>
                         </div>
 

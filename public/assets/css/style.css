@@ -5501,3 +5501,17 @@ h1, h2, h3, h4, h5, h6 {
     background: rgb(255, 255, 255);
     content: "";
 }
+
+
+@media (max-width: 800px) {
+    .popup__content-tab-content-form-row-input-error-mobile {
+        bottom: -20px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+.pointerEvent {
+    pointer-events: auto !important;
+    cursor: auto !important;
+}
