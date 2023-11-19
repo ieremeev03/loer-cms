@@ -4042,6 +4042,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popup__content-tab-content-form-row-input-error {
+    display: flex;
+    align-items: center;
   position: absolute;
   right: -300px;
   top: 0;
