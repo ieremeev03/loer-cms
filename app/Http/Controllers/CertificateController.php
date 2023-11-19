@@ -44,7 +44,7 @@ class CertificateController extends Controller
         $certificate->sber_status = $response['orderStatus'] ?? null;
         $certificate->save();
 
-        dd($response);
+        //dd($response);
         return [
             'success' => true,
             'url' => $response['formUrl'],
