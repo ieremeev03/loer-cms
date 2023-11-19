@@ -43,8 +43,6 @@ export default {
 
 <style scoped>
 
-.section__services-title a {
-    color: #181F26;
-}
+
 
 </style>
