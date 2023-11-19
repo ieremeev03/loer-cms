@@ -31,9 +31,7 @@
                 >
                 </component>
             </template>
-            <Certificate>
 
-            </Certificate>
         </main>
     </PageLayout>
 

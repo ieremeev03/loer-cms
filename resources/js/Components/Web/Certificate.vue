@@ -95,12 +95,12 @@ const validateForm = () => {
 <template>
     <section class="section__services section__black">
         <div class="container section__services-container content__block">
-            <h2 v-if="!properties?.title_prop" class="section__services-title">{{ title_block }} </h2>
-            <h2 v-if="properties?.title_prop" class="section__services-title">{{ properties?.title_prop }} </h2>
+            <h2 v-if="!properties?.title_prop?.value" class="section__services-title">{{ title_block }} </h2>
+            <h2 v-if="properties?.title_prop?.value" class="section__services-title">{{ properties?.title_prop?.value }} </h2>
 
-            <div v-if="!properties?.content" class="section__services-text" v-html="content"></div>
-            <div v-if="properties?.content" class="section__services-text" v-html="properties?.content"></div>
-            <a href="#" @click="data.popup = true" id="btn-buy" class="block button__buy">{{properties?.link_text.value}}</a>
+            <div v-if="!properties?.content?.value" class="section__services-text" v-html="content"></div>
+            <div v-if="properties?.content?.value" class="section__services-text" v-html="properties?.content?.value"></div>
+            <a href="#" @click="data.popup = true" id="btn-buy" class="block button__buy">{{properties?.link_text?.value}}</a>
         </div>
 
     </section>
