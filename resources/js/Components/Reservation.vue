@@ -135,27 +135,39 @@ const getTimes = () => {
     });
 }
 
-const addOrder = () => {
-    data.error = {};
-    let selectedTime = data.times
-        .filter((time) => time.selected === true)
-        .map(i => i['id']);
-
-    let re = /^\(?[+]?(\d{1})[- ]?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{2})[- ]?(\d{2})$/;
-    data.error.phone = re.test(form.phone) === false;
-
-    let reg_email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (form.email && reg_email.test(form.email) !== true) {
-        data.error.email = true
+const validateForm = () => {
+    let reg_phone = /^\(?[+]?(\d{1})[- ]?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{2})[- ]?(\d{2})$/;
+    if (reg_phone.test(form.phone) !== true) {
+        data.error.phone = 'Поле является обязательным для заполнения';
     }
 
-    if (data.error.phone || data.error.email) {
-        return
+    let reg_email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!form.email) {
+        data.error.email = 'Поле является обязательным для заполнения';
+    }
+    else if (reg_email.test(form.email) !== true) {
+        data.error.email = 'Неверный формат e-mail';
+    }
+
+    if (!form.name) {
+        data.error.name = 'Поле является обязательным для заполнения';
     }
 
     if (!data.agree) {
         data.error.agree = true;
     }
+}
+
+const addOrder = () => {
+    data.error = {};
+    validateForm();
+    if (Object.values(data.error).length) {
+        return
+    }
+
+    let selectedTime = data.times
+        .filter((time) => time.selected === true)
+        .map(i => i['id']);
 
     axios.post(`/add-order`, {
         name: form.name,
@@ -167,20 +179,24 @@ const addOrder = () => {
         selected_count: data.selectedCount['id'],
         time_ids: selectedTime,
     })
-    .then(response => {
-        data.error = null;
-        if (response.data.success) {
-            window.location.href = response.data.url;
-        }
-    })
-    .catch(error => {
-        console.log(error.response.data.errors);
-        data.error = error.response.data.errors;
-        if (data.error.dublicate) {
-            getTimes()
-        }
-    });
+        .then(response => {
+            data.error = null;
+            if (response.data.success) {
+                window.location.href = response.data.url;
+            }
+        })
+        .catch(error => {
+            console.log(error.response.data.errors);
+            data.error = error.response.data.errors;
+            if (data.error.dublicate) {
+                let instructor = data.selectedInstructor;
+                getInstructors();
+                data.selectedInstructor = instructor;
+                getTimes();
+            }
+        });
 }
+
 
 
 mounted: {
@@ -347,6 +363,11 @@ mounted: {
                 </div>
             </div>
 
+            <div v-if="data.selectedDate && !data.instructors.length" class="section__bron-instruktors-block">
+                <h3 class="section__bron-instruktors-block-title">Нет доступных инструкторов</h3>
+            </div>
+
+
             <div v-if="data.times && data.times.length" class="section__bron-instruktors-block">
                 <h3 class="section__bron-instruktors-block-title">Выберите время</h3>
                 <div class="section__bron-instruktors-block-times">
@@ -360,6 +381,7 @@ mounted: {
                 <h3 class="section__bron-instruktors-block-title">Цена</h3>
                 <div class="section__bron-instruktors-block-price"><span>{{ data.sum }}</span> ₽</div>
                 <button @click="data.popup = true" class="button__more">Оплатить</button>
+
             </div>
         </div>
     </section>
@@ -377,15 +399,17 @@ mounted: {
                         <div class="popup__content-tab-content-form-row">
                             <div class="popup__content-tab-content-form-row-left">ФИО</div>
                             <div class="popup__content-tab-content-form-row-input-inner">
-                                <input v-model="form.name" type="text" class="popup__content-tab-content-form-row-input" placeholder="Иванов Иван Иванович">
+                                <div v-if="data.error?.name" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active">{{ data.error.name }}</div>
+                                <div v-if="data.error?.name" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active">{{ data.error.name }}</div>
+                                <input v-model="form.name" type="text" class="popup__content-tab-content-form-row-input" placeholder="Иванов Сидор Петрович">
                             </div>
                         </div>
 
                         <div class="popup__content-tab-content-form-row">
                             <div class="popup__content-tab-content-form-row-left" >Телефон</div>
                             <div class="popup__content-tab-content-form-row-input-inner popup__content-tab-content-form-row-input-inner-tel">
-                                <div v-if="data.error?.phone" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active">Поле является <br> обязательным для заполнения</div>
-                                <div v-if="data.error?.phone" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active">Поле является обязательным для заполнения</div>
+                                <div v-if="data.error?.phone" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active">{{ data.error.phone }}</div>
+                                <div v-if="data.error?.phone" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active">{{ data.error.phone }}</div>
                                 <input v-model="form.phone" v-maska data-maska="+7 ### ###-##-##" placeholder="Телефон"  type="text" class="popup__content-tab-content-form-row-input" >
                             </div>
                         </div>
@@ -393,17 +417,12 @@ mounted: {
                         <div class="popup__content-tab-content-form-row">
                             <div class="popup__content-tab-content-form-row-left">E-mail</div>
                             <div class="popup__content-tab-content-form-row-input-inner">
-                                <div v-if="data.error?.email"
-                                        class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
-                                    Неверный <br> формат e-mail
-                                </div>
-                                <div v-if="data.error?.email"
-                                        class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
-                                    Неверный формат e-mail
-                                </div>
+                                <div v-if="data.error?.email" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active">{{ data.error.email }}</div>
+                                <div v-if="data.error?.email" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active">{{ data.error.email }}</div>
                                 <input v-model="form.email" type="text" class="popup__content-tab-content-form-row-input" placeholder="example@mail.com" >
                             </div>
                         </div>
+
 
                         <div class="popup__content-tab-content-form-row">
                             <div class="popup__content-tab-content-form-row-left">Инструктор</div>
@@ -442,7 +461,7 @@ mounted: {
                         </div>
 
                         <div class="popup__content-tab-content-form-row-last">
-                            <button @click="addOrder" class="button__more">Оплатить </button>
+                            <button @click="addOrder" class="button__more" :disabled="!data.sum">Оплатить </button>
                             <div class="popup__content-tab-content-form-row-last-banks">
                                 <div class="popup__content-tab-content-form-row-last-bank">
                                     <svg width="62" height="31" viewBox="0 0 62 31" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

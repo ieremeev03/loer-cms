@@ -76,8 +76,12 @@ const validateForm = () => {
     }
 
     let reg_email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (data.email && reg_email.test(data.email) !== true) {
-        data.error.email = true
+    if (!data.email) {
+        data.error.email = 'Поле является обязательным для заполнения';
+    }
+    else if (reg_email.test(data.email) !== true) {
+        data.error.email = 'Неверный формат e-mail';
+
     }
 
     if (!data.skipass && props.tab == 1) {

@@ -21,7 +21,7 @@ class CreateSkipassRequest extends FormRequest
             'tariff_id' => 'required',
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'sometimes',
+            'email' => 'required',
             'is_child' => 'required',
         ];
     }
@@ -38,6 +38,7 @@ class CreateSkipassRequest extends FormRequest
             'date_visit' => 'Введите дату катания',
             'tariff_id' => 'Выберите тариф',
             'phone' => 'Введите телефон',
+            'email' => 'Введите e-mail',
         ];
     }
 }
