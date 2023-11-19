@@ -32,6 +32,7 @@ class CertPaymentStatusCommand extends Command
     {
         $certificates = Certificate::where('payed', false)
             ->where('created_at', '>', Carbon::now()->subMinutes(21))
+            ->whereNotNull('sber_id')
             ->get();
 
         foreach ($certificates as $certificate) {

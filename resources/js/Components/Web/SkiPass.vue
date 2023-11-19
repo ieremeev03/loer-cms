@@ -1,5 +1,5 @@
 <script setup>
-import {reactive} from 'vue';
+import {reactive, onMounted, ref} from 'vue';
 import SkiPassTab from './SkiPassTab.vue';
 
 const props = defineProps({
@@ -8,10 +8,27 @@ const props = defineProps({
     properties: Object
 });
 
+const result = ref();
+const formReq = ref();
+const tab = ref();
+
+onMounted(() => {
+    let uri = window.location.search.substring(1);
+    let params = new URLSearchParams(uri);
+    result.value = params.get("result");
+    tab.value = params.get("tab");
+    formReq.value = params.get("form");
+    data.popup = (['error', 'success'].includes(result.value) && formReq.value === 'skipass')
+    data.tab = tab.value
+    console.log(data)
+})
+
 const data = reactive({
     popup: false,
     tab: 1,
 });
+
+
 
 </script>
 
@@ -34,7 +51,7 @@ const data = reactive({
 
 <template>
 
-    <section class="section__services section__black">
+    <section class="section__services" v-bind:class="'section__'+properties.color?.value">
         <div class="container section__services-container content__block">
             <h2 v-if="!properties?.title_prop" class="section__services-title">{{ title_block }} </h2>
             <h2 v-if="properties?.title_prop" class="section__services-title">{{ properties?.title_prop }} </h2>
@@ -66,11 +83,20 @@ const data = reactive({
                     <div class="popup__content-tab-content-title">ски-пасса</div>
                     <div v-show="data.tab == 1" class="popup__content-tab-content"
                          :class="{'popup__content-tab-content-active': data.tab == 1}">
-                        <SkiPassTab :tab="1" />
+                        <SkiPassTab
+                            :tab="1"
+                            :result="result"
+                            :form="formReq"
+                        />
+
                     </div>
                     <div v-show="data.tab == 2" class="popup__content-tab-content"
                          :class="{'popup__content-tab-content-active': data.tab == 2}">
-                        <SkiPassTab :tab="2" />
+                        <SkiPassTab
+                            :tab="2"
+                            :result="result"
+                            :form="formReq"
+                        />
                     </div>
                 </div>
             </div>

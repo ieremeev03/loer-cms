@@ -1,11 +1,25 @@
 <script setup>
-import {reactive} from 'vue';
+import {reactive, ref, onMounted} from 'vue';
+import MessageSuccess from "@/Components/Part/MessageSuccess.vue";
+import MessageError from "@/Components/Part/MessageError.vue";
 
 const props = defineProps({
     title_block: String,
     content: String,
     properties: Object
 });
+
+const result = ref();
+const formReq = ref();
+
+onMounted(() => {
+   let uri = window.location.search.substring(1);
+   let params = new URLSearchParams(uri);
+   result.value = params.get("result");
+    formReq.value = params.get("form");
+    data.popup = (['error', 'success'].includes(result.value) && formReq.value === 'cert')
+    console.log(data)
+})
 
 const data = reactive({
     popup: false,
@@ -93,7 +107,7 @@ const validateForm = () => {
 </style>
 
 <template>
-    <section class="section__services section__black">
+    <section class="section__services" v-bind:class="'section__'+properties.color?.value">
         <div class="container section__services-container content__block">
             <h2 v-if="!properties?.title_prop?.value" class="section__services-title">{{ title_block }} </h2>
             <h2 v-if="properties?.title_prop?.value" class="section__services-title">{{ properties?.title_prop?.value }} </h2>
@@ -119,8 +133,15 @@ const validateForm = () => {
 
                     <div id="tab1" class="popup__content-tab-content popup__content-tab-content-active ">
 
-                        <div class="popup__content-tab-content-form">
-                            <div class="popup__content-tab-content-form-row">
+                        <div v-if="result === 'success'">
+                            <MessageSuccess />
+                        </div>
+                        <div v-else-if="result === 'error'">
+                            <MessageError />
+                        </div>
+                        <div v-else class="popup__content-tab-content-form">
+
+                        <div class="popup__content-tab-content-form-row">
                                 <div class="popup__content-tab-content-form-row-left">Ваши ФИО</div>
                                 <div class="popup__content-tab-content-form-row-input-inner">
                                     <div v-if="data.error?.buyer"

@@ -91,7 +91,7 @@ class SkipassController extends Controller
         $data['price'] = $tariff->price;
         $data['sum'] = $tariff->price + $skipassCard->price ?? 0;
 
-        return $this->createSkipass($data);
+        return $this->createSkipass($data, $request, 2);
     }
 
     public function topup(TopupSkipassRequest $request)
@@ -135,16 +135,23 @@ class SkipassController extends Controller
         $data['price'] = $tariff->price;
         $data['sum'] = $tariff->price;
 
-        return $this->createSkipass($data);
+        return $this->createSkipass($data, $request, 1);
     }
 
-    private function createSkipass($data)
+    private function createSkipass($data, $request, $tab)
     {
         $skipass = Skipass::create($data);
 
         $paymentData = array();
         $paymentData['orderNumber'] = 'S-'.$skipass->id;
         $paymentData['amount'] = $skipass->sum * 100;
+
+        $pageUrl = $request->session()->previousUrl();
+        $pageUrl = explode('?', $pageUrl)[0];
+
+        $paymentData['returnUrl'] = $pageUrl . '?result=success&form=skipass&tab='.$tab;
+        $paymentData['failUrl'] = $pageUrl . '?result=error&form=skipass&tab='.$tab;
+
 
         $response = (new PaymentService())->registerPayment($paymentData);
 

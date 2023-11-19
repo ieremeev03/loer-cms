@@ -10,8 +10,6 @@ class PaymentService
     {
         $data['userName'] = config('sberbank.username');
         $data['password'] = config('sberbank.password');
-        $data['returnUrl'] = route('payment-success');
-        $data['failUrl'] = route('payment-error');
         $url = config('sberbank.url') . '/register.do';
 
         $payment = Http::asForm()

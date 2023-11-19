@@ -1,15 +1,19 @@
 <script setup>
 import { ref, reactive, watch } from 'vue';
+import MessageSuccess from "@/Components/Part/MessageSuccess.vue";
+import MessageError from "@/Components/Part/MessageError.vue";
 
 const props = defineProps({
     instructor: {
         type: Object,
         default: null
-    }
+    },
+
 });
 const disciplines = ref([]);
 const date = ref();
-
+const result = ref();
+const formReq = ref();
 
 const data = reactive({
     error: {},
@@ -28,7 +32,7 @@ const data = reactive({
             ],
     price: 0,
     sum: 0,
-    popup: false,
+    popup: (['error', 'success'].includes(result.value) && formReq.value === 'reserv') ? true: false,
 })
 
 const form = reactive({
@@ -58,9 +62,18 @@ const getDisciplines = () => {
     axios.get(route('get-disciplines'), {
     })
         .then(response => {
-            disciplines.value = response.data;
+            let uri = window.location.search.substring(1);
+            let params = new URLSearchParams(uri);
+            disciplines.value = response.data.disciplines;
+            result.value = params.get("result");
+            formReq.value = params.get("form");
             console.log(disciplines.value)
+            console.log(result.value)
+            console.log(formReq.value)
+
             data.selectedDiscpline = disciplines.value[0]
+            data.popup = (['error', 'success'].includes(result.value) && formReq.value === 'reserv')
+
             console.log(data)
         })
         .catch(error => {
@@ -306,7 +319,7 @@ mounted: {
 </style>
 
 <template>
-    <section class="section__services section__black section__bron">
+    <section class="section__services section__bron section__black" >
         <div class="container section__services-container">
             <h2 class="section__services-title">Бронирование <br> инструктора</h2>
             <form action="#" class="section__bron-row">
@@ -395,8 +408,15 @@ mounted: {
             <div class="popup__content-tabs-content">
                     <div class="popup__content-tab-content-title mb-5">Бронирование инструктора</div>
 
-                    <div action="" class="popup__content-tab-content-form myForm">
-                        <div class="popup__content-tab-content-form-row">
+                <div v-if="result === 'success'">
+                    <MessageSuccess />
+                </div>
+                <div v-else-if="result === 'error'">
+                    <MessageError />
+                </div>
+                <div v-else class="popup__content-tab-content-form">
+
+                <div class="popup__content-tab-content-form-row">
                             <div class="popup__content-tab-content-form-row-left">ФИО</div>
                             <div class="popup__content-tab-content-form-row-input-inner">
                                 <div v-if="data.error?.name" class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active">{{ data.error.name }}</div>

@@ -30,7 +30,10 @@ class ReservPaymentStatusCommand extends Command
     {
 
         // проверить если оплаты нет более 25 минут -
-        $orders = Order::where('payed', false)->get();
+        $orders = Order::where('payed', false)
+            ->whereNotNull('sber_id')
+            ->get();
+
 
         foreach ($orders as $order) {
             if ($order->created_at > Carbon::now()->subMinutes(21)) {

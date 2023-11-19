@@ -1,8 +1,12 @@
 <script setup>
-import {ref, reactive, watch} from 'vue';
+import {ref, reactive} from 'vue';
+import MessageSuccess from "@/Components/Part/MessageSuccess.vue";
+import MessageError from "@/Components/Part/MessageError.vue";
 
 const props = defineProps({
-    tab: Number
+    tab: Number,
+    result: String,
+    form: String,
 });
 
 const date = ref();
@@ -155,8 +159,15 @@ const purchase = () => {
 </script>
 
 <template>
-    <div class="popup__content-tab-content-form myForm">
-        <div class="popup__content-tab-content-form-row">
+    <div v-if="props.result === 'success'">
+        <MessageSuccess />
+    </div>
+    <div v-else-if="props.result === 'error'">
+        <MessageError />
+    </div>
+    <div v-else class="popup__content-tab-content-form">
+
+    <div class="popup__content-tab-content-form-row">
             <div class="popup__content-tab-content-form-row-left">Возраст</div>
             <div class="popup__content-tab-content-form-row-input-inner-date">
                 <v-select

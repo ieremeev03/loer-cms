@@ -20,6 +20,13 @@ class CertificateController extends Controller
         $paymentData['orderNumber'] = 'C-'.$certificate->id;
         $paymentData['amount'] = $certificate->nominal * 100;
 
+        $pageUrl = $request->session()->previousUrl();
+        $pageUrl = explode('?', $pageUrl)[0];
+
+        $paymentData['returnUrl'] = $pageUrl . '?result=success&form=cert';
+        $paymentData['failUrl'] = $pageUrl . '?result=error&form=cert';
+
+
         $response = (new PaymentService())->registerPayment($paymentData);
 
         if (!$response) {

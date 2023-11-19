@@ -26,9 +26,13 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class InstructorController extends Controller
 {
-    public function index() {
-        $disciplines = Discipline::select(['id', 'name as label'])->get();
-        return $disciplines;
+    public function index(Request $request) {
+        //dd($request);
+        $res['result'] = $request->result;
+        $res['formReq'] = $request->form;
+        $res['tab'] = $request->tab;
+        $res['disciplines'] = Discipline::select(['id', 'name as label'])->get();
+        return $res;
         /*return Inertia::render('Welcome', [
             'disciplines' => $disciplines
         ]);*/
@@ -196,6 +200,13 @@ class InstructorController extends Controller
         $data['orderNumber'] = $order->id;
         $data['amount'] = $order->sum * 100;
 
+        $pageUrl = $request->session()->previousUrl();
+        $pageUrl = explode('?', $pageUrl)[0];
+
+        $data['returnUrl'] = $pageUrl . '?result=success&form=reserv';
+        $data['failUrl'] = $pageUrl . '?result=error&form=reserv';
+
+
         $response = (new PaymentService())->registerPayment($data);
 
         if (!$response) {
@@ -226,10 +237,6 @@ class InstructorController extends Controller
         ];
     }
 
-    public function paymentStatus(Request $request)
-    {
-        Log::info($request);
-    }
 
     public function getAllIntstructors() {
         $items = Instructor::all();
