@@ -5482,7 +5482,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
-.section__white .section__services-title:hover:after {
+.section__white .section__services-title a:hover:after {
     position: absolute;
     bottom: -8px;
     left: 6px;
@@ -5492,7 +5492,7 @@ h1, h2, h3, h4, h5, h6 {
     content: "";
 }
 
-.section__black .section__services-title:hover:after {
+.section__black .section__services-title a:hover:after {
     position: absolute;
     bottom: -8px;
     left: 6px;
