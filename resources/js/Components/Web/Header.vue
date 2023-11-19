@@ -27,13 +27,13 @@
                     </div>
                 </nav>
                 <div class="header__socials">
-                    <a href="" class="header__social">
-                        <img src="assets/img/vk.svg" alt="">
+                    <a href="https://vk.com/takman" class="header__social" target="_blank">
+                        <img src="assets/img/vk.svg"  alt="">
                     </a>
-                    <a href="" class="header__social">
-                        <img src="assets/img/wa.svg" alt="">
+                    <a href="https://api.whatsapp.com/send?phone=79581478338" class="header__social" target="_blank">
+                        <img src="assets/img/wa.svg"  alt="">
                     </a>
-                    <a href="" class="header__social">
+                    <a href="https://www.instagram.com/takmansnow" target="_blank" class="header__social">
                         <img src="assets/img/inst.svg" alt="">
                     </a>
                 </div>
