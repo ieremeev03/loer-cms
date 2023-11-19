@@ -1733,13 +1733,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
 }
 .section__how .section__services-title::after {
-  position: absolute;
-  bottom: -8px;
-  left: 6px;
-  height: 3px;
-  width: 98%;
-  background: rgba(0, 0, 0, 0.5);
-  content: "";
+
 }
 .section__how .section__services-text {
   margin-top: 40px;
@@ -5479,4 +5473,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .section__black  .section__services-title a {
     color: #fff;
+}
+
+.section__white .section__services-title:hover:after {
+    position: absolute;
+    bottom: -8px;
+    left: 6px;
+    height: 3px;
+    width: 98%;
+    background: rgba(0, 0, 0, 0.5);
+    content: "";
+}
+
+.section__black .section__services-title:hover:after {
+    position: absolute;
+    bottom: -8px;
+    left: 6px;
+    height: 3px;
+    width: 98%;
+    background: rgb(255, 255, 255);
+    content: "";
 }
