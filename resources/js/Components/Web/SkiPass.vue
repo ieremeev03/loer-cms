@@ -19,7 +19,7 @@ onMounted(() => {
     tab.value = params.get("tab");
     formReq.value = params.get("form");
     data.popup = (['error', 'success'].includes(result.value) && formReq.value === 'skipass')
-    data.tab = tab.value
+    data.tab = tab.value === 2 ? 2 : 1
     console.log(data)
 })
 
