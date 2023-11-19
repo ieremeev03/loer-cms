@@ -12,7 +12,7 @@ const data = reactive({
     isChild: {'id': '0', 'label': 'Взрослый'},
     ages: [
         {'id': '0', 'label': 'Взрослый'},
-        {'id': '1', 'label': 'Ребенок'}
+        {'id': '1', 'label': 'Ребенок от 5 до 12 лет включительно'}
     ],
     selectedTariff: null,
     tariffs: [],
@@ -230,7 +230,7 @@ const purchase = () => {
                     Поле является обязательным для заполнения
                 </div>
                 <input v-model="data.name" type="text" class="popup__content-tab-content-form-row-input"
-                        placeholder="Иванов Сидор Петрович">
+                        placeholder="Иванов Иван Иванович">
             </div>
 
         </div>
@@ -289,8 +289,7 @@ const purchase = () => {
                 <input v-model="data.agree" type="checkbox" :id="'checkbox'+props.tab"/>
                 <label :for="'checkbox'+props.tab"></label>
             </div>
-            <div class="custom-checkbox-text">Согласен(а) с правилами приобретения и использования
-                сертификата
+            <div class="custom-checkbox-text">Согласен(а) с правилами приобретения и использования сертификата
             </div>
             <div v-if="data.error?.agree"
                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
