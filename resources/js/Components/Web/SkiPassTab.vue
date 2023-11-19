@@ -308,16 +308,16 @@ const purchase = () => {
             <button @click="purchase" class="button__more">Оплатить</button>
             <div class="popup__content-tab-content-form-row-last-banks">
                 <div class="popup__content-tab-content-form-row-last-bank">
-                    <img src="assets/img/sber.svg" alt="">
+                    <img src="/assets/img/sber.png" alt="" height="20">
                 </div>
                 <div class="popup__content-tab-content-form-row-last-bank">
-                    <img src="assets/img/mir.svg" alt="">
+                    <img src="/assets/img/mir.png" alt="" height="20">
                 </div>
                 <div class="popup__content-tab-content-form-row-last-bank">
-                    <img src="assets/img/visa.svg" alt="">
+                    <img src="/assets/img/visa.png" alt="" height="20">
                 </div>
                 <div class="popup__content-tab-content-form-row-last-bank">
-                    <img src="assets/img/master.svg" alt="">
+                    <img src="/assets/img/mastercard.png" alt="" height="20">
                 </div>
             </div>
         </div>
