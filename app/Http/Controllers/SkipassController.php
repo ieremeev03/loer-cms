@@ -20,7 +20,7 @@ class SkipassController extends Controller
         $isChild = (bool)$request->input('is_child');
 
         $date = Carbon::parse($selectedDate . '00:00:00', 'UTC');
-        $isWeekend = in_array($date->dayOfWeek, [0,6]);
+        $isWeekend = in_array($date->dayOfWeek, [0,6]) || in_array($date->format('m.d.Y'), config('weekend'));
 
         $price = Tariff::query()
             ->where('visible', true)

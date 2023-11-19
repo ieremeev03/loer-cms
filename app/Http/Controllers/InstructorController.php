@@ -59,7 +59,7 @@ class InstructorController extends Controller
         $date = Carbon::parse($selectedDate . '00:00:00', 'UTC');
 
         $price = InstructorPrice::query()
-            ->where('is_weekend', in_array($date->dayOfWeek, [0, 6]))
+            ->where('is_weekend', in_array($date->dayOfWeek, [0, 6]) || in_array($date->format('m.d.Y'), config('weekend')))
             ->get()
             ->keyBy('count')
             ->map(function($item) {
