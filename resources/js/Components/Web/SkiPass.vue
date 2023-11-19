@@ -3,7 +3,7 @@ import {reactive} from 'vue';
 import SkiPassTab from './SkiPassTab.vue';
 
 const props = defineProps({
-    title_prop: String,
+    title_block: String,
     content: String,
     properties: Object
 });
@@ -36,7 +36,7 @@ const data = reactive({
 
     <section class="section__services section__black">
         <div class="container section__services-container content__block">
-            <h2 v-if="!properties?.title_prop" class="section__services-title">{{ title_prop }} </h2>
+            <h2 v-if="!properties?.title_prop" class="section__services-title">{{ title_block }} </h2>
             <h2 v-if="properties?.title_prop" class="section__services-title">{{ properties?.title_prop }} </h2>
 
             <div v-if="!properties?.content" class="section__services-text" v-html="content"></div>
