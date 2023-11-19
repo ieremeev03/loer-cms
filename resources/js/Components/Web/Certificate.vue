@@ -100,7 +100,7 @@ const validateForm = () => {
 
             <div v-if="!properties?.content?.value" class="section__services-text" v-html="content"></div>
             <div v-if="properties?.content?.value" class="section__services-text" v-html="properties?.content?.value"></div>
-            <a href="#" @click="data.popup = true" id="btn-buy" class="block button__buy">{{properties?.link_text?.value}}</a>
+            <a href="#" @click="data.popup = true"  class="button__more">{{properties?.link_text?.value}}</a>
         </div>
 
     </section>
