@@ -1,5 +1,5 @@
 <template>
-    <div class="section__services-swiper">
+    <div class="section__services-swiper section__afishes">
         <swiper
             :modules="modules"
             :slidesPerView="'auto'"
