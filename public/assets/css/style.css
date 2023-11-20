@@ -1405,7 +1405,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (max-width: 576px) {
     .content__block {
-        padding-bottom: 45px;
+        padding-bottom: 45px !important;
     }
 
   .section__services-container {
