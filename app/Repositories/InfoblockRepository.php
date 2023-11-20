@@ -107,7 +107,7 @@ class InfoblockRepository
             if($properties==null) $block[$infoblock->pivot->bunch]['properties'] = null;
             foreach ($properties as $property) {
                 $valueWithBunch = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('infoblock_bunch',$infoblock->pivot->bunch)->first();
-                $valueWithoutBunch = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
+                $valueWithoutBunch = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('infoblock_bunch',null)->first();
 
                 if($infoblock->pivot->bunch != null ) {
                     $value = $valueWithBunch;
