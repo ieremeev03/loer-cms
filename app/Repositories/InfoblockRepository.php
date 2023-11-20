@@ -23,7 +23,7 @@ class InfoblockRepository
             if($page!=null) {
                 $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('page_id',$page)->where('infoblock_bunch',$uuid)->first();
             } else {
-                $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
+                $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('infoblock_bunch',null)->first();
             }
 
             $property->value = $value == null ? $property->default : $value->value;
