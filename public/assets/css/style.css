@@ -5600,8 +5600,8 @@ h1, h2, h3, h4, h5, h6 {
     .popup__content-tab-content-form-choose {
         -ms-flex-item-align: start;
         align-self: flex-start;
-        -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
         -webkit-column-gap: 11px;
         -moz-column-gap: 11px;
         column-gap: 11px;
