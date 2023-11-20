@@ -5606,20 +5606,7 @@ h1, h2, h3, h4, h5, h6 {
         -moz-column-gap: 11px;
         column-gap: 11px;
     }
-    .popup__content-tab-content-form-choose-item {
-        font-size: 12px;
-        line-height: 16px; /* 177.778% */
-        padding: 7px;
-        -webkit-box-flex: 1;
-        -ms-flex: 1 1 100%;
-        flex: 1 1 100%;
-    }
-    .popup__content-tab-content-form-choose-item:nth-child(4) {
-        display: none;
-    }
-    .popup__content-tab-content-form-choose-item:last-child {
-        display: none;
-    }
+
     .custom__chexbox-inner {
         display: -webkit-box;
         display: -ms-flexbox;
