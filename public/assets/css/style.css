@@ -4340,6 +4340,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid rgba(24, 31, 38, 0.5);
   }
   .popup__content-tab-content-form-row-last {
+      margin-top: 40px;
     -webkit-column-gap: 115px;
        -moz-column-gap: 115px;
             column-gap: 115px;
@@ -5888,6 +5889,7 @@ h1, h2, h3, h4, h5, h6 {
         border: 2px solid rgba(24, 31, 38, 0.5);
     }
     .popup__content-tab-content-form-row-last {
+        margin-top: 20px;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
