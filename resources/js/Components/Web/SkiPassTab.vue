@@ -271,11 +271,11 @@ const purchase = () => {
             <div class="popup__content-tab-content-form-row-input-inner">
                 <div v-if="data.error?.email"
                         class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
-                    Неверный <br> формат e-mail
+                    {{ data.error.email }}
                 </div>
                 <div v-if="data.error?.email"
                         class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
-                    Неверный формат e-mail
+                    {{ data.error.email }}
                 </div>
                 <input v-model="data.email" type="text"
                         class="popup__content-tab-content-form-row-input"

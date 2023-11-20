@@ -376,8 +376,12 @@ mounted: {
                 </div>
             </div>
 
-            <div v-if="data.selectedDate && !data.instructors.length" class="section__bron-instruktors-block">
+            <div v-if="!props.instructor && data.selectedDate && !data.instructors.length" class="section__bron-instruktors-block">
                 <h3 class="section__bron-instruktors-block-title">Нет доступных инструкторов</h3>
+            </div>
+
+            <div v-if="props.instructor && data.selectedDate && !data.times.length" class="section__bron-instruktors-block">
+                <h3 class="section__bron-instruktors-block-title">Нет доступного времени</h3>
             </div>
 
 
