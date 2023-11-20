@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OrderRequest;
 use App\Mail\SkipassShipped;
 use App\Models\Discipline;
+use App\Models\Infoblock\Infoblock;
 use App\Models\Infoblock\InfoblockPropertyValue;
 use App\Models\Infoblock\PagesHasInfoblocks;
 use App\Models\Instructor;
@@ -244,7 +245,14 @@ class InstructorController extends Controller
     }
 
     public function test() {
+        $infoblock = Infoblock::find(28);
+        $propertiesRaw = $infoblock->properties->sortBy('sort');
 
+        foreach ($propertiesRaw as $property) {
+            $value = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->first();
+
+            echo $value.' <br>';
+        }
     }
 
 
