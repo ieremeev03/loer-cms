@@ -4886,6 +4886,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .section__slider .section__slider-content {
+  pointer-events: none;
   position: absolute;
   z-index: 50;
   bottom: 80px;
