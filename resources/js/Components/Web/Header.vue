@@ -37,7 +37,7 @@
                         <img src="assets/img/inst.svg" alt="">
                     </a>
                 </div>
-                <button type="button" id="btn-buy" class="button__buy">Купить онлайн</button>
+                <a href="/buy-online" type="button" id="btn-buy" class="button__buy">Купить онлайн</a>
 
             </div>
 
