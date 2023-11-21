@@ -38,6 +38,7 @@ const data = reactive({
         2000,
         5000
     ],
+    loader: false,
 });
 
 const purchase = () => {
@@ -46,6 +47,7 @@ const purchase = () => {
     if (Object.values(data.error).length) {
         return
     }
+    data.loader = true;
 
     axios.post(route('buy-certificate'), {
         buyer: data.cert.buyer,
@@ -58,8 +60,10 @@ const purchase = () => {
             if (response.data.success) {
                 window.location.href = response.data.url;
             }
+
         })
         .catch(error => {
+            data.loader = false;
             data.error = error.response.data.errors;
             console.log(error);
         });
@@ -68,9 +72,13 @@ const purchase = () => {
 const validateForm = () => {
     let reg_phone = /^\(?[+]?(\d{1})[- ]?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{2})[- ]?(\d{2})$/;
 
-    if (reg_phone.test(data.cert.phone) !== true) {
+    if (!data.cert.phone) {
         data.error.phone = 'Поле является обязательным для заполнения';
     }
+    else if (reg_phone.test(data.cert.phone) !== true) {
+        data.error.phone = 'Неверный формат телефона'
+    }
+
 
     let reg_email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -243,7 +251,7 @@ const validateForm = () => {
                                 </div>
                             </div>
                             <div class="popup__content-tab-content-form-row-last">
-                                <button  @click="purchase" class="button__more">Оплатить </button>
+                                <button @click="purchase" class="button__more" :disabled="data.loader">Оплатить </button>
                                 <div class="popup__content-tab-content-form-row-last-banks">
                                     <div class="popup__content-tab-content-form-row-last-bank">
                                         <img src="/assets/img/sber.png" alt="" height="20">

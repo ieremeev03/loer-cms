@@ -27,6 +27,7 @@ const data = reactive({
     skipass: null,
     error: {},
     cardPrice: null,
+    loader: false,
 });
 
 mounted: {
@@ -75,9 +76,13 @@ const clearDate = () => {
 const validateForm = () => {
     let reg_phone = /^\(?[+]?(\d{1})[- ]?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{2})[- ]?(\d{2})$/;
 
-    if (reg_phone.test(data.phone) !== true) {
-        data.error.phone = true
+    if (!data.phone) {
+        data.error.phone = 'Поле является обязательным для заполнения';
     }
+    else if (reg_phone.test(data.phone) !== true) {
+        data.error.phone = 'Неверный формат телефона'
+    }
+
 
     let reg_email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!data.email) {
@@ -88,8 +93,14 @@ const validateForm = () => {
 
     }
 
-    if (!data.skipass && props.tab == 1) {
-        data.error.skipass = 'Поле является обязательным для заполнения';
+    if (props.tab == 1) {
+        let reg_skipass = /^([0-9A-Za-z]{4})[- ]?([0-9A-Za-z]{4})$/;
+        if (!data.skipass) {
+            data.error.skipass = 'Поле является обязательным для заполнения';
+        }
+        else if (reg_skipass.test(data.skipass) !== true) {
+            data.error.skipass = 'Неверный формат скипасса';
+        }
     }
 
     if (!data.name && props.tab == 2) {
@@ -97,15 +108,15 @@ const validateForm = () => {
     }
 
     if (!data.agree) {
-        data.error.agree = true;
+        data.error.agree = 'Необходимо ознакомиться и согласиться с правилами';
     }
 
     if (!data.selectedDate) {
-        data.error.selectedDate = true;
+        data.error.selectedDate = 'Поле является обязательным для заполнения';
     }
 
     if (!data.selectedTariff) {
-        data.error.selectedTariff = true;
+        data.error.selectedTariff = 'Поле является обязательным для заполнения';
     }
 }
 
@@ -115,6 +126,7 @@ const purchase = () => {
     if (Object.values(data.error).length) {
         return
     }
+    data.loader = true;
 
     if (props.tab == 1) {
         axios.post(route('topup-skipass'), {
@@ -129,8 +141,10 @@ const purchase = () => {
                 if (response.data.success) {
                     window.location.href = response.data.url;
                 }
+                data.loader = false;
             })
             .catch(error => {
+                data.loader = false;
                 data.error = error.response.data.errors;
                 console.log(error);
             });
@@ -149,8 +163,10 @@ const purchase = () => {
                 if (response.data.success) {
                     window.location.href = response.data.url;
                 }
+
             })
             .catch(error => {
+                data.loader = false;
                 data.error = error.response.data.errors;
                 console.log(error);
             });
@@ -184,12 +200,12 @@ const purchase = () => {
             <div class="popup__content-tab-content-form-row-left">Дата катания</div>
             <div class="popup__content-tab-content-form-row-input-inner-date">
                 <div v-if="data.error?.selectedDate"
-                        class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
-                    Поле является <br> обязательным для заполнения
+                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
+                    {{ data.error.selectedDate }}
                 </div>
                 <div v-if="data.error?.selectedDate"
-                        class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
-                    Поле является обязательным для заполнения
+                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
+                    {{ data.error.selectedDate }}
                 </div>
                 <VueDatePicker
                     format="dd.MM.yyyy"
@@ -211,12 +227,12 @@ const purchase = () => {
             <div class="popup__content-tab-content-form-row-left">Тариф</div>
             <div class="popup__content-tab-content-form-row-input-inner-date">
                 <div v-if="data.error?.selectedTariff"
-                        class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
-                    Поле является <br> обязательным для заполнения
+                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
+                    {{ data.error.selectedTariff }}
                 </div>
                 <div v-if="data.error?.selectedTariff"
-                        class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
-                    Поле является обязательным для заполнения
+                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
+                    {{ data.error.selectedTariff }}
                 </div>
                 <v-select
                     v-model="data.selectedTariff"
@@ -237,12 +253,13 @@ const purchase = () => {
             <div class="popup__content-tab-content-form-row-left">ФИО владельца карты</div>
             <div class="popup__content-tab-content-form-row-input-inner">
                 <div v-if="data.error?.name"
-                        class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
-                    Поле является <br> обязательным для заполнения
+                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
+                    {{ data.error.name }}
                 </div>
                 <div v-if="data.error?.name"
-                        class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
-                    Поле является обязательным для заполнения
+                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
+                    {{ data.error.name }}
+
                 </div>
                 <input v-model="data.name" type="text" class="popup__content-tab-content-form-row-input"
                         placeholder="Иванов Иван Иванович">
@@ -255,11 +272,11 @@ const purchase = () => {
                 class="popup__content-tab-content-form-row-input-inner popup__content-tab-content-form-row-input-inner-tel">
                 <div v-if="data.error?.phone"
                         class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
-                    Поле является <br> обязательным для заполнения
+                    {{ data.error.phone }}
                 </div>
                 <div v-if="data.error?.phone"
                         class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
-                    Поле является обязательным для заполнения
+                    {{ data.error.phone }}
                 </div>
                 <input v-model="data.phone" v-maska data-maska="+7 ### ###-##-##"
                         placeholder="Телефон" type="text"
@@ -308,15 +325,15 @@ const purchase = () => {
             </div>
             <div v-if="data.error?.agree"
                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
-                Необходимо ознакомиться и согласиться с правилами
+                {{ data.error.agree }}
             </div>
             <div v-if="data.error?.agree"
                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
-                Необходимо ознакомиться и согласиться с правилами
+                {{ data.error.agree }}
             </div>
         </div>
         <div class="popup__content-tab-content-form-row-last">
-            <button @click="purchase" class="button__more">Оплатить</button>
+            <button @click="purchase" class="button__more" :disabled="data.loader">Оплатить</button>
             <div class="popup__content-tab-content-form-row-last-banks">
                 <div class="popup__content-tab-content-form-row-last-bank">
                     <img src="/assets/img/sber.png" alt="" height="20">

@@ -33,6 +33,7 @@ const data = reactive({
     price: 0,
     sum: 0,
     popup: (['error', 'success'].includes(result.value) && formReq.value === 'reserv') ? true: false,
+    loader: false,
 })
 
 const form = reactive({
@@ -150,9 +151,13 @@ const getTimes = () => {
 
 const validateForm = () => {
     let reg_phone = /^\(?[+]?(\d{1})[- ]?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{2})[- ]?(\d{2})$/;
-    if (reg_phone.test(form.phone) !== true) {
+    if (!form.phone) {
         data.error.phone = 'Поле является обязательным для заполнения';
     }
+    else if (reg_phone.test(form.phone) !== true) {
+        data.error.phone = 'Неверный формат телефона';
+    }
+
 
     let reg_email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!form.email) {
@@ -178,6 +183,8 @@ const addOrder = () => {
         return
     }
 
+    data.loader = true;
+
     let selectedTime = data.times
         .filter((time) => time.selected === true)
         .map(i => i['id']);
@@ -197,8 +204,10 @@ const addOrder = () => {
             if (response.data.success) {
                 window.location.href = response.data.url;
             }
+
         })
         .catch(error => {
+            data.loader = false;
             console.log(error.response.data.errors);
             data.error = error.response.data.errors;
             if (data.error.dublicate) {
@@ -485,7 +494,7 @@ mounted: {
                         </div>
 
                         <div class="popup__content-tab-content-form-row-last">
-                            <button @click="addOrder" class="button__more" :disabled="!data.sum">Оплатить </button>
+                            <button @click="addOrder" class="button__more" :disabled="!data.sum || data.loader">Оплатить</button>
                             <div class="popup__content-tab-content-form-row-last-banks">
                                 <div class="popup__content-tab-content-form-row-last-bank">
                                     <img src="/assets/img/sber.png" alt="" height="20">
