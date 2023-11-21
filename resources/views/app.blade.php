@@ -20,7 +20,7 @@
     </body>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var lazyVideos = [].slice.call(document.querySelectorAll("video"));
+            var lazyVideos = [].slice.call(document.querySelectorAll("video[preload='auto']"));
             console.log(lazyVideos)
 
             if ("IntersectionObserver" in window) {
