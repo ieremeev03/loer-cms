@@ -1,5 +1,6 @@
 <script setup>
 import AdminLayout from '@/Layouts/AdminLayout.vue';
+import Pagination from "@/Components/Pagination.vue";
 
 
 defineProps({
