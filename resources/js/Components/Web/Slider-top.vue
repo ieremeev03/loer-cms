@@ -68,11 +68,10 @@ export default {
         };
     },
     mounted() {
-        var lazyVideos = [].slice.call(document.querySelectorAll("video[preload='auto']"));
+        let lazyVideos = [].slice.call(document.querySelectorAll("video[preload='auto']"));
 
         lazyVideos.forEach(function(lazyVideo) {
             lazyVideo.play();
-            console.log(lazyVideo)
         });
 
     }
