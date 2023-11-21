@@ -19,35 +19,6 @@
         @inertia
     </body>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var lazyVideos = [].slice.call(document.querySelectorAll("video[preload='auto']"));
-            console.log(lazyVideos)
 
-            if ("IntersectionObserver" in window) {
-                var videoObserver = new IntersectionObserver(function(entries, observer) {
-                    entries.forEach(function(video) {
-                        if (video.isIntersecting) {
-                            var source = video.target.querySelector('source');
-                            source.src = source.dataset.src;
-                            video.target.load();
-                            video.target.play();
-                            videoObserver.unobserve(video.target);
-                        }
-                    });
-                });
-
-                lazyVideos.forEach(function(lazyVideo) {
-                    videoObserver.observe(lazyVideo);
-                });
-            } else {
-                // Обратный вызов для браузеров без поддержки IntersectionObserver
-                lazyVideos.forEach(function(lazyVideo) {
-                    var source = lazyVideo.querySelector('source');
-                    source.src = source.dataset.src;
-                    lazyVideo.load();
-                    lazyVideo.play();
-                });
-            }
-        });
     </script>
 </html>

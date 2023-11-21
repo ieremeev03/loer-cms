@@ -69,7 +69,19 @@ export default {
             modules: [Pagination,Autoplay],
         };
     },
+    mounted() {
+        var lazyVideos = [].slice.call(document.querySelectorAll("video[preload='auto']"));
+
+        lazyVideos.forEach(function(lazyVideo) {
+            lazyVideo.play();
+            console.log(lazyVideo)
+        });
+
+    }
 };
+
+
+
 </script>
 
 <style scoped>

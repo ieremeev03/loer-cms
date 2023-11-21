@@ -5,7 +5,7 @@
             <h2 v-if="properties.title_prop?.value" class="section__slider-slide-title" v-html="properties.title_prop?.value"></h2>
             <div  v-if="!properties.content?.value" class="section__slider-slide-descr" v-html="content"></div>
             <div v-if="properties.content?.value" class="section__slider-slide-descr" v-html="properties.content?.value"></div>
-            <a v-if="properties?.link.value" :href="properties?.link.value" class="button__more">{{properties?.link_text.value}}</a>
+            <a v-if="properties.link?.value" :href="properties.link?.value" class="button__more">{{properties.link_text?.value}}</a>
 
         </div>
         <swiper
@@ -66,6 +66,15 @@ export default {
             modules: [Pagination, Autoplay],
         };
     },
+    mounted() {
+        var lazyVideos = [].slice.call(document.querySelectorAll("video[preload='auto']"));
+
+        lazyVideos.forEach(function(lazyVideo) {
+            lazyVideo.play();
+            console.log(lazyVideo)
+        });
+
+    }
 };
 </script>
 
