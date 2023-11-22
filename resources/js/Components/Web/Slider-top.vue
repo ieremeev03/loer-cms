@@ -17,7 +17,7 @@
         >
             <swiper-slide v-for="item in items" href="#" class="swiper-slide section__slider-slide">
                 <a v-if="item.fields.video.value" class="section__slider-slide-img">
-                    <video :src="item.fields.video.value" class="section__services-slide-video" preload="auto" muted playsinline autoplay="autoplay" loop="loop">
+                    <video type="video/mp4" :src="item.fields.video.value" class="section__services-slide-video" preload="auto" muted playsinline autoplay="autoplay" loop="loop">
                     </video>
                 </a>
                 <a v-else class="section__slider-slide-img">
