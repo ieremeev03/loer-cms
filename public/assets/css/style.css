@@ -2055,6 +2055,11 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 32px; /* 200% */
   text-decoration: underline;
 }
+
+.footer .footer__text-src:hover {
+    text-decoration: none;
+}
+
 .footer .footer__text-text {
   color: #FFF;
   -webkit-font-feature-settings: "liga" off;
