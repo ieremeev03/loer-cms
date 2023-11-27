@@ -1920,7 +1920,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 24px;
     line-height: 30px;
   }
-  .section__how .section__services-title::after {
+  .section__how .section__services-title a:after {
     bottom: 0 px;
     left: 3px;
     height: 1px;
