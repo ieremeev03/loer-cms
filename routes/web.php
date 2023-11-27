@@ -1,18 +1,23 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstructorPriceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoblockController;
+use App\Http\Controllers\Admin\InstructorController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SkipassController;
+use App\Http\Controllers\Admin\SkipassController as AdminSkipassController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\InstructorController as FrontInstructorController;
 use App\Http\Controllers\CertificateController as FrontCertificateController;
+use App\Http\Controllers\Admin\CertificateController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +36,30 @@ Route::get('/', [PageController::class, 'home']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [PageController::class, 'index'])->name('pages.index');
+
+    Route::resource('/admin/pages', PageController::class);
+    Route::resource('/admin/menus', MenuController::class);
+    Route::resource('/admin/infoblocks', InfoblockController::class);
+
+    Route::prefix('/admin/instructors')->controller(InstructorController::class)->group(function () {
+        Route::get('/', 'index')->name('instructors');
+        Route::get('edit/{id?}', 'edit')->name('instructor.edit');
+        Route::post('save', 'save')->name('instructor.save');
+        Route::post('schedule', 'schedule')->name('instructor.schedule');
+        Route::get('table', 'table')->name('instructor.table');
+        Route::prefix('price')->controller(InstructorPriceController::class)->group(function () {
+            Route::get('/', 'index')->name('instructor.price');
+            Route::post('save', 'save')->name('price.save');
+        });
+    });
+
+    Route::get('/admin/skipasses', [AdminSkipassController::class, 'index'])->name('skipasses');
+    Route::post('/admin/get-table', [DashboardController::class, 'index'])->name('get-table');
+
+    Route::prefix('/admin/certificates')->controller(CertificateController::class)->group(function () {
+        Route::get('/', 'index')->name('certificates');
+    });
+
 
 });
 
