@@ -17,7 +17,6 @@
 
 
             <swiper-slide v-for="item in items" @click="goToEvents(item.fields.link?.value)" class="swiper-slide section__services-slide">
-                <a href="#">
                     <div class="section__services-slide-img">
                         <picture>
                             <img :src="item.fields.photo.value" alt="">
@@ -25,7 +24,6 @@
                     </div>
                     <h3 class="section__services-slide-title">{{item.fields.title.value}}</h3>
                     <div class="section__services-slide-text" v-html="item.fields.description.value"></div>
-                </a>
             </swiper-slide>
 
         </swiper>
