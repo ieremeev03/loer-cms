@@ -21,7 +21,7 @@
                 <div class="section__services-text">
                     <p><a href="https://yandex.ru/maps/?rtext=~58.353239,57.772856">618206, Пермский край, г. Чусовой, ул. Мира, 17, оф. 401</a></p>
                     <p> <a  href="mailto:takman59@mail.ru">takman59@mail.ru</a></p>
-                    <p><a href="tel:+7 (342) 256-95-83"></a>+7 (342) 256-95-83</p>
+                    <p><a href="tel:+73422569583">+7 (342) 256-95-83</a></p>
                 </div>
             </div>
         </div>

@@ -12,15 +12,15 @@
                         </li>
                     </ul>
                     <div class="header__nav-mobile">
-                        <button type="button" id="btn-buy" class="button__buy">Купить онлайн</button>
+                        <a href="/buy-online" id="btn-buy" class="button__buy">Купить онлайн</a>
                         <div class="header__socials">
-                            <a href="" class="header__social">
+                            <a href="https://vk.com/takman" class="header__social">
                                 <img src="assets/img/vk.svg" alt="">
                             </a>
-                            <a href="" class="header__social">
+                            <a href="https://api.whatsapp.com/send?phone=79581478338" class="header__social">
                                 <img src="assets/img/wa.svg" alt="">
                             </a>
-                            <a href="" class="header__social">
+                            <a href="https://www.instagram.com/takmansnow" class="header__social">
                                 <img src="assets/img/inst.svg" alt="">
                             </a>
                         </div>
