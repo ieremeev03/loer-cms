@@ -1921,9 +1921,9 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 30px;
   }
   .section__how .section__services-title a:after {
-    bottom: 0 px;
-    left: 3px;
-    height: 1px;
+    bottom: 0 !important;
+    left: 2px !important;
+    height: 1px !important;
   }
   .section__how .section__services-text {
     margin-top: 6px;
