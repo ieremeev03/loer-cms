@@ -11,7 +11,7 @@
                         <a :href="item.link" class="footer__text-src" v-for="item in menu.items" :key="item.id">{{item.title}}</a>
                     </div>
                     <div class="footer__text-text">© ООО «Движение» 2023. Все права защищены. <br>
-                        Разработано <a href="https://www.loer.pro" class="loer" target="_blank">LOER</a>
+                        Разработано <a href="https://www.loer.pro" class="underline" target="_blank">LOER</a>
                     </div>
 
                 </div>
