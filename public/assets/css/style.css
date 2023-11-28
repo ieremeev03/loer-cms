@@ -855,6 +855,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #fff;
   border-radius: 2px;
   border: 1px solid #fff;
+  pointer-events: all !important;
 }
 .button__more:hover {
   background-color: #181F26;
