@@ -2,11 +2,6 @@
     <section class="section__map container">
         <a href="" data-fancybox="" data-caption="" class="section__map-img">
             <picture>
-                <source :srcset="properties.photo.value" type="image/avif">
-                <img :src="properties.photo.value" alt="">
-            </picture>
-
-            <picture>
                 <source :srcset="properties.photo1?.value" media="(min-width: 320px) and (max-width: 480px)">
                 <source :srcset="properties.photo2?.value" media="(min-width: 481px) and (max-width: 767px)">
                 <source :srcset="properties.photo3?.value" media="(min-width: 768px) and (max-width: 1024px) and (orientation: landscape)">
