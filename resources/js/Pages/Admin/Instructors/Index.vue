@@ -22,15 +22,15 @@
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead>
                             <tr>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">ФИО</th>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">Дисциплина</th>
+                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">ФИО</th>
+                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">Дисциплина</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                             <tr v-for="instructor in instructors">
-                                <td class="whitespace-nowrapp p4 text-sm font-medium text-gray-900 sm:pl-0">{{ instructor.name }}</td>
-                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrapp p4 text-sm font-medium text-gray-900  ">{{ instructor.name }}</td>
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">
                                     <span v-for="discipline in instructor.disciplines" class="mr-2">
                                         {{ discipline.name }}
                                     </span>

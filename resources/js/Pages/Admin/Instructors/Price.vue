@@ -34,18 +34,18 @@
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead>
                             <tr>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">Инструктор</th>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">Индивидуальное занятие (1 чел, 1 час)</th>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">Групповое занятие (2 чел, 1 час)</th>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">Групповое занятие (3 чел, 1 час)</th>
+                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">Инструктор</th>
+                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">Индивидуальное занятие (1 чел, 1 час)</th>
+                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">Групповое занятие (2 чел, 1 час)</th>
+                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">Групповое занятие (3 чел, 1 час)</th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                             <tr v-for="day in [0,1]">
-                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">{{ day ? 'Выходные' : 'Будни' }}</td>
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">{{ day ? 'Выходные' : 'Будни' }}</td>
                                 <template v-for="item in price">
                                     <td v-if="item.is_weekend === day"
-                                        class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0"
+                                        class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  "
                                     >
 
                                         <TextInput
