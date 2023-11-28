@@ -126,6 +126,7 @@
                     <!-- Modal body -->
                     <div v-if="Object.keys(formItems.properties).length > 0" class="p-6 space-y-6">
                         <template v-for="(block, index) in formItems.properties">
+
                             <component
                                 :is="component_type(block.type)"
                                 :title="block.title"

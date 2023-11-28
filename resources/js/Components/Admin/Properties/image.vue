@@ -66,7 +66,7 @@ function onFileChanged($event, item_id, field_id) {
     <div class="">
         <InputLabel for="title" :value="title" />
         <div class="text-xs text-gray-400 ">Файл в формате JPG, PNG, WEBP</div>
-        <div class="relative w-[300px] group" v-if="field_value && field_value!==''">
+        <div class="relative w-[300px] group" v-if="field_value && field_value!=='' && field_value!==' '">
             <img class="mb-3" :src='field_value' width="300" />
             <div class="absolute bottom-0 right-0 m-2 cursor-pointer ">
                 <div class="bg-gray-200 p-2 rounded-full w-full text-red-500 hover:bg-white hover:border-gray-600" @click="field_value=null; removeFile(field_value)">
@@ -83,7 +83,7 @@ function onFileChanged($event, item_id, field_id) {
 
         <div class="flex flex-row items-center gap-2">
 
-            <input  class="m-0 text-xs" v-if="field_value === null || field_value==='' || field_value===undefined"
+            <input  class="m-0 text-xs" v-if="field_value === null || field_value==='' || field_value===' ' || field_value===undefined"
                    type="file"
                    @change="onFileChanged($event, item_id, field_id)"
             >
