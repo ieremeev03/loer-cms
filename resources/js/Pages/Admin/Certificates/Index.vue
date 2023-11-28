@@ -31,11 +31,11 @@ defineProps({
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                             <tr v-for="certificate in certificates">
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">C-{{ certificate.id }}</td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{ certificate.created_at }}</td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{ certificate.recipient }}</td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{ $filters.format_money(certificate.nominal) }}₽</td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">C-{{ certificate.id }}</td>
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">{{ certificate.created_at }}</td>
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">{{ certificate.recipient }}</td>
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">{{ $filters.format_money(certificate.nominal) }}₽</td>
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     <div>{{ certificate.buyer }}</div>
                                     <div>{{ certificate.email }}</div>
                                     <div>{{ certificate.phone }}</div>

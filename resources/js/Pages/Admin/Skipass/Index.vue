@@ -62,33 +62,33 @@ defineProps({
                             <tbody class="divide-y divide-gray-200 bg-white">
                             <tr v-for="skipass in skipasses.data"
                                 :class="{'bg-gray-100': !skipass.payed, 'bg-green-100': skipass.payed}">
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     S-{{ skipass.id }}
                                 </td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     {{ skipass.created_at }}
                                 </td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     {{ skipass.operation === 1 ? 'Покупка' : 'Пополнение' }}
                                 </td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     {{ skipass.skipass }}
                                 </td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     {{ skipass.date_visit }}
                                 </td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     {{ skipass.tariff?.title }}
                                 </td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     <div v-if="skipass.name">{{ skipass.name }}</div>
                                     <div v-if="skipass.phone">{{ skipass.phone }}</div>
                                     <div v-if="skipass.email">{{ skipass.email }}</div>
                                 </td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     {{ skipass.sum }}
                                 </td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     {{ skipass.payed ? '+' : '-' }}
                                 </td>
                             </tr>

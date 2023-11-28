@@ -42,10 +42,10 @@
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                             <tr v-for="day in [0,1]">
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{ day ? 'Выходные' : 'Будни' }}</td>
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">{{ day ? 'Выходные' : 'Будни' }}</td>
                                 <template v-for="item in price">
                                     <td v-if="item.is_weekend === day"
-                                        class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0"
+                                        class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0"
                                     >
 
                                         <TextInput

@@ -72,11 +72,11 @@
                         <table class="min-w-full divide-y divide-gray-300">
                             <tbody class="divide-y divide-gray-200 bg-white">
                             <tr v-for="item in instructor.times">
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{ item.start }} - {{ item.end }}</td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">{{ item.start }} - {{ item.end }}</td>
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     <input type="checkbox" v-model="item.active" :disabled="item.selected === true">
                                 </td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     <span v-if="item.discipline">Забронировано: {{ item.discipline }}</span>
                                 </td>
                             </tr>

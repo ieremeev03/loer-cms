@@ -29,8 +29,8 @@
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                             <tr v-for="instructor in instructors">
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">{{ instructor.name }}</td>
-                                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                <td class="whitespace-nowrapp p4 text-sm font-medium text-gray-900 sm:pl-0">{{ instructor.name }}</td>
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 sm:pl-0">
                                     <span v-for="discipline in instructor.disciplines" class="mr-2">
                                         {{ discipline.name }}
                                     </span>
