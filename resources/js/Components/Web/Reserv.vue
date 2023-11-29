@@ -36,6 +36,8 @@ computed: {
     //getDisciplines()
 }
 
+
+
 </script>
 
 <style scoped>

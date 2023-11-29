@@ -224,6 +224,14 @@ const addOrder = () => {
 mounted: {
     getDisciplines()
 }
+
+function closeModal() {
+    if(result.value === 'success' || result.value === 'error') {
+        window.location.href = window.location.pathname;
+    }
+    data.popup = false;
+    data.error = null
+}
 </script>
 
 <style scoped>
@@ -415,7 +423,7 @@ mounted: {
     <div id="popup" class="popup" :class="{'_open': data.popup === true}">
         <div class="popup__body">
             <div class="popup__content section__white">
-                <div class="popup__cancel" @click="data.popup = false; data.error = null">
+                <div class="popup__cancel" @click="closeModal">
                     <img src="/assets/img/cancel.svg" alt="cancel">
                 </div>
             <div class="popup__content-tabs-content">
@@ -474,11 +482,11 @@ mounted: {
                             </div>
                             <div class="custom-checkbox-text">Согласен(а) с <a href="/info" class="underline">правилами</a> приобретения и использования сертификата
                             </div>
-                            <div v-if="data.error?.agree"
+                            <div v-if="data.error?.agree" style="height: 23px"
                                  class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
                                 Необходимо ознакомиться и согласиться с правилами
                             </div>
-                            <div v-if="data.error?.agree"
+                            <div v-if="data.error?.agree" style="height: 23px"
                                  class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
                                 Необходимо ознакомиться и согласиться с правилами
                             </div>
@@ -494,7 +502,8 @@ mounted: {
                         </div>
 
                         <div class="popup__content-tab-content-form-row-last">
-                            <button @click="addOrder" class="button__more" :disabled="!data.sum || data.loader">Оплатить</button>
+                            <button v-if="!data.loader" @click="addOrder" class="button__more" :disabled="!data.sum || data.loader">Оплатить</button>
+                            <span v-if="data.loader" class="button__more">Ждите...</span>
                             <div class="popup__content-tab-content-form-row-last-banks">
                                 <div class="popup__content-tab-content-form-row-last-bank">
                                     <img src="/assets/img/sber.png" alt="" height="20">

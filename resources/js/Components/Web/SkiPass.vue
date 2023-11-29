@@ -11,22 +11,32 @@ const props = defineProps({
 const result = ref();
 const formReq = ref();
 const tab = ref();
+const page_url = ref();
 
 onMounted(() => {
     let uri = window.location.search.substring(1);
     let params = new URLSearchParams(uri);
+    page_url.value = window.location.search;
     result.value = params.get("result");
     tab.value = params.get("tab");
     formReq.value = params.get("form");
     data.popup = (['error', 'success'].includes(result.value) && formReq.value === 'skipass')
-    data.tab = tab.value === 2 ? 2 : 1
-    console.log(data)
+    data.tab = tab.value === '2' ? 2 : 1
+    console.log(tab.value)
 })
 
 const data = reactive({
     popup: false,
     tab: 1,
 });
+
+function closeModal() {
+    if(result.value === 'success' || result.value === 'error') {
+        window.location.href = window.location.pathname;
+    }
+    data.popup = false;
+    data.error = null
+}
 
 
 
@@ -67,7 +77,7 @@ const data = reactive({
     <div id="popup" class="popup" :class="{'_open': data.popup === true}">
         <div class="popup__body">
             <div class="popup__content section__white">
-                <div class="popup__cancel" @click="data.popup = false; data.error = null">
+                <div class="popup__cancel" @click="closeModal">
                     <img src="assets/img/cancel.svg" alt="cancel">
                 </div>
                 <div class="popup__content-tabs">

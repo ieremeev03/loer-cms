@@ -139,9 +139,9 @@ const purchase = () => {
         })
             .then(response => {
                 if (response.data.success) {
-                    window.location.href = response.data.url;
+                    //window.location.href = response.data.url;
                 }
-                data.loader = false;
+                //data.loader = false;
             })
             .catch(error => {
                 data.loader = false;
@@ -163,7 +163,7 @@ const purchase = () => {
                 if (response.data.success) {
                     window.location.href = response.data.url;
                 }
-
+                //data.loader = false;
             })
             .catch(error => {
                 data.loader = false;
@@ -333,7 +333,8 @@ const purchase = () => {
             </div>
         </div>
         <div class="popup__content-tab-content-form-row-last">
-            <button @click="purchase" class="button__more" :disabled="data.loader">Оплатить</button>
+            <button v-if="!data.loader"  @click="purchase" class="button__more" :disabled="data.loader">Оплатить</button>
+            <span v-if="data.loader" class="button__more">Ждите...</span>
             <div class="popup__content-tab-content-form-row-last-banks">
                 <div class="popup__content-tab-content-form-row-last-bank">
                     <img src="/assets/img/sber.png" alt="" height="20">

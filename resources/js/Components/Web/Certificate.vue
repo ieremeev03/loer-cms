@@ -106,6 +106,14 @@ const validateForm = () => {
     }
 }
 
+function closeModal() {
+    if(result.value === 'success' || result.value === 'error') {
+        window.location.href = window.location.pathname;
+    }
+    data.popup = false;
+    data.error = null
+}
+
 </script>
 
 <style>
@@ -131,7 +139,7 @@ const validateForm = () => {
     <div id="popup-gift" class="popup" :class="{'_open': data.popup === true}">
         <div class="popup__body">
             <div class="popup__content section__white">
-                <div class="popup__cancel" @click="data.popup = false; data.error = null">
+                <div class="popup__cancel" @click="closeModal">
                     <img src="assets/img/cancel.svg" alt="cancel">
                 </div>
                 <div class="popup__content-tabs">
@@ -251,7 +259,8 @@ const validateForm = () => {
                                 </div>
                             </div>
                             <div class="popup__content-tab-content-form-row-last">
-                                <button @click="purchase" class="button__more" :disabled="data.loader">Оплатить </button>
+                                <button v-if="!data.loader"  @click="purchase" class="button__more" :disabled="data.loader">Оплатить </button>
+                                <span v-if="data.loader" class="button__more">Ждите...</span>
                                 <div class="popup__content-tab-content-form-row-last-banks">
                                     <div class="popup__content-tab-content-form-row-last-bank">
                                         <img src="/assets/img/sber.png" alt="" height="20">
