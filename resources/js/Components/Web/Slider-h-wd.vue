@@ -20,13 +20,13 @@
 
 
             <swiper-slide v-for="item in items"  class="swiper-slide section__services-slide">
-                <a href="#">
+
                     <div class="section__services-slide-img">
                         <picture>
                             <img :src="item.fields.photo.value" alt="">
                         </picture>
                     </div>
-                </a>
+
             </swiper-slide>
 
         </swiper>
