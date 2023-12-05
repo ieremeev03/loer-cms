@@ -1756,9 +1756,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .section__how-block {
   width: 50%;
-  min-height: 344px;
+  min-height: 305px;
   height: auto;
-  padding: 40px 64px 60px 64px;
+  padding: 40px 64px 40px 64px;
 }
 .section__how-block:last-child .section__services-title::after {
   display: none;
