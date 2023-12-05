@@ -247,7 +247,7 @@ const purchase = () => {
         </div>
         <div  v-if="props.tab == 2" class="popup__content-tab-content-form-row">
             <div class="popup__content-tab-content-form-row-left"></div>
-            <div class="popup__content-tab-content-form-row-input-inner-date">Стоимость карты (+{{ data.cardPrice?.price }}р)</div>
+            <div class="popup__content-tab-content-form-row-input-inner-date"><span class="card_price">Стоимость карты</span> (<span class="car_sum">+{{ data.cardPrice?.price }}р</span>)</div>
         </div>
         <div v-if="props.tab == 2" class="popup__content-tab-content-form-row">
             <div class="popup__content-tab-content-form-row-left">ФИО владельца карты</div>

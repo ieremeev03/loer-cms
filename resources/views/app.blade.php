@@ -14,9 +14,12 @@
         @routes
         @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
         @inertiaHead
+
     </head>
     <body class="font-sans antialiased">
         @inertia
-    </body>
 
+
+    </body>
+    <script type="text/javascript" src="https://bookonline24.ru/widget.js" />
 </html>

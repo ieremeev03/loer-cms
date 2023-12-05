@@ -6000,3 +6000,14 @@ h1, h2, h3, h4, h5, h6 {
 .header__socials a:hover {
     opacity: 1;
 }
+
+.card_price {
+    padding-left: 18px;
+    font-size: 18px;
+    color: rgba(24, 31, 38, 0.5);
+}
+
+.car_sum {
+    font-size: 18px;
+    color: #000;
+}
