@@ -12,6 +12,9 @@
             }"
             :mousewheel="false"
             :grabCursor="false"
+            @mouseenter="freezeSlider"
+            @mouseleave="unfreezeSlider"
+            @init="onSwiper"
             :loop="false"
             class="swiper-wrapper">
 
@@ -50,6 +53,27 @@ export default {
     components: {
         Swiper,
         SwiperSlide
+    },
+    methods: {
+        onSwiper(sw) {
+            this.swiper = sw;
+        },
+        freezeSlider() {
+            if (this.swiper && !this.isFrozen) {
+                this.swiper.autoplay.stop();
+                this.swiper.params.autoplay.delay = 0;
+                this.swiper.params.speed = 0;
+                this.isFrozen = true;
+            }
+        },
+        unfreezeSlider() {
+            if (this.swiper && this.isFrozen) {
+                this.swiper.params.autoplay.delay = Math.random() * (1500 - 1100) + 1100; // Back to default
+                this.swiper.params.speed = Math.random() * (1500 - 1100) + 1100; // Back to default
+                this.swiper.autoplay.start();
+                this.isFrozen = false;
+            }
+        },
     },
     setup() {
         const prev = ref(null);

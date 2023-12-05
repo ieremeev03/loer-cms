@@ -13,8 +13,10 @@
             :mousewheel="false"
             :grabCursor="false"
             :loop="false"
+            @mouseenter="freezeSlider"
+            @mouseleave="unfreezeSlider"
+            @init="onSwiper"
             class="swiper-wrapper">
-
 
             <swiper-slide v-for="item in items" @click="goToEvents(item.fields.link?.value)" class="swiper-slide section__services-slide">
                     <div class="section__services-slide-img">
@@ -61,6 +63,25 @@ export default {
         };
     },
     methods: {
+        onSwiper(sw) {
+            this.swiper = sw;
+        },
+        freezeSlider() {
+            if (this.swiper && !this.isFrozen) {
+                this.swiper.autoplay.stop();
+                this.swiper.params.autoplay.delay = 0;
+                this.swiper.params.speed = 0;
+                this.isFrozen = true;
+            }
+        },
+        unfreezeSlider() {
+            if (this.swiper && this.isFrozen) {
+                this.swiper.params.autoplay.delay = Math.random() * (1500 - 1100) + 1100; // Back to default
+                this.swiper.params.speed = Math.random() * (1500 - 1100) + 1100; // Back to default
+                this.swiper.autoplay.start();
+                this.isFrozen = false;
+            }
+        },
         goToEvents: function (link) {
             if(link !== undefined && link!==null) {
                 location.href='/'+link
