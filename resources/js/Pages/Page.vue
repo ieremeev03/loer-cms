@@ -31,7 +31,7 @@
                 >
                 </component>
             </template>
-
+            <BookingHorizontal></BookingHorizontal>
         </main>
     </PageLayout>
 
@@ -60,6 +60,7 @@ import TourBlock from "@/Components/Web/TourBlock.vue";
 import ImageContentList from "@/Components/Web/ImageContentList.vue";
 import FileListContent from "@/Components/Web/FileListContent.vue";
 import Certificate from "@/Components/Web/Certificate.vue";
+import BookingHorizontal from "@/Components/Web/BookingHorizontal.vue";
 
 export default {
     name: "Page",
@@ -69,6 +70,7 @@ export default {
        'blocks'
     ],
     components: {
+        BookingHorizontal,
         ImageContentList,
         Certificate,
         Reserv,

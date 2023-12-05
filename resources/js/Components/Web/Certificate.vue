@@ -3,6 +3,7 @@ import {reactive, ref, onMounted} from 'vue';
 import MessageSuccess from "@/Components/Part/MessageSuccess.vue";
 import MessageError from "@/Components/Part/MessageError.vue";
 
+
 const props = defineProps({
     title_block: String,
     content: String,
@@ -130,14 +131,14 @@ function closeModal() {
 
             <div v-if="!properties?.content?.value" class="section__services-text" v-html="content"></div>
             <div v-if="properties?.content?.value" class="section__services-text" v-html="properties?.content?.value"></div>
-            <a href="#" @click="data.popup = true"  class="button__more">{{properties?.link_text?.value}}</a>
+            <a href="#" @click="data.popup = true; data.loader = false;"  class="button__more">{{properties?.link_text?.value}}</a>
         </div>
 
     </section>
 
 
-    <div id="popup-gift" class="popup" :class="{'_open': data.popup === true}">
-        <div class="popup__body">
+    <div id="popup-gift" class="popup" :class="{'_open': data.popup === true}" >
+        <div class="popup__body" v-click-outside="closeModal">
             <div class="popup__content section__white">
                 <div class="popup__cancel" @click="closeModal">
                     <img src="assets/img/cancel.svg" alt="cancel">

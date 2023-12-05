@@ -139,7 +139,7 @@ const purchase = () => {
         })
             .then(response => {
                 if (response.data.success) {
-                    //window.location.href = response.data.url;
+                    window.location.href = response.data.url;
                 }
                 //data.loader = false;
             })

@@ -8,7 +8,7 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-
+import vClickOutside from 'v-click-outside'
 import VueDatePicker from '@vuepic/vue-datepicker';
 import vSelect from 'vue-select';
 import { vMaska } from "maska"
@@ -23,6 +23,7 @@ createInertiaApp({
         const app = createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .component('vClickOutside', vClickOutside)
             .component('VueDatePicker', VueDatePicker)
             .component('vSelect', vSelect)
             .component('vMaska', vMaska)
