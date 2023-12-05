@@ -4,7 +4,7 @@
             :modules="modules"
             :slidesPerView="'auto'"
             :space-between="0"
-            :speed="Math.random() * (1500 - 1100) + 1100"
+            :speed="Math.random() * (1100 - 800) + 800"
             :autoplay="true"
             :navigation="{
               prevEl: prev,
@@ -68,8 +68,8 @@ export default {
         },
         unfreezeSlider() {
             if (this.swiper && this.isFrozen) {
-                this.swiper.params.autoplay.delay = Math.random() * (1500 - 1100) + 1100; // Back to default
-                this.swiper.params.speed = Math.random() * (1500 - 1100) + 1100; // Back to default
+                this.swiper.params.autoplay.delay = Math.random() * (1100 - 800) + 800; // Back to default
+                this.swiper.params.speed = Math.random() * (1100 - 800) + 800; // Back to default
                 this.swiper.autoplay.start();
                 this.isFrozen = false;
             }
