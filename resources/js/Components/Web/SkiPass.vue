@@ -1,6 +1,7 @@
 <script setup>
 import {reactive, onMounted, ref} from 'vue';
 import SkiPassTab from './SkiPassTab.vue';
+import SkiPassInfo from './SkiPassInfo.vue';
 
 const props = defineProps({
     title_block: String,
@@ -87,6 +88,10 @@ function closeModal() {
                     <div @click="data.tab = 2" class="popup__content-tab"
                          :class="{'popup__content-tab-active': data.tab == 2}">Покупка
                     </div>
+                    <div @click="data.tab = 3" class="popup__content-tab"
+                         :class="{'popup__content-tab-active': data.tab == 3}">Проверка
+                    </div>
+
 
                 </div>
                 <div class="popup__content-tabs-content">
@@ -108,6 +113,12 @@ function closeModal() {
                             :form="formReq"
                         />
                     </div>
+
+                    <div v-show="data.tab == 3" class="popup__content-tab-content"
+                         :class="{'popup__content-tab-content-active': data.tab == 3}">
+                        <SkiPassInfo />
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -62,7 +62,6 @@
                                         v-model="form.items[index_i].fields[index_b].value"
                                         @files-dropped="getUploadedData"
                                     ></component>
-
                                 </template>
 
                                 <div class="flex flex-row items-center justify-end ">

@@ -154,7 +154,7 @@
                                         @files-dropped="getUploadedData"
                                     ></component>
                                 </template>
-
+                                <button @click="moveUp(index_i)">UP</button>
                                 <div class="flex flex-row items-center justify-end ">
                                     <span class="cursor-pointer bg-red-500 p-2 rounded-lg text-xs text-white" @click="removeItem(index_i)">Удалить</span>
                                 </div>
@@ -288,6 +288,13 @@ console.log(page)
     if (confirm('Вы действительно хотите удалить страницу?')) {
         router.delete(route('pages.destroy', page.id))
     }
+}
+
+function moveUp(pos) {
+    console.log(pos)
+    formItems.items.splice(1, 2, formItems.items[pos], formItems.items[pos-1]);
+    console.log(formItems.items)
+    return false;
 }
 function showModalEdit(id, uuid) {
     loading.value = true

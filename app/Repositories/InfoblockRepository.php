@@ -52,16 +52,17 @@ class InfoblockRepository
 
     public function getItemsInfoblock($infoblock, $page = null, $uuid = null) {
         $items = [];
+        $sortBy = $infoblock->sortBy;
+        $sortDir = $infoblock->sortDir;
 
-
-
+        //->{$sortDir}('created_at')
         if($page!=null) {
-            $itemsRaw =  $infoblock->items->where('page_id',$page)->where('infoblock_bunch', $uuid);
+            $itemsRaw =  $infoblock->items->where('page_id',$page)->where('infoblock_bunch', $uuid)->{$sortDir}('sort');
         } else {
-            $itemsRaw = $infoblock->items->where('page_id', null);
+            $itemsRaw = $infoblock->items->where('page_id', null)->{$sortDir}('sort');
         }
 
-
+       // dd($itemsRaw);
 
         $n = 0;
         foreach ($itemsRaw as $item) {
@@ -177,7 +178,7 @@ class InfoblockRepository
 
     public function updateOrCteateItems($items, $block, $page = null, $bunch = null) {
 
-        foreach ($items as $item) {
+        foreach ($items as $key_i=>$item) {
             $key = $item['id'] ?? null;
             $InfoblockItem =  InfoblockItem::find($key);
             //echo $key.' '.$InfoblockItem->id. '<br>';
@@ -188,12 +189,14 @@ class InfoblockRepository
                     $InfoblockItem->update([
                         'title' => $item['fields']['title']['value'],
                         'description' => $item['fields']['description']['value'],
+                        'sort' => $key_i,
                         'infoblock_bunch' => $bunch
                     ]);
                 } else {
                     $newItem = InfoblockItem::create([
                         'infoblock_id' =>$block->id,
                         'page_id' => $page,
+                        'sort' => $key_i,
                         'title' => $item['fields']['title']['value'],
                         'description' => $item['fields']['description']['value'],
                         'infoblock_bunch' => $bunch

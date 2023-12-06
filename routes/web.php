@@ -98,7 +98,7 @@ Route::post('/create-skipass', [SkipassController::class, 'create'])->name('crea
 Route::get('/get-disciplines', [FrontInstructorController::class, 'index'])->name('get-disciplines');
 Route::post('/buy-certificate', [FrontCertificateController::class, 'buy'])->name('buy-certificate');
 Route::get('/test', [FrontInstructorController::class, 'test']);
-
+Route::post('/skipass-info', [SkipassController::class, 'getInfo'])->name('skipass-info');
 
 Route::get('/{pSlug}', [PageController::class, 'getPage'])->name('pages.getPage');
 

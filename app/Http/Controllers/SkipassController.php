@@ -182,4 +182,58 @@ class SkipassController extends Controller
             'url' => $response['formUrl'],
         ];
     }
+
+    public function getInfo(Request $request)
+    {
+        $skipass = $request->input('skipass');
+        if (!$skipass) {
+            return response()->json([
+                'errors' => [
+                    'skipass' => 'Скипасс является обязательным для заполнения'
+                ]
+            ], 422);
+        }
+
+        $skipass = preg_replace('/\s+/', '', $skipass);
+
+        // информация о скипассе
+        $skipassInfo = Http::withHeaders([
+            'Authorization' => config('lime.token'),
+        ])
+            ->post(config('lime.url').'/ClientManagement/GetClientInfoByCardUid', [
+                'uid' => $skipass,
+                'installationId' => config('lime.installation_id'),
+            ])
+            ->json();
+
+        if ($skipassInfo === null) {
+            return response()->json([
+                'errors' => [
+                    'skipass' => 'Ски-пасс не найден'
+                ]
+            ], 422);
+        }
+
+        $installations = Http::withHeaders([
+            'Authorization' => config('lime.token'),
+        ])
+            ->post(config('lime.url').'/ClientManagement/GetRights', [
+                'clientId' => $skipassInfo['userData']['id'],
+                'installationId' => config('lime.installation_id'),
+            ])
+            ->json();
+
+        $result = [];
+        foreach ($installations as $installation) {
+            $result[] = [
+                'title' => $installation['right']['goodTypeName'],
+                'amount' => $installation['right']['amount'],
+                'from' => Carbon::parse($installation['right']['from'])->setTimezone('Asia/Yekaterinburg')->format('d.m.Y H:i'),
+                'to' => Carbon::parse($installation['right']['to'])->setTimezone('Asia/Yekaterinburg')->format('d.m.Y H:i'),
+            ];
+        }
+
+        return $result;
+    }
+
 }
