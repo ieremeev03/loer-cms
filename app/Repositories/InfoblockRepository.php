@@ -57,12 +57,12 @@ class InfoblockRepository
 
         //->{$sortDir}('created_at')
         if($page!=null) {
-            $itemsRaw =  $infoblock->items->where('page_id',$page)->where('infoblock_bunch', $uuid)->{$sortDir}('sort');
+            $itemsRaw =  $infoblock->items->where('page_id',$page)->where('infoblock_bunch', $uuid)->{$sortDir}($sortBy);
         } else {
-            $itemsRaw = $infoblock->items->where('page_id', null)->{$sortDir}('sort');
+            $itemsRaw = $infoblock->items->where('page_id', null)->{$sortDir}($sortBy);
         }
 
-       // dd($itemsRaw);
+        //dd($itemsRaw);
 
         $n = 0;
         foreach ($itemsRaw as $item) {
