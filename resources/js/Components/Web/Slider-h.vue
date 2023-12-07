@@ -6,6 +6,7 @@
             :space-between="0"
             :speed="Math.random() * (1100 - 800) + 800"
             :autoplay="true"
+            :freeMode="true"
             :navigation="{
               prevEl: prev,
               nextEl: next,
@@ -40,7 +41,7 @@
 import { ref } from 'vue';
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import {Navigation, Autoplay} from 'swiper/modules';
+import {FreeMode, Navigation, Autoplay} from 'swiper/modules';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -59,7 +60,7 @@ export default {
         return {
             prev,
             next,
-            modules: [Navigation, Autoplay],
+            modules: [FreeMode,Navigation, Autoplay],
         };
     },
     methods: {
