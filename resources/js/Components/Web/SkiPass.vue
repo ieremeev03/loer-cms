@@ -95,7 +95,7 @@ function closeModal() {
 
                 </div>
                 <div class="popup__content-tabs-content">
-                    <div class="popup__content-tab-content-title">ски-пасса</div>
+
                     <div v-show="data.tab == 1" class="popup__content-tab-content"
                          :class="{'popup__content-tab-content-active': data.tab == 1}">
                         <SkiPassTab
