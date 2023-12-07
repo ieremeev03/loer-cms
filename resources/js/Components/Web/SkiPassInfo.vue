@@ -77,7 +77,7 @@ const validateForm = () => {
                     <table class="">
                         <thead>
                         <tr>
-                            <th class="" style="min-width: 200px;">Информация</th>
+                            <th class="" style="min-width: 160px;">Информация</th>
                             <th class="">Остаток</th>
                             <th class="">Действует&nbsp;с</th>
                             <th class="">Действует&nbsp;по</th>

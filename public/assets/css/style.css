@@ -2621,6 +2621,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .section__slider .section__slider-content {
        left: 24px !important;
+       bottom: 30px !important;
    }
   .section__slider {
     height: 468px;
