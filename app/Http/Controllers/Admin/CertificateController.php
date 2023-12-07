@@ -12,7 +12,7 @@ class CertificateController extends Controller
     public function index()
     {
         return Inertia::render('Admin/Certificates/Index', [
-            'certificates' => Certificate::where('payed', true)->get()->sortBy('created_at')
+            'certificates' => Certificate::where('payed', true)->get()->sortByDesc('created_at')
         ]);
     }
 }
