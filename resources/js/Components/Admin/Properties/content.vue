@@ -5,6 +5,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import InputLabel from '@/Components/InputLabel.vue';
 
 const editorData = ref(props.modelValue || '')
+
 const editorConfig = ref(
     {
         height: "300px",
@@ -23,18 +24,19 @@ watch(editorData, () => {
     emit('update:modelValue', editorData.value)
 })
 
+
+
 const props = defineProps({
     modelValue: {
         type: String,
     },
     title: {
         type: String,
-
     }
 });
 
 const content = ref ()
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'update:editorData'])
 
 </script>
 

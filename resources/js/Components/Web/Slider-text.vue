@@ -64,6 +64,7 @@ export default {
             modules: [Pagination, Autoplay],
         };
     },
+
     mounted() {
         let lazyVideos = [].slice.call(document.querySelectorAll("video[preload='auto']"));
 
@@ -71,6 +72,19 @@ export default {
             lazyVideo.play();
         });
 
+        let options = {
+            threshold: 1.0
+        }
+
+        const observer = new IntersectionObserver(callback, options);
+
+        const target = document.querySelector('#myElement')
+        observer.observe(target)
+    },
+    methods: {
+        callback () {
+            console.log('Я видим')
+        }
     }
 };
 </script>
