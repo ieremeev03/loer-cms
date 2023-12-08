@@ -31,7 +31,6 @@
                 >
                 </component>
             </template>
-            <BookingHorizontal></BookingHorizontal>
         </main>
     </PageLayout>
 

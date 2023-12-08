@@ -250,6 +250,13 @@ const types = ref({
         'array' : false
     },
 
+    'BookingHorizontal': {
+        'id' : 'BookingHorizontal',
+        'title': 'Виджет бронирования',
+        'image' : '',
+        'array' : false
+    },
+
 
 });
 
