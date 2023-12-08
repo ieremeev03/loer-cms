@@ -11,6 +11,11 @@
     </section>
 </template>
 
+<style>
+.BookingSearchForm_control {
+    padding: 0;
+}
+</style>
 
 <script setup>
 
