@@ -15,6 +15,15 @@
 .BookingSearchForm_control {
     padding: 0 !important;
 }
+
+.BookingSearchForm_control.BookingSearchForm_inline .BookingSearchForm_controlsWrapper {
+    justify-content: flex-start !important;
+}
+
+.WidgetApp_container button {
+    background-color: transparent !important;
+}
+
 </style>
 
 <script setup>
