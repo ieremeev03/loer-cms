@@ -16,13 +16,33 @@
     padding: 0 !important;
 }
 
-/*.BookingSearchForm_control.BookingSearchForm_inline .BookingSearchForm_controlsWrapper {
+.BookingSearchForm_control.BookingSearchForm_inline .BookingSearchForm_controlsWrapper {
     justify-content: flex-start !important;
 }
 
 .WidgetApp_container button {
     background-color: transparent !important;
-}*/
+}
+
+.WidgetApp_container button {
+    box-sizing: border-box  !important;
+    background-color: white  !important;
+    border-radius: 2px  !important;
+    border: 1px solid #fff  !important;
+}
+
+.WidgetApp_container button:hover {
+    background-color: rgba(24, 31, 38, 0)  !important;
+    color: #fff  !important;
+}
+
+.DatesPeriodControl_placeholder {
+    color: #fff  !important;
+}
+
+.DatesPeriodControl_placeholder svg{
+    color: #fff  !important;
+}
 
 </style>
 

@@ -63,8 +63,7 @@
                             locale="ru"
                             @update:model-value="handleSelectDate"
                             @cleared="clearDate"
-                            select-text="Подтвердить"
-                            cancel-text="Закрыть"
+                            auto-apply
                         ></VueDatePicker>
                     </div>
 
@@ -112,11 +111,10 @@
                     </div>
 
                     <div v-if="instructor.times" class="mt-2 space-x-6">
-                        <PrimaryButton @click="save" >Сохранить</PrimaryButton>
-
+<!--                        <PrimaryButton @click="save" >Сохранить</PrimaryButton>
                         <a :href="route('instructors')"
                            class="text-sm font-semibold text-gray-900"
-                        >Отмена</a>
+                        >Отмена</a>-->
                     </div>
                 </div>
             </div>
