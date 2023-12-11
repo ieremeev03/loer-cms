@@ -11,6 +11,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SkipassController;
 use App\Http\Controllers\Admin\SkipassController as AdminSkipassController;
+use App\Mail\ReservShipped;
+use App\Models\Order;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +51,7 @@ Route::get('/mailable', function () {
 Route::get('/mailable_test', function () {
     Mail::raw('Hello World!', function($msg) {$msg->to('i.eremeev@loer.pro')->subject('Test Email'); });
 });
+
 
 
 Route::middleware('auth')->group(function () {
