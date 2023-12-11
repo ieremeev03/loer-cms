@@ -24,7 +24,7 @@ const data = reactive({
     selectedInstructorName: props.instructor?.name ?? null,
     instructors: null,
     agree: false,
-    times: null,
+    times: [],
     counts: [
                 {id: 1, label: "1 человек" },
                 {id: 2, label: "2 человека" },
