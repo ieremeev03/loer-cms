@@ -13,13 +13,13 @@
             :slides-per-view="1"
             :space-between="0"
             :speed="Math.random() * (1500 - 1100) + 1100"
-            :autoplay="true"
             navigation
             :pagination="{ clickable: true }"
             :mousewheel="false"
             :grabCursor="false"
             :loop="false"
             class="swiper-wrapper"
+            id="swip"
         >
             <swiper-slide v-for="item in items" href="#" class="swiper-slide section__slider-slide">
 
@@ -76,9 +76,8 @@ export default {
             threshold: 1.0
         }
 
-        const observer = new IntersectionObserver(callback, options);
-
-        const target = document.querySelector('#myElement')
+        const observer = new IntersectionObserver(this.callback, options);
+        const target = document.querySelector('#swip')
         observer.observe(target)
     },
     methods: {

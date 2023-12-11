@@ -5,7 +5,7 @@
             :slidesPerView="'auto'"
             :space-between="0"
             :speed="Math.random() * (1100 - 800) + 800"
-            :autoplay="true"
+
             :freeMode="true"
             :navigation="{
               prevEl: prev,

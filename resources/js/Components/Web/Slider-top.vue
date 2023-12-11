@@ -6,7 +6,7 @@
             :space-between="0"
             :speed="Math.random() * (1500 - 1100) + 1100"
             navigation
-            :autoplay="true"
+
             :pagination="{ clickable: true }"
             :mousewheel="false"
             :grabCursor="false"
