@@ -62,7 +62,7 @@
                                         v-model="form.items[index_i].fields[index_b].value"
                                         @files-dropped="getUploadedData"
                                     ></component>
-                                    form.items[{{index_i}}].fields[{{index_b}}].value - {{form.items[index_i].fields[index_b].value}} - {{block.value}}
+<!--                                    form.items[{{index_i}}].fields[{{index_b}}].value - {{form.items[index_i].fields[index_b].value}} - {{block.value}}-->
                                 </template>
 
                                 <div class="flex flex-row items-center justify-end gap-2">
