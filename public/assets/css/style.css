@@ -6127,6 +6127,10 @@ h1, h2, h3, h4, h5, h6 {
     .BookingSearchForm_control.BookingSearchForm_inline .BookingSearchForm_controlsWrapper {
         justify-content: center !important;
     }
+
+    .BookingSearchForm_control.BookingSearchForm_inline .BookingSearchForm_dates, .BookingSearchForm_control.BookingSearchForm_inline .BookingSearchForm_guestsSelect {
+        margin: 0 0 20px !important;
+    }
 }
 
 
