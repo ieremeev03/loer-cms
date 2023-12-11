@@ -110,7 +110,7 @@ class InfoblockRepository
                 $valueWithBunch = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('infoblock_bunch',$infoblock->pivot->bunch)->first();
                 $valueWithoutBunch = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('infoblock_bunch',null)->first();
 
-                if($infoblock->pivot->bunch != null && $valueWithBunch!= null &&  $valueWithBunch->value !=null) {
+                if($infoblock->pivot->bunch != null && $valueWithBunch!= null &&  $valueWithBunch->value !=null &&  $valueWithBunch->value != ' ' &&  $valueWithBunch->value != '') {
                     $value = $valueWithBunch;
                 } else {
                     $value = $valueWithoutBunch;
