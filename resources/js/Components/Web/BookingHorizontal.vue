@@ -47,10 +47,10 @@ const props = defineProps({
     t.parentNode.insertBefore(l, t);
 })(function(){
     HotelWidget.init({
-        id: this.properties?.uuid_block.value,
+        id: this.props.properties?.uuid_block.value,
         type: "horizontalBlock",
         form: {
-            container: this.properties?.id_widget.value,
+            container: this.props.properties?.id_widget.value,
         }
     }, "https://bookonline24.ru/");
 });
