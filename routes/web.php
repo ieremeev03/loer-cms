@@ -12,6 +12,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\SkipassController;
 use App\Http\Controllers\Admin\SkipassController as AdminSkipassController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\InstructorController as FrontInstructorController;
@@ -43,6 +44,10 @@ Route::get('/mailable', function () {
 
     //dd($filePath);
     return new SkipassShipped($skipass, $filePath);
+});
+
+Route::get('/mailable_test', function () {
+    Mail::raw('Hello World!', function($msg) {$msg->to('i.eremeev@loer.pro')->subject('Test Email'); });
 });
 
 
