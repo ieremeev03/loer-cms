@@ -62,7 +62,7 @@ class InfoblockRepository
             $itemsRaw = $infoblock->items->where('page_id', null)->{$sortDir}($sortBy);
         }
 
-        //dd($itemsRaw);
+       // dd($itemsRaw);
 
         $n = 0;
         foreach ($itemsRaw as $item) {
@@ -110,11 +110,14 @@ class InfoblockRepository
                 $valueWithBunch = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('infoblock_bunch',$infoblock->pivot->bunch)->first();
                 $valueWithoutBunch = InfoblockPropertyValue::where('property_id',$property->id)->where('infoblock_id',$infoblock->id)->where('infoblock_bunch',null)->first();
 
-                if($infoblock->pivot->bunch != null ) {
+                if($infoblock->pivot->bunch != null && $valueWithBunch!= null &&  $valueWithBunch->value !=null) {
                     $value = $valueWithBunch;
                 } else {
                     $value = $valueWithoutBunch;
                 }
+
+                //$block[$infoblock->pivot->bunch]['properties'][$property->name]['value2'] = $valueWithBunch->value;
+
                 $default = ($valueWithoutBunch==null) ? $property->default : $valueWithoutBunch->value;
                 $block[$infoblock->pivot->bunch]['properties'][$property->name]['value'] = ($value == null) ? $default : $value->value;
                 if(isset($property->model)) {
