@@ -209,7 +209,7 @@ class InstructorController extends Controller
 
 
         $response = (new PaymentService())->registerPayment($data);
-        Log::channel('payment')->info($response);
+        Log::channel('payment')->debug($response);
 
         if (!$response) {
             return response()->json([
