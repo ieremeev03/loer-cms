@@ -36,13 +36,7 @@
     color: #fff  !important;
 }
 
-.DatesPeriodControl_placeholder {
-    color: #fff  !important;
-}
 
-.DatesPeriodControl_placeholder svg{
-    color: #fff  !important;
-}
 
 </style>
 
