@@ -6,7 +6,7 @@
 
             <div v-if="!properties?.content?.value" class="section__services-text" v-html="content"></div>
             <div v-if="properties?.content?.value" class="section__services-text" v-html="properties?.content?.value"></div>
-            <div id="WidgetIdBooking"></div>
+            <div :id="properties?.id_widget?.value"></div>
         </div>
     </section>
 </template>
@@ -47,10 +47,10 @@ const props = defineProps({
     t.parentNode.insertBefore(l, t);
 })(function(){
     HotelWidget.init({
-        id: "aaba9e02-6081-4a8e-a6b3-baf1e48db86c",
+        id: properties?.uuid_block.value,
         type: "horizontalBlock",
         form: {
-            container: "WidgetIdBooking",
+            container: properties?.id_widget.value,
         }
     }, "https://bookonline24.ru/");
 });
