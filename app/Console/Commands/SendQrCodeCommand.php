@@ -35,6 +35,7 @@ class SendQrCodeCommand extends Command
         $orders = Skipass::where('payed', true)
             ->where('operation', Skipass::OPERATION_CREATE)
             ->where('email_sented', null)
+            ->limit(1)
             ->get();
 
         foreach ($orders as $order) {
@@ -52,7 +53,6 @@ class SendQrCodeCommand extends Command
             $order->save();
 
             if ($order->qrcode) {
-
                 $filePath = public_path('/qr/'.$order->id.'.png');
                 QrCode::format('png')->size(250)->margin(0)->generate($order->qrcode, $filePath);
 
@@ -60,8 +60,6 @@ class SendQrCodeCommand extends Command
                 // if(File::exists($filePath)){
                 //     File::delete($filePath);
                 // }
-
-
                 $order->email_sented = Carbon::now();
                 $order->save();
             }
