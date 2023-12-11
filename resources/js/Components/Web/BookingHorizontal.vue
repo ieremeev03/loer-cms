@@ -1,5 +1,5 @@
 <template>
-    <section class="section__services"  v-bind:class="'section__'+properties.color.value">
+    <section class="section__services"  v-bind:class="'section__'+properties?.color?.value">
         <div class="container section__services-container">
             <h2 v-if="!properties?.title_prop?.value" class="section__services-title">{{ title_block }} </h2>
             <h2 v-if="properties?.title_prop?.value" class="section__services-title">{{ properties?.title_prop?.value }} </h2>
@@ -47,10 +47,10 @@ const props = defineProps({
     t.parentNode.insertBefore(l, t);
 })(function(){
     HotelWidget.init({
-        id: this.props.properties?.uuid_block.value,
+        id: props.properties?.uuid_block.value,
         type: "horizontalBlock",
         form: {
-            container: this.props.properties?.id_widget.value,
+            container: props.properties?.id_widget.value,
         }
     }, "https://bookonline24.ru/");
 });
