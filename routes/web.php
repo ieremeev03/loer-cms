@@ -17,6 +17,9 @@ use Inertia\Inertia;
 use App\Http\Controllers\InstructorController as FrontInstructorController;
 use App\Http\Controllers\CertificateController as FrontCertificateController;
 use App\Http\Controllers\Admin\CertificateController;
+use App\Mail\SkipassShipped;
+use App\Models\Skipass;
+
 
 
 /*
@@ -33,6 +36,15 @@ use App\Http\Controllers\Admin\CertificateController;
 require __DIR__.'/auth.php';
 
 Route::get('/', [PageController::class, 'home']);
+
+Route::get('/mailable', function () {
+    $skipass = Skipass::find(109);
+    $filePath = public_path('/qr/'.$skipass->id.'.png');
+
+    //dd($filePath);
+    return new SkipassShipped($skipass, $filePath);
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [PageController::class, 'index'])->name('pages.index');

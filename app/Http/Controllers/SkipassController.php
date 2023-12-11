@@ -163,8 +163,9 @@ class SkipassController extends Controller
             ], 422);
         }
 
-        if (isset($response->errorCode)) {
-            Log::info('Sberbank API error code: '.$response->errorCode);
+        if (isset($response['errorCode'])) {
+            Log::info('Sberbank API error code: '.$response['errorCode']);
+
 
             return response()->json([
                 'errors' => [

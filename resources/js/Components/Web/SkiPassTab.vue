@@ -332,6 +332,15 @@ const purchase = () => {
                 {{ data.error.agree }}
             </div>
         </div>
+        <div v-if="data.error?.payment" class="popup__content-tab-content-apply">
+            <div class="popup__content-tab-content-apply-icon">
+                <img src="/assets/img/error.svg" alt="">
+            </div>
+            <div class="popup__content-tab-content-apply-text">
+                {{ data.error.payment }}
+            </div>
+        </div>
+
         <div class="popup__content-tab-content-form-row-last">
             <button v-if="!data.loader"  @click="purchase" class="button__more" :disabled="data.loader">Оплатить</button>
             <span v-if="data.loader" class="button__more">Ждите...</span>

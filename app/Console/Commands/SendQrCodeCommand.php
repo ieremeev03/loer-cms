@@ -52,13 +52,16 @@ class SendQrCodeCommand extends Command
             $order->save();
 
             if ($order->qrcode) {
-                $filePath = storage_path('/qr/'.$order->id.'.png');
+
+                $filePath = public_path('/qr/'.$order->id.'.png');
                 QrCode::format('png')->size(250)->margin(0)->generate($order->qrcode, $filePath);
 
                 Mail::to($order->email)->send(new SkipassShipped($order, $filePath));
-                if(File::exists($filePath)){
-                    File::delete($filePath);
-                }
+                // if(File::exists($filePath)){
+                //     File::delete($filePath);
+                // }
+
+
                 $order->email_sented = Carbon::now();
                 $order->save();
             }
