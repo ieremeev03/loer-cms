@@ -55,7 +55,7 @@ watch(data, function (val) {
 const clearDate = () => {
     data.selectedDate = null;
     data.instructors = [];
-    data.times = null;
+    data.times = [];
     data.sum = 0;
 }
 
@@ -111,7 +111,7 @@ const selectCount = () => {
 const selectedDiscpline = () => {
     if (!props.instructor) {
         data.sum = 0;
-        data.times = null;
+        data.times = [];
         getInstructors();
     }
 }
