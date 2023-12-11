@@ -14,8 +14,7 @@
                         @update:model-value="handleSelectDate"
                         @cleared="clearDate"
                         locale="ru"
-                        select-text="Подтвердить"
-                        cancel-text="Закрыть"
+                        auto-apply
                     ></VueDatePicker>
 
                     <div class="inline-block min-w-full  align-middle  border-2">
