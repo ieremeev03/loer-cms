@@ -209,7 +209,7 @@ class InstructorController extends Controller
 
 
         $response = (new PaymentService())->registerPayment($data);
-
+        Log::info('Sberbank API response: '.$response);
         if (!$response) {
             return response()->json([
                 'errors' => [
