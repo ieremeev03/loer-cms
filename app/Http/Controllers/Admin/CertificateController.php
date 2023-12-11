@@ -11,7 +11,7 @@ class CertificateController extends Controller
 {
     public function index()
     {
-        dd(Certificate::where('payed', true)->get());
+        //dd(Certificate::where('payed', true)->get());
         return Inertia::render('Admin/Certificates/Index', [
             'certificates' => Certificate::where('payed', true)->get()->sortByDesc('created_at')
         ]);
