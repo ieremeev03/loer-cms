@@ -14,8 +14,7 @@
             :mousewheel="false"
             :grabCursor="false"
             :loop="false"
-            @mouseenter="freezeSlider"
-            @mouseleave="unfreezeSlider"
+
             @init="onSwiper"
             class="swiper-wrapper">
 

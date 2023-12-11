@@ -13,8 +13,7 @@
             }"
             :mousewheel="false"
             :grabCursor="false"
-            @mouseenter="freezeSlider"
-            @mouseleave="unfreezeSlider"
+
             @init="onSwiper"
             :loop="false"
             class="swiper-wrapper">
