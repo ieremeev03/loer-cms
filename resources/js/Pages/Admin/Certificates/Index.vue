@@ -34,8 +34,8 @@ defineProps({
                                 <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">C-{{ certificate.id }}</td>
                                 <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">{{ certificate.created_at }}</td>
                                 <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">{{ certificate.recipient }}</td>
-                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">{{ $filters.format_money(certificate.nominal) }}₽</td>
-                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">
+                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 font-semibold">{{ $filters.format_money(certificate.nominal) }}₽</td>
+                                <td class="whitespace-nowrap p-4 text-xs text-gray-900  ">
                                     <div>{{ certificate.buyer }}</div>
                                     <div>{{ certificate.email }}</div>
                                     <div>{{ certificate.phone }}</div>
