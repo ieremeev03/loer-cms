@@ -33,9 +33,7 @@ class SendQrCodeCommand extends Command
     public function handle()
     {
         $orders = Skipass::where('payed', true)
-            ->where('operation', Skipass::OPERATION_CREATE)
             ->where('email_sented', null)
-            ->limit(1)
             ->get();
 
         foreach ($orders as $order) {
