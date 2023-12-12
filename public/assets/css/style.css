@@ -6133,6 +6133,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.section__notext {
+    padding: 55px 64px 35px 64px;
+}
 
 #Cottage, #Motel {
     margin-top: -200px;

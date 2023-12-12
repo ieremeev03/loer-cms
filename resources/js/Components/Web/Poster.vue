@@ -1,6 +1,6 @@
 <template>
-    <section class="section__services"  v-bind:class="'section__'+properties.color.value">
-        <div class="container section__services-container">
+    <section class="section__services" :class="'section__'+properties.color.value" >
+        <div class="container section__services-container" v-bind:class="{ 'section__notext' : !properties?.content?.value && !content}">
             <h2 v-if="!properties?.title_prop?.value" class="section__services-title">{{ title_block }} </h2>
             <h2 v-if="properties?.title_prop?.value" class="section__services-title">{{ properties?.title_prop?.value }} </h2>
 
