@@ -38,7 +38,7 @@ class PageController extends Controller
     public function index()
     {
         $pages = $this->pageRepository->getAllLinks();
-        return inertia('Admin/Index', compact('pages'));
+        return inertia('Admin/Pages/Index', compact('pages'));
     }
     public function getPage(Page $page)
     {
@@ -69,7 +69,7 @@ class PageController extends Controller
             'name' => 'empty'
         ]);
         $all_infoblocks = $this->infoblockRepository->getAllInfoblock();
-        return inertia('Admin/AddPage', compact('pages', 'infoblocks', 'all_infoblocks'));
+        return inertia('Admin/Pages/AddPage', compact('pages', 'infoblocks', 'all_infoblocks'));
     }
 
     /**
@@ -121,7 +121,7 @@ class PageController extends Controller
         }
 
         $all_infoblocks = $this->infoblockRepository->getAllInfoblock();
-        return inertia('Admin/EditPage', compact('page','pages', 'infoblocks', 'all_infoblocks'));
+        return inertia('Admin/Pages/EditPage', compact('page','pages', 'infoblocks', 'all_infoblocks'));
     }
 
     /**
@@ -147,7 +147,7 @@ class PageController extends Controller
 
         }
         $pages = $this->pageRepository->getAllLinks();
-        return inertia('Admin/Index', compact('page', 'pages'));
+        return inertia('Admin/Pages/Index', compact('page', 'pages'));
     }
 
     /**
