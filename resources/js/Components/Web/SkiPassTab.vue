@@ -321,7 +321,7 @@ const purchase = () => {
                 <input v-model="data.agree" type="checkbox" :id="'checkbox'+props.tab"/>
                 <label :for="'checkbox'+props.tab"></label>
             </div>
-            <div class="custom-checkbox-text">Согласен(а) с <a href="/info" class="underline">правилами</a> приобретения и использования сертификата
+            <div class="custom-checkbox-text">Согласен(а) с <a href="/info" class="underline">правилами</a> пользования услугами курорта
             </div>
             <div v-if="data.error?.agree"
                     class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
