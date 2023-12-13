@@ -4,7 +4,8 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="shortcut icon" href="assets/img/logo.svg" type="image/x-icon">
+        <link rel="shortcut icon" href="/favicon.png" type="image/png">
+        <link rel="apple-touch-icon"  href="/favicon.png" >
         <meta name="description" content="Takman">
         <meta name="keywords" content="Takman">
         <meta name="robots" content="index, follow">
