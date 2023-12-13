@@ -30,27 +30,23 @@ class ReservPaymentStatusCommand extends Command
      */
     public function handle()
     {
-
-        // проверить если оплаты нет более 25 минут -
-        $orders = Order::where('payed', false)
-            ->whereNotNull('sber_id')
-            ->get();
-
-        print_r($orders);
+        $orders = Order::where('payed', false)->get();
 
         foreach ($orders as $order) {
+            // заказы за последние 21 минуту
             if ($order->created_at > Carbon::now()->subMinutes(21)) {
-                $response = (new PaymentService())->statusPayment(['orderNumber' => $order->id]);
-                if ($response['orderStatus'] === 2) {
-                    $order->payed = $response['orderStatus'] === 2 ? true : false;
-                    $order->sber_status = $response['orderStatus'] ?? null;
-                    $order->save();
-                    Mail::to($order->email)->send(new ReservShipped($order));
-                    $order->email_sented = Carbon::now();
-                    $order->save();
+                if ($order->sber_id) {
+                    $response = (new PaymentService())->statusPayment(['orderNumber' => $order->id]);
+                    if ($response['orderStatus'] === 2) {
+                        $order->payed = $response['orderStatus'] === 2 ? true : false;
+                        $order->sber_status = $response['orderStatus'] ?? null;
+                        $order->save();
+                        Mail::to($order->email)->send(new ReservShipped($order));
+                        $order->email_sented = Carbon::now();
+                        $order->save();
+                    }
                 }
             } else {
-
                 // удалить неоплаченное резервирование
                 foreach ($order->schedules as $schedule) {
                     $schedule->schedule->discipline_id = null;
