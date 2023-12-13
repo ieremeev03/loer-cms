@@ -36,6 +36,8 @@ class ReservPaymentStatusCommand extends Command
             ->whereNotNull('sber_id')
             ->get();
 
+        print_r($orders);
+
         foreach ($orders as $order) {
             if ($order->created_at > Carbon::now()->subMinutes(21)) {
                 $response = (new PaymentService())->statusPayment(['orderNumber' => $order->id]);
@@ -48,6 +50,7 @@ class ReservPaymentStatusCommand extends Command
                     $order->save();
                 }
             } else {
+
                 // удалить неоплаченное резервирование
                 foreach ($order->schedules as $schedule) {
                     $schedule->schedule->discipline_id = null;
