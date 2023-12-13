@@ -173,23 +173,10 @@ function closeModal() {
                                 </div>
                             </div>
 
-                            <div class="popup__content-tab-content-form-row">
-                                <div class="popup__content-tab-content-form-row-left">ФИО получателя сертификата</div>
-                                <div class="popup__content-tab-content-form-row-input-inner">
-                                    <div v-if="data.error?.recipient"
-                                         class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
-                                        {{ data.error.recipient }}
-                                    </div>
-                                    <div v-if="data.error?.recipient"
-                                         class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
-                                        {{ data.error.recipient }}
-                                    </div>
-                                    <input v-model="data.cert.recipient" type="text" class="popup__content-tab-content-form-row-input" placeholder="Иванов Иван Иванович">
-                                </div>
-                            </div>
+
 
                             <div class="popup__content-tab-content-form-row">
-                                <div class="popup__content-tab-content-form-row-left" >Телефон</div>
+                                <div class="popup__content-tab-content-form-row-left" >Ваш телефон</div>
                                 <div class="popup__content-tab-content-form-row-input-inner popup__content-tab-content-form-row-input-inner-tel">
                                     <div class="popup__content-tab-content-form-row-input-error">Поле является <br> обязательным для заполнения</div>
                                     <div class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile">Поле является обязательным для заполнения</div>
@@ -210,7 +197,7 @@ function closeModal() {
                             </div>
 
                             <div class="popup__content-tab-content-form-row">
-                                <div class="popup__content-tab-content-form-row-left">E-mail</div>
+                                <div class="popup__content-tab-content-form-row-left">Ваш E-mail</div>
                                 <div class="popup__content-tab-content-form-row-input-inner">
                                     <div v-if="data.error?.email"
                                          class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
@@ -244,12 +231,27 @@ function closeModal() {
                                 </div>
                             </div>
 
+                            <div class="popup__content-tab-content-form-row">
+                                <div class="popup__content-tab-content-form-row-left">ФИО получателя сертификата</div>
+                                <div class="popup__content-tab-content-form-row-input-inner">
+                                    <div v-if="data.error?.recipient"
+                                         class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
+                                        {{ data.error.recipient }}
+                                    </div>
+                                    <div v-if="data.error?.recipient"
+                                         class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-mobile popup__content-tab-content-form-row-input-error-active ">
+                                        {{ data.error.recipient }}
+                                    </div>
+                                    <input v-model="data.cert.recipient" type="text" class="popup__content-tab-content-form-row-input" placeholder="Иванов Иван Иванович">
+                                </div>
+                            </div>
+
                             <div class="popup__content-tab-content-form-row-input-inner custom__chexbox-inner">
                                 <div class="custom-checkbox">
                                     <input v-model="data.agree" type="checkbox"  id="checkbox_cert" />
                                     <label for="checkbox_cert"></label>
                                 </div>
-                                <div class="custom-checkbox-text">Согласен(а) с <a href="/info" class="underline">правилами</a> приобретения и использования сертификата</div>
+                                <div class="custom-checkbox-text">Согласен(а) с <a href="/info" class="underline">правилами</a> пользования услугами курорта</div>
                                 <div v-if="data.error?.agree"
                                      class="popup__content-tab-content-form-row-input-error popup__content-tab-content-form-row-input-error-active ">
                                     Необходимо ознакомиться и согласиться с правилами

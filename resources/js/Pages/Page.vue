@@ -104,7 +104,6 @@ export default {
     mounted(){
         setTimeout(() => {
             this.show = false
-            console.log(111)
         }, 700)
     },
     methods: {

@@ -60,9 +60,9 @@ const validateForm = () => {
                 </div>
 
                 <input v-model="data.skipass" type="text"
-                       v-maska data-maska="**** ****"
+                       v-maska data-maska="********"
                        class="popup__content-tab-content-form-row-input"
-                       placeholder="XXXX XXXX">
+                       placeholder="XXXXXXXX">
             </div>
             <button @click="getInfo" class="button__more" >Проверить</button>
         </div>

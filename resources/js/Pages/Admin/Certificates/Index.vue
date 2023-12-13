@@ -1,5 +1,6 @@
 <script setup>
 import AdminLayout from '@/Layouts/AdminLayout.vue';
+import {Head, usePage, Link} from '@inertiajs/vue3';
 
 
 defineProps({
@@ -8,46 +9,52 @@ defineProps({
 </script>
 
 <template>
-    <AdminLayout title="Серификаты">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Сертификаты
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto">
-                <div class="">
-                    <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                        <table class="min-w-full divide-y divide-gray-300">
-                            <thead>
-                            <tr>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">#</th>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">Дата</th>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">ФИО получателя</th>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">Сумма</th>
-                                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900  ">Данные покупателя</th>
-                            </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                            <tr v-for="certificate in certificates">
-                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">C-{{ certificate.id }}</td>
-                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">{{ certificate.created_at }}</td>
-                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900  ">{{ certificate.recipient }}</td>
-                                <td class="whitespace-nowrap p-4 text-sm font-medium text-gray-900 font-semibold">{{ $filters.format_money(certificate.nominal) }}₽</td>
-                                <td class="whitespace-nowrap p-4 text-xs text-gray-900  ">
-                                    <div>{{ certificate.buyer }}</div>
-                                    <div>{{ certificate.email }}</div>
-                                    <div>{{ certificate.phone }}</div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
+    <AdminLayout title="Сертификаты">
+        <Head title = "Административная панель Сертификаты"></Head>
+        <section >
+            <div class="p-4 mt-6 space-y-6 ">
+                <div class="flex items-center justify-between flex-wrap">
+                    <h1 class="text-lg font-medium text-black-50">Сертификаты</h1>
+                    <div class="flex flex-row gap-6">
 
                     </div>
+
                 </div>
+
+                <div class="relative overflow-x-auto rounded">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">ID</th>
+                            <th scope="col" class="px-6 py-3">Дата покупки</th>
+                            <th scope="col" class="px-6 py-3 ">ФИО получателя</th>
+                            <th scope="col" class="px-6 py-3">Сумма</th>
+                            <th scope="col" class="px-6 py-3">Данные покупателя</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="certificate in certificates" class="bg-white border-b dark:bg-white dark:border-gray-700">
+                            <td class="w-3 px-6 py-4 font-medium whitespace-nowrap ">C-{{ certificate.id }}</td>
+                            <td class="px-6 py-4 font-medium whitespace-nowrap w-12">{{ certificate.created_at }}</td>
+                            <td class="px-6 py-4 font-medium whitespace-nowrap w-1/2">{{ certificate.recipient }}</td>
+                            <td class="px-6 py-4 font-medium whitespace-nowrap w-12">{{ $filters.format_money(certificate.nominal) }}₽</td>
+                            <td class="px-6 py-4 text-xs font-medium whitespace-nowrap w-full">
+                                <div>{{ certificate.buyer }}</div>
+                                <div>{{ certificate.email }}</div>
+                                <div>{{ certificate.phone }}</div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <Pagination class="mt-6" :links="certificates.links"/>
             </div>
-        </div>
+
+        </section>
+
+
     </AdminLayout>
 </template>

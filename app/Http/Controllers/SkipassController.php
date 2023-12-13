@@ -230,7 +230,7 @@ class SkipassController extends Controller
                 'title' => $installation['right']['goodTypeName'],
                 'amount' => $installation['right']['amount'],
                 'from' => Carbon::parse($installation['right']['from'])->setTimezone('Asia/Yekaterinburg')->format('d.m.Y H:i'),
-                'to' => Carbon::parse($installation['right']['to'])->setTimezone('Asia/Yekaterinburg')->format('d.m.Y H:i'),
+                'to' => $installation['right']['to'] ? Carbon::parse($installation['right']['to'])->setTimezone('Asia/Yekaterinburg')->format('d.m.Y H:i') : null,
             ];
         }
 

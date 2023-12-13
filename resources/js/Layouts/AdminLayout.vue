@@ -7,6 +7,9 @@ import MenuItem from "@/Components/Admin/MenuItem.vue";
 import '../../css/app.css';
 import DropdownLink from "../../../vendor/laravel/breeze/stubs/inertia-vue-ts/resources/js/Components/DropdownLink.vue";
 
+defineProps({
+    title: String,
+});
 const showSidebar = ref(false)
 const showMenu = ref(false)
 
