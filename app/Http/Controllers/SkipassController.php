@@ -96,12 +96,15 @@ class SkipassController extends Controller
 
     public function topup(TopupSkipassRequest $request)
     {
+        $skipass = $request->input('skipass');
+        $skipass = preg_replace('/\s+/', '', $skipass);
+
         // информация о скипассе
         $skipass = Http::withHeaders([
             'Authorization' => config('lime.token'),
         ])
             ->get(config('lime.url').'/ClientManagement/GetCardInfoByCardUid', [
-                'uid' => $request->input('skipass'),
+                'uid' => $skipass,
             ])
             ->json();
 
@@ -142,9 +145,43 @@ class SkipassController extends Controller
     {
         $skipass = Skipass::create($data);
 
+        $title = $data['operation'] == Skipass::OPERATION_CREATE ? 'Покупка скипаса' : 'Продление скипаса';
+        $tariff = Tariff::where('external_id', $skipass->tariff_id)->first();
+        $title .= ' - '.$tariff->title;
+        $title .= $skipass->is_child ? ' детский' : ' взрослый';
+
         $paymentData = array();
         $paymentData['orderNumber'] = 'S-'.$skipass->id;
         $paymentData['amount'] = $skipass->sum * 100;
+        $paymentData['description'] = 'Заказ №S-'.$skipass->id.' '.$title;
+
+        $paymentData['customerDetails'] = json_encode([
+            'email' => $skipass->email,
+            'phone' => preg_replace('/[^+0-9]/', '', $skipass->phone)
+        ]);
+
+        $paymentData['orderBundle'] = json_encode([
+            'cartItems' => [
+                'items' => [
+                    [
+                        'positionId' => 1,
+                        'name' => $title,
+                        'quantity' => array(
+                            'value' => 1,
+                            'measure' => 'шт'
+                        ),
+                        'itemAmount' => $skipass->sum * 100,
+                        'itemPrice' => $skipass->sum * 100,
+                        'itemCode' => '1', // Номер (идентификатор) товарной позиции в системе магазина
+                        'tax' => array(
+                            'taxType' => 0,
+                            'taxSum' => 0
+                        ),
+                    ],
+                ],
+            ],
+        ]);
+
 
         $pageUrl = $request->session()->previousUrl();
         $pageUrl = explode('?', $pageUrl)[0];

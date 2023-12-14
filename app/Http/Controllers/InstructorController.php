@@ -208,8 +208,34 @@ class InstructorController extends Controller
         $data['failUrl'] = $pageUrl . '?result=error&form=reserv';
 
 
+        $paymentData['customerDetails'] = json_encode([
+            'email' => $order->email,
+            'phone' => preg_replace('/[^+0-9]/', '', $order->phone)
+        ]);
+
+        $data['orderBundle'] = json_encode([
+            'cartItems' => [
+                'items' => [
+                    [
+                        'positionId' => 1,
+                        'name' => 'Услуги инструктора',
+                        'quantity' => array(
+                            'value' => 1,
+                            'measure' => 'шт'
+                        ),
+                        'itemAmount' => $order->sum * 100,
+                        'itemPrice' => $order->sum * 100,
+                        'itemCode' => '1', // Номер (идентификатор) товарной позиции в системе магазина
+                        'tax' => array(
+                            'taxType' => 0,
+                            'taxSum' => 0
+                        ),
+                    ],
+                ],
+            ],
+        ]);
+
         $response = (new PaymentService())->registerPayment($data);
-        Log::channel('payment')->debug($response);
 
         if (!$response) {
             return response()->json([
@@ -228,6 +254,7 @@ class InstructorController extends Controller
                 ]
             ], 422);
         }
+
 
         $order->sber_id = $response['orderId'] ?? null;
         $order->sber_status = $response['orderStatus'] ?? null;

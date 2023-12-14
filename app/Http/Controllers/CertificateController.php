@@ -26,6 +26,45 @@ class CertificateController extends Controller
         $paymentData['returnUrl'] = $pageUrl . '?result=success&form=cert';
         $paymentData['failUrl'] = $pageUrl . '?result=error&form=cert';
 
+        $paymentData['customerDetails'] = json_encode([
+            'email' => $certificate->email,
+            'phone' => preg_replace('/[^+0-9]/', '', $certificate->phone)
+        ]);
+
+        $paymentData['orderBundle'] = json_encode([
+            'cartItems' => [
+                'items' => [
+                    [
+                        'positionId' => 1,
+                        'name' => 'Покупка сертификата',
+                        'quantity' => array(
+                            'value' => 1,
+                            'measure' => 'шт'
+                        ),
+                        'itemAmount' => $certificate->nominal * 100,
+                        'itemPrice' => $certificate->nominal * 100,
+                        'itemCode' => '1', // Номер (идентификатор) товарной позиции в системе магазина
+                        'tax' => array(
+                            'taxType' => 0,
+                            'taxSum' => 0
+                        ),
+                        'itemAttributes' => [
+                            'attributes' => [
+                                [
+                                    'name' => 'paymentMethod',
+                                    'value' => 3, // аванс
+                                ],
+                                [
+                                    'name' => 'paymentObject',
+                                    'value' => 1, // товар
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
 
         $response = (new PaymentService())->registerPayment($paymentData);
 
