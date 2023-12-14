@@ -145,7 +145,8 @@ class SkipassController extends Controller
     {
         $skipass = Skipass::create($data);
 
-        $title = $data['operation'] == Skipass::OPERATION_CREATE ? 'Покупка скипаса' : 'Продление скипаса';
+        //$title = $data['operation'] == Skipass::OPERATION_CREATE ? 'Покупка скипаса' : 'Продление скипаса';
+        $title = 'Подъемник. Тариф';
         $tariff = Tariff::where('external_id', $skipass->tariff_id)->first();
         $title .= ' - '.$tariff->title;
         $title .= $skipass->is_child ? ' детский' : ' взрослый';
