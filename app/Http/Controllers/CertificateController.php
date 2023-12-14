@@ -18,6 +18,7 @@ class CertificateController extends Controller
 
         $paymentData = array();
         $paymentData['orderNumber'] = 'C-'.$certificate->id;
+        $paymentData['description'] = 'Заказ №C-'.$certificate->id.' Покупка сертификата';
         $paymentData['amount'] = $certificate->nominal * 100;
 
         $pageUrl = $request->session()->previousUrl();
