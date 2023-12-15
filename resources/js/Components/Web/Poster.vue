@@ -6,7 +6,7 @@
 
             <div v-if="!properties?.content?.value && content" class="section__services-text" v-bind:class="{ 'mb-0' : !properties?.link.value}" v-html="content"></div>
             <div v-if="properties?.content?.value" class="section__services-text" v-bind:class="{ 'mb-0' : !properties?.link.value}" v-html="properties?.content?.value"></div>
-            <a v-if="properties?.link.value" :href="properties?.link.value" class="button__more">{{properties?.link_text.value}}</a>
+            <a v-if="properties?.link.value && properties?.link.value !== '#'" :href="properties?.link.value" class="button__more">{{properties?.link_text.value}}</a>
 
         </div>
     </section>
