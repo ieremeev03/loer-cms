@@ -121,14 +121,10 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/TextArea.vue';
-import Select from '@/Components/Select.vue';
 
 
-import { Link, useForm, usePage, Head, router } from '@inertiajs/vue3';
-import { onMounted, ref } from 'vue';
+import { useForm, usePage, Head, router } from '@inertiajs/vue3';
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import SecondaryButton
-    from "../../../../../vendor/laravel/breeze/stubs/inertia-vue-ts/resources/js/Components/SecondaryButton.vue";
 import Image from "@/Components/Admin/Properties/image.vue";
 import Video from "@/Components/Admin/Properties/video.vue";
 import Text from "@/Components/Admin/Properties/text.vue";
@@ -163,9 +159,6 @@ const form = useForm({
     properties: props,
 });
 
-console.log(props)
-
-
 const formDelete = useForm({
     id: block.id,
 });
@@ -181,10 +174,8 @@ function moveDown(index) {
 }
 
 function addItem() {
-    let item = [];
-    console.log(form.items)
-    form.items[Object.keys(form.items).length] = fields
-    console.log(form.items)
+    let cloneFields =JSON.parse(JSON.stringify(fields));
+    form.items[Object.keys(form.items).length] = Object.assign({}, cloneFields)
 }
 
 function removeItem(id){
