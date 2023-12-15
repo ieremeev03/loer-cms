@@ -34,7 +34,6 @@ function removeFile(field_value) {
 function onFileChanged($event, item_id, field_id) {
     loading.value = true;
     let files = $event.target.files || $event.dataTransfer.files;
-    console.log(files[0]);
     let formData = new FormData();
     formData.append("file", files[0]);
     axios.post('/fileUpload', formData, {
@@ -42,12 +41,10 @@ function onFileChanged($event, item_id, field_id) {
             'Content-Type': 'multipart/form-data'
         }
     }).then(response => {
-        console.log(response.data, item_id, field_id)
         emit('files-dropped', [response.data, item_id, field_id])
         loading.value = false;
     })
         .catch(err => {
-            console.log(err)
             loading.value = false;
         })
 

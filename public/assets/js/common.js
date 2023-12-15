@@ -4,14 +4,14 @@
 const popupBuy = document.querySelector("#popup");
 
       var buttonsBuy = document.querySelectorAll('#btn-buy');
-      buttonsBuy.forEach(function(buttonBuy) {   
+      buttonsBuy.forEach(function(buttonBuy) {
         buttonBuy.addEventListener('click', function(event) {
-          
+
             popup.classList.add("_open");
             document.body.classList.add("_lock");
 
           const popupCancel = popupBuy.querySelector(".popup__cancel");
-          
+
           if (popupCancel) {
             popupCancel.addEventListener("click", function () {
               popup.classList.remove("_open");
@@ -37,7 +37,7 @@ if (popupApply) {
     }
   });
   const popupCancel = popupApply.querySelector(".popup__cancel");
-          
+
   if (popupCancel) {
     popupCancel.addEventListener("click", function () {
       popupApply.classList.remove("_open");
@@ -54,7 +54,7 @@ if (popupError) {
     }
   });
   const popupCancel = popupError.querySelector(".popup__cancel");
-          
+
   if (popupCancel) {
     popupCancel.addEventListener("click", function () {
       popupError.classList.remove("_open");
@@ -66,14 +66,14 @@ if (popupError) {
 const popupGift = document.querySelector("#popup-gift");
 
 var buttonsGift = document.querySelectorAll('#btn-gift');
-buttonsGift.forEach(function(buttonGift) {   
+buttonsGift.forEach(function(buttonGift) {
   buttonGift.addEventListener('click', function(event) {
-    
+
       popupGift.classList.add("_open");
       document.body.classList.add("_lock");
 
     const popupCancel = popupGift.querySelector(".popup__cancel");
-    
+
     if (popupCancel) {
       popupCancel.addEventListener("click", function () {
         popupGift.classList.remove("_open");
@@ -100,7 +100,7 @@ if (popupGift) {
   if(forms){
     forms.forEach(function(form) {
       Inputmask("+7 (999) 999-99-99").mask("#tel");
-  
+
       form.addEventListener('submit', function(event) {
         event.preventDefault(); // Предотвращаем обычную отправку формы
 
@@ -108,10 +108,10 @@ if (popupGift) {
         var telInputInner = form.querySelector('.popup__content-tab-content-form-row-input-inner-tel');
         var telInputErr = telInputInner.querySelector('.popup__content-tab-content-form-row-input-error');
         var telInputErrMob = telInputInner.querySelector('.popup__content-tab-content-form-row-input-error-mobile');
-        
+
         // var numericValue = telInput.value.replace(/\D/g, ''); // Удаляем все нецифровые символы
 
-        
+
         // Проверяем, пустое ли поле для телефона
         if (telInput.value.trim() === '') {
             telInput.classList.add('popup__content-tab-content-form-row-input-border-red');
@@ -121,7 +121,7 @@ if (popupGift) {
             if(telInputErrMob){
               telInputErrMob.classList.add('popup__content-tab-content-form-row-input-error-active');
             }
-     
+
         } else {
           telInput.classList.remove('popup__content-tab-content-form-row-input-border-red');
           if(telInputErr){
@@ -152,8 +152,8 @@ if (popupGift) {
       //  }
 
 
- 
-  
+
+
         telInput.addEventListener("input", function() {
           telInput.classList.remove('popup__content-tab-content-form-row-input-border-red');
           if(telInputErr){
@@ -174,21 +174,21 @@ if (popupGift) {
               popupGift.classList.remove("_open");
               popupApply.classList.add("_open")
 
-            
+
              }
-     
-             
+
+
          }
-         
+
 
 
         /*var formData = new FormData(form);
-        
+
         // Выполняем AJAX-запрос
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'send.php'); // Укажите здесь URL обработчика на сервере
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        
+
         xhr.onload = function() {
           if (xhr.status === 200) {
             // Обработка успешного ответа
@@ -199,7 +199,7 @@ if (popupGift) {
             alert('Ошибка при отправке формы.');
           }
         };
-        
+
 
         xhr.send(formData); */
         // else{
@@ -272,7 +272,7 @@ if(menuIcon){
         headMenu.classList.remove("_actived");
       }
     });
- 
+
 }
 
 
@@ -293,7 +293,7 @@ const SwipersServices = document.querySelectorAll(".section__services-swiper");
           grabCursor: false,
           autoplay:{
             delay:3500,
-          }, 
+          },
 
         loop:false,
         on: {
@@ -320,10 +320,10 @@ const SwipersServices = document.querySelectorAll(".section__services-swiper");
 //     const sectionHow = document.querySelector('.section__how');
 //     const sectionBlack = sectionHow.querySelector('.section__black');
 //     const sectionWhite = sectionHow.querySelector('.section__white');
-  
+
 //     // Получаем текущую ширину экрана
 //     const screenWidth = window.innerWidth;
-  
+
 //     // Условие для изменения классов при достижении 1024px
 //     if (screenWidth <= 1024 && !hasClassSwapped) {
 //       if(sectionBlack){
@@ -341,21 +341,21 @@ const SwipersServices = document.querySelectorAll(".section__services-swiper");
 //       // Если ширина больше 1024px и классы были изменены, вернуть классы к начальному состоянию
 //       sectionBlack.classList.remove('section__white');
 //       sectionBlack.classList.add('section__black');
-  
+
 //       sectionWhite.classList.remove('section__black');
 //       sectionWhite.classList.add('section__white');
-  
+
 //       hasClassSwapped = false; // Устанавливаем флаг в false, чтобы разрешить изменение классов при увеличении экрана
 //     }
 //   }
-  
+
 //   // Вызываем функцию при загрузке страницы и при изменении размера окна
 //   window.addEventListener('load', adjustSectionHowClasses);
 //   window.addEventListener('resize', adjustSectionHowClasses);
-  
+
 //   // Дополнительно вызываем функцию после загрузки страницы, чтобы настроить классы в начальном состоянии
 //   adjustSectionHowClasses();
-  
+
 // }
 
 
@@ -385,7 +385,7 @@ const SwipersSlider = document.querySelectorAll(".section__slider");
           grabCursor: false,
           autoplay:{
             delay:3500,
-          }, 
+          },
           pagination: {
             el: SwiperSlider.querySelector(".swiper-pagination"),
             clickable: true,
@@ -414,14 +414,14 @@ if(formChoose){
   $( function() {
     $( "#dateinputend" ).datepicker();
   } );
-  
+
   $(document).ready(function() {
     $('#dateinputstart').inputmask('99/99/9999', { placeholder: 'мм/дд/гггг' });
   });
   $(document).ready(function() {
     $('#dateinputend').inputmask('99/99/9999', { placeholder: 'мм/дд/гггг' });
   });
-  
+
 }
 
 
@@ -439,7 +439,7 @@ customSelects.forEach(function(customSelect) {
   selectSelected.addEventListener('click', function() {
     selectItems.classList.toggle('show');
     selectSelected.classList.add('select-selected-active');
-    
+
   });
 
   // При клике на опцию обновить выбранный элемент и скрыть опции
@@ -449,7 +449,6 @@ customSelects.forEach(function(customSelect) {
       selectSelected.textContent = option.textContent;
       selectItems.classList.remove('show');
       // Выполните нужные действия при выборе опции (например, отправка формы или обновление данных)
-      console.log('Выбрана опция: ' + value);
     });
   });
 

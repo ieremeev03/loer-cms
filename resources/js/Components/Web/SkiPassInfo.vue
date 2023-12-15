@@ -30,7 +30,6 @@ const getInfo = () => {
             data.result = true;
         })
         .catch(error => {
-            console.log(error);
             data.error = error.response.data.errors;
             data.result = false;
         });

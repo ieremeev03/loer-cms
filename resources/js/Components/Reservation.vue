@@ -75,17 +75,12 @@ const getDisciplines = () => {
             disciplines.value = response.data.disciplines;
             result.value = params.get("result");
             formReq.value = params.get("form");
-            console.log(disciplines.value)
-            console.log(result.value)
-            console.log(formReq.value)
 
             data.selectedDiscpline = disciplines.value[0]
             data.popup = (['error', 'success'].includes(result.value) && formReq.value === 'reserv')
 
-            console.log(data)
         })
         .catch(error => {
-            console.log(error);
         });
 }
 
@@ -105,8 +100,6 @@ const selectDate = (modelData) => {
 const calculateSum = () => {
     if (data.price && data.times) {
         let count = data.times.filter((time) => time.selected === true).length;
-        console.log(data)
-        console.log(data.selectedCount)
         data.sum = data.price[data.selectedCount['id']] * count;
     }
 }
@@ -137,7 +130,6 @@ const getInstructors = () => {
             data.price = response.data.price;
         })
         .catch(error => {
-            console.log(error);
         });
     }
 }
@@ -152,7 +144,6 @@ const getTimes = () => {
         data.price = response.data.price;
     })
     .catch(error => {
-        console.log(error);
     });
 }
 
@@ -215,7 +206,6 @@ const addOrder = () => {
         })
         .catch(error => {
             data.loader = false;
-            console.log(error.response.data.errors);
             data.error = error.response.data.errors;
             if (data.error.dublicate) {
                 let instructor = data.selectedInstructor;

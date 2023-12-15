@@ -36,7 +36,6 @@ mounted: {
         data.cardPrice = response.data;
     })
     .catch(error => {
-        console.log(error);
     });
 }
 
@@ -62,7 +61,6 @@ const getTariffs = () => {
                 data.tariffs = response.data;
             })
             .catch(error => {
-                console.log(error);
             });
     } else {
         data.tariffs = [];
@@ -146,7 +144,6 @@ const purchase = () => {
             .catch(error => {
                 data.loader = false;
                 data.error = error.response.data.errors;
-                console.log(error);
             });
     }
 
@@ -168,7 +165,6 @@ const purchase = () => {
             .catch(error => {
                 data.loader = false;
                 data.error = error.response.data.errors;
-                console.log(error);
             });
     }
 }

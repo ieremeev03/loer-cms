@@ -36,7 +36,6 @@ export default {
     components: {MenuItem},
     props: ['pages'],
     setup(props) {
-        console.log(props.pages)
     }
 }
 </script>

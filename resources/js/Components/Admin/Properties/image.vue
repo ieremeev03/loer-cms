@@ -33,14 +33,14 @@ const loading = ref(false)
 defineExpose({ focus: () => input.value.focus() });
 
 
-console.log(props.field_value)
+
 function removeFile(field_value) {
     emit('update:modelValue', field_value)
 }
 function onFileChanged($event, item_id, field_id) {
     loading.value = true;
     let files = $event.target.files || $event.dataTransfer.files;
-    console.log(files[0]);
+
     let formData = new FormData();
     formData.append("file", files[0]);
     if(props.folder!==undefined) formData.append("folder", props.folder);
@@ -49,13 +49,12 @@ function onFileChanged($event, item_id, field_id) {
             'Content-Type': 'multipart/form-data'
         }
     }).then(response => {
-        console.log(response.data, item_id, field_id)
+
         emit('files-dropped', [response.data, item_id, field_id])
         emit('update:modelValue', response.data)
         loading.value = false;
     })
         .catch(err => {
-            console.log(err)
             loading.value = false;
         })
 }

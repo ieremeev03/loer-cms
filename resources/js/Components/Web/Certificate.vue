@@ -19,7 +19,6 @@ onMounted(() => {
    result.value = params.get("result");
     formReq.value = params.get("form");
     data.popup = (['error', 'success'].includes(result.value) && formReq.value === 'cert')
-    console.log(data)
 })
 
 const data = reactive({
@@ -66,7 +65,6 @@ const purchase = () => {
         .catch(error => {
             data.loader = false;
             data.error = error.response.data.errors;
-            console.log(error);
         });
 }
 

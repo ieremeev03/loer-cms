@@ -82,7 +82,6 @@ export default {
     },
     methods: {
         callback () {
-            console.log('Я видим')
         }
     }
 };

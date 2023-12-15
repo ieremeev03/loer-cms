@@ -24,11 +24,9 @@ const getDisciplines = () => {
     axios.get(route('get-disciplines'), {
     })
         .then(response => {
-            console.log(response.data)
             disciplines.value = response.data;
         })
         .catch(error => {
-            console.log(error);
         });
 }
 
