@@ -17,7 +17,7 @@ class PaymentService
             ->post($url, $data)
             ->json();
 
-
+        Log::channel('payment')->debug($payment);
         return $payment;
     }
 
