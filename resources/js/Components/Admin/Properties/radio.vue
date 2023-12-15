@@ -4,7 +4,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 defineProps({
     modelValue: {
         type: String,
-        required: true,
+        required: false,
     },
     list: {
         type: Object,
