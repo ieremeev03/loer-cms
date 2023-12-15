@@ -1365,7 +1365,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
     .section__notext {
-        padding: 55px 64px 35px 60px;
+        padding: 55px 64px 35px 60px !important;
     }
 
   .section__services-title {
@@ -6142,9 +6142,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-.section__notext {
-    padding: 55px 64px 35px 64px;
-}
+
 
 .mb-0 {
     margin-bottom: 0 !important;
