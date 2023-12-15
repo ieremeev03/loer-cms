@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive, watch } from 'vue';
+import { router } from '@inertiajs/vue3';
 import MessageSuccess from "@/Components/Part/MessageSuccess.vue";
 import MessageError from "@/Components/Part/MessageError.vue";
 
@@ -8,8 +9,14 @@ const props = defineProps({
         type: Object,
         default: null
     },
-
 });
+
+const closeModal = () => {
+    data.popup = false;
+    data.error = null;
+    router.get(router.page.url.split('?')[0]);
+}
+
 const disciplines = ref([]);
 const date = ref();
 const result = ref();
@@ -225,13 +232,7 @@ mounted: {
     getDisciplines()
 }
 
-function closeModal() {
-    if(result.value === 'success' || result.value === 'error') {
-        window.location.href = window.location.pathname;
-    }
-    data.popup = false;
-    data.error = null
-}
+
 </script>
 
 <style scoped>
@@ -423,7 +424,7 @@ function closeModal() {
     <div id="popup" class="popup" :class="{'_open': data.popup === true}">
         <div class="popup__body">
             <div class="popup__content section__white">
-                <div class="popup__cancel" @click="closeModal">
+                <div class="popup__cancel" @click="closeModal()">
                     <img src="/assets/img/cancel.svg" alt="cancel">
                 </div>
             <div class="popup__content-tabs-content">

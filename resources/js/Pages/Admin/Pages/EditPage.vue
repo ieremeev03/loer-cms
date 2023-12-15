@@ -154,7 +154,7 @@
                                         @files-dropped="getUploadedData"
                                     ></component>
                                 </template>
-                                <button @click="moveUp(index_i)">UP</button>
+
                                 <div class="flex flex-row items-center justify-end ">
                                     <span class="cursor-pointer bg-red-500 p-2 rounded-lg text-xs text-white" @click="removeItem(index_i)">Удалить</span>
                                 </div>
@@ -251,10 +251,8 @@ const formDelete = useForm({
 });
 
 function addItem() {
-    let item = [];
-    console.log(formItems.items)
-    formItems.items[Object.keys(formItems.items).length] = fields
-    console.log(formItems.items)
+    let cloneFields =JSON.parse(JSON.stringify(fields));
+    formItems.items[Object.keys(formItems.items).length] = Object.assign({}, cloneFields)
 }
 
 function removeItem(id){
