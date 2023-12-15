@@ -1154,6 +1154,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 40px 64px 60px 64px;
 }
 
+.section__notext {
+    padding: 64px 64px 35px 64px;
+}
+
 .section__services-title {
 
   color: #FFF;
