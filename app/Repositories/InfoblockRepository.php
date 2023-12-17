@@ -92,7 +92,7 @@ class InfoblockRepository
     public function getItemsInfoblockAdmin($infoblock, $page = null, $uuid = null) {
         $items = [];
         $sortBy = $infoblock->sortBy;
-        $sortDir = 'sortBy';
+        $sortDir = 'sortByDesc';
 
         //->{$sortDir}('created_at')
         if($page!=null) {
