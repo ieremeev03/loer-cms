@@ -90,7 +90,7 @@ class InfoblockController extends Controller
     public function edit(Infoblock $block)
     {
         $items = $this->infoblockRepository->getItemsInfoblockAdmin($block);
-        //dd($items);
+        ///dd($items);
 
         $fields = $this->infoblockRepository->getFieldsItem($block);
         //dd($fields);

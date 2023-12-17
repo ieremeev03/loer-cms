@@ -101,7 +101,7 @@ class InfoblockRepository
             $itemsRaw = $infoblock->items->where('page_id', null)->{$sortDir}($sortBy);
         }
 
-        // dd($itemsRaw);
+         //dd($itemsRaw);
 
         $n = 0;
         foreach ($itemsRaw as $item) {
