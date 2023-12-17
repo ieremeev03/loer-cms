@@ -62,7 +62,6 @@
                                         v-model="form.items[index_i].fields[index_b].value"
                                         @files-dropped="getUploadedData"
                                     ></component>
-<!--                                    form.items[{{index_i}}].fields[{{index_b}}].value - {{form.items[index_i].fields[index_b].value}} - {{block.value}}-->
                                 </template>
 
                                 <div class="flex flex-row items-center justify-end gap-2">
@@ -165,6 +164,7 @@ const formDelete = useForm({
 
 function moveUp(index) {
     let t = form.items.splice(index,1);
+    console.log(index-1,0,t[0]);
     form.items.splice(index-1,0,t[0]);
 }
 
@@ -190,6 +190,7 @@ function uniqid(prefix = "", random = false) {
     const id = sec.toString(16).replace(/\./g, "").padEnd(14, "0");
     return `${prefix}${id}${random ? `.${Math.trunc(Math.random() * 100000000)}`:""}`;
 };
+
 function  getUploadedData(file) {
     console.log(file[0][0], file[1],  file[2])
     let item = file[1];
@@ -199,12 +200,11 @@ function  getUploadedData(file) {
 }
 
 function  getUploadedDataProp(file) {
-    console.log(file[0][0])
     let item = file[2];
     form.properties[item]['file'] = file[0];
 }
+
 function destroy() {
-console.log(block)
     if (confirm('Вы действительно хотите удалить страницу?')) {
         router.delete(route('menus.destroy', block.id))
     }

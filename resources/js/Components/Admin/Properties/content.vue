@@ -20,6 +20,10 @@ const editorConfig = ref(
     }
 )
 
+watch(() => props.modelValue, (first, second) => {
+    editorData.value = first
+});
+
 watch(editorData, () => {
     emit('update:modelValue', editorData.value)
 })
@@ -43,6 +47,10 @@ const emit = defineEmits(['update:modelValue', 'update:editorData'])
 <template>
     <div>
         <InputLabel for="title" :value="title" />
-        <CKEditor :editor="ClassicEditor" v-model="editorData" :config="editorConfig" class="rounded"></CKEditor>
+        <CKEditor :editor="ClassicEditor"
+            v-model="editorData"
+            :config="editorConfig"
+            class="rounded"
+        ></CKEditor>
         </div>
 </template>
