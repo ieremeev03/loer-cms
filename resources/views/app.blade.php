@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/style.css?v=124">
         <link rel="shortcut icon" href="/favicon-32x32.png" type="image/png">
         <link rel="apple-touch-icon"  href="/apple-touch-icon.png" >
         <meta name="description" content="Takman">
