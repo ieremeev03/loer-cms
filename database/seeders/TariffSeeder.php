@@ -21,7 +21,7 @@ class TariffSeeder extends Seeder
         ]);
 
         Tariff::firstOrCreate([
-            'external_id' => 5095
+            'external_id' => 5184
         ],[
             'title' => 'Карта SKI-PASS',
             'price' => 100,
