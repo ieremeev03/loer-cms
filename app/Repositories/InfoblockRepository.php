@@ -88,6 +88,45 @@ class InfoblockRepository
 
         return $items;
     }
+
+    public function getItemsInfoblockAdmin($infoblock, $page = null, $uuid = null) {
+        $items = [];
+        $sortBy = $infoblock->sortBy;
+        $sortDir = 'sortBy';
+
+        //->{$sortDir}('created_at')
+        if($page!=null) {
+            $itemsRaw =  $infoblock->items->where('page_id',$page)->where('infoblock_bunch', $uuid)->{$sortDir}($sortBy);
+        } else {
+            $itemsRaw = $infoblock->items->where('page_id', null)->{$sortDir}($sortBy);
+        }
+
+        // dd($itemsRaw);
+
+        $n = 0;
+        foreach ($itemsRaw as $item) {
+            $fields = $infoblock->fields;
+            $items[$n]['id'] = $item->id;
+            $items[$n]['updated_at'] = $item->updated_at;
+            $items[$n]['fields']['title']['value'] = $item->title;
+            $items[$n]['fields']['description']['value'] = $item->description;
+            $items[$n]['fields']['title']['field']['title'] = "Заголовок";
+            $items[$n]['fields']['description']['field']['title'] = "Анонс";
+            $items[$n]['fields']['title']['field']['type'] = "Text";
+            $items[$n]['fields']['description']['field']['type'] = "Content";
+            $items[$n]['fields']['title']['field']['list'] = null;
+            $items[$n]['fields']['description']['field']['list'] = null;
+
+            foreach ($fields as $field) {
+                $value =  InfoblockFieldValue::where('item_id',$item->id)->where('field_id',$field->id)->first();
+                $items[$n]['fields'][$field->name]['value'] = $value == null ? null : $value->value;
+                $items[$n]['fields'][$field->name]['field'] = $field;
+            }
+            $n++;
+        }
+
+        return $items;
+    }
     public function getItemWithPage($page): array
     {
         $infoblocks = $page->infoblocks;
