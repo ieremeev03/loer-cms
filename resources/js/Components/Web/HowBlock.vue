@@ -10,23 +10,17 @@
                 <div class="section__how-block-columns">
                     <div class="section__how-block-column">
                         <div class="section__how-block-item">
-                            <div class="section__how-block-item-title">Администрация</div>
-                            <div class="section__how-block-item-text"><p>Ежедневно  с 10:00 до 18:00</p></div>
+                            <div class="section__how-block-item-title">Курорт</div>
+                            <div class="section__how-block-item-text"><p>Ежедневно с 10:00 до 18:00</p></div>
                         </div>
-                        <div class="section__how-block-item">
-                            <div class="section__how-block-item-title">Кафе</div>
-                            <div class="section__how-block-item-text"><p>Ежедневно  с 10:00 до 18:00</p></div>
-                        </div>
+
                     </div>
                     <div class="section__how-block-column">
                         <div class="section__how-block-item">
-                            <div class="section__how-block-item-title">Прокат</div>
-                            <div class="section__how-block-item-text"><p>Ежедневно  с 10:00 до 18:00</p></div>
+                            <div class="section__how-block-item-title">Офис</div>
+                            <div class="section__how-block-item-text"><p>Пн - пт с 10:00 до 18:00</p></div>
                         </div>
-                        <div class="section__how-block-item">
-                            <div class="section__how-block-item-title">Инструкторы </div>
-                            <div class="section__how-block-item-text"><p>Ежедневно  с 10:00 до 18:00</p></div>
-                        </div>
+
                     </div>
                 </div>
             </div>
