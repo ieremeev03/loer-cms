@@ -1798,7 +1798,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section__how-block-column {
   width: 100%;
-  max-width: 240px;
+  max-width: 250px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
