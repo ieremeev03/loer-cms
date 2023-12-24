@@ -18,6 +18,8 @@ import ImageStylePlugin from '@ckeditor/ckeditor5-image/src/imagestyle'
 import ImageToolbarPlugin from '@ckeditor/ckeditor5-image/src/imagetoolbar'
 import ImageUploadPlugin from '@ckeditor/ckeditor5-image/src/imageupload'
 import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
+import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload';
+
 
 const editorData = ref(props.modelValue || '')
 
@@ -25,6 +27,7 @@ const editorConfig = ref(
     {
         height: '300px',
         plugins: [
+            Base64UploadAdapter,
             Essentials,
             Autoformat,
             Bold,
@@ -60,7 +63,10 @@ const editorConfig = ref(
             addTargetToExternalLinks: true
         },
         image: {
-            toolbar: [ 'toggleImageCaption', 'imageTextAlternative', 'imageStyle:wrapText', 'imageStyle:breakText']
+            toolbar: [ 'toggleImageCaption', 'imageTextAlternative', 'imageStyle:wrapText', 'imageStyle:breakText'],
+            upload: {
+                types: ['jpeg', 'png', 'gif', 'bmp', 'webp', 'tiff', 'svg', 'svg+xml']
+            },
         },
         heading: {
             options: [
