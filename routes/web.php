@@ -20,6 +20,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\InstructorController as FrontInstructorController;
 use App\Http\Controllers\CertificateController as FrontCertificateController;
 use App\Http\Controllers\Admin\CertificateController;
+use App\Http\Controllers\CkeditorController;
 use App\Mail\SkipassShipped;
 use App\Models\Skipass;
 
@@ -121,6 +122,8 @@ Route::get('/test', [FrontInstructorController::class, 'test']);
 Route::post('/skipass-info', [SkipassController::class, 'getInfo'])->name('skipass-info');
 
 Route::get('/{pSlug}', [PageController::class, 'getPage'])->name('pages.getPage');
+
+Route::post('/upload', [CkeditorController::class, 'upload'])->name('ckeditor.upload');
 
 
 

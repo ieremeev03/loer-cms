@@ -36,6 +36,10 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+.ck-editor__editable {
+    min-height: 200px;
+}
+
 .btn {
     @apply mr-3
     rounded
