@@ -17,4 +17,4 @@ yarn-error.log
 /public/images/temp/
 /public/assets/video/
 /vendor
-/build
+/public/build
