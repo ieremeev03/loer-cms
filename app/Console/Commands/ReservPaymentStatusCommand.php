@@ -36,7 +36,7 @@ class ReservPaymentStatusCommand extends Command
             // заказы за последние 21 минуту
             if ($order->created_at > Carbon::now()->subMinutes(21)) {
                 if ($order->sber_id) {
-                    $response = (new PaymentService())->statusPayment(['orderNumber' => $order->id]);
+                    $response = (new PaymentService())->statusPayment(['orderNumber' => 'I-'.$order->id]);
                     if ($response['orderStatus'] === 2) {
                         $order->payed = $response['orderStatus'] === 2 ? true : false;
                         $order->sber_status = $response['orderStatus'] ?? null;

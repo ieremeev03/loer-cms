@@ -46,17 +46,17 @@ class InstructorController extends Controller
 
         return redirect('/'.$page->slug);
 
-       /* $instructor = Instructor::findOrFail($id);
-        $instructor->disciplines = $instructor->disciplines->map(function($item) {
-            return [
-                'id' => $item->id,
-                'label' => $item->name,
-            ];
-        });
-        return Inertia::render('ReserveInstructor', [
-            'disciplines' => $instructor->disciplines,
-            'instructor' => $instructor
-        ]);*/
+        /* $instructor = Instructor::findOrFail($id);
+         $instructor->disciplines = $instructor->disciplines->map(function($item) {
+             return [
+                 'id' => $item->id,
+                 'label' => $item->name,
+             ];
+         });
+         return Inertia::render('ReserveInstructor', [
+             'disciplines' => $instructor->disciplines,
+             'instructor' => $instructor
+         ]);*/
     }
 
     private function getPrice($selectedDate)
@@ -74,6 +74,21 @@ class InstructorController extends Controller
         return $price;
     }
 
+    public function canBooking($currentDay, $selectedDate)
+    {
+        $today = $currentDay->format('Y-m-d');
+        $tomorrow = $currentDay->copy()->addDay()->format('Y-m-d');
+        $currentTime = $currentDay->format('H:i');
+        $result = true;
+
+        if ($selectedDate < $today ||
+            $selectedDate === $today ||
+            ($selectedDate === $tomorrow && $currentTime >= '20:00')) {
+            $result = false;
+        }
+
+        return $result;
+    }
 
     public function getInstructors(Request $request)
     {
@@ -89,27 +104,43 @@ class InstructorController extends Controller
                 $query->where('start_date', $selectedDate)
                     ->where('active', true)
                     ->where('selected', false);
-                if ($currentDay->format('Y-m-d') === $selectedDate) {
-                    $query->where('start_time', '>', $currentDay->format('H:i'));
-                }
+                //if ($currentDay->format('Y-m-d') === $selectedDate) {
+                //    $query->where('start_time', '>', $currentDay->format('H:i'));
+                //}
             })
             ->get();
 
         $price = $this->getPrice($selectedDate);
 
         return [
-            'instructors' => $instructors,
+            'instructors' => $this->canBooking($currentDay, $selectedDate) ? $instructors : array(),
             'price' => $price,
         ];
-
     }
-
 
     public function getTimes(Request $request)
     {
         $instructorId = $request->input('instructor_id');
+        //$discpline = $request->input('discpline');
         $selectedDate = $request->input('selected_date');
         $currentDay = Carbon::now()->timezone('Asia/Yekaterinburg');
+
+        if (Instructor::find($instructorId)->disciplineIds->count() == 0) {
+            return [
+                'schedule' => [],
+                'price' => [],
+            ];
+        }
+
+        /*$instructor = Instructor::with('disciplines')->find($instructorId);
+
+        // Провека существования инструктора и наличия у него заданной дисциплины
+        if (!$instructor || !$instructor->disciplines->contains('id', $discpline)) {
+            return [
+                'schedule' => [],
+                'price' => [],
+            ];
+        }*/
 
         $schedule = Schedule::where('instructor_id', $instructorId)
             ->where('start_date', $selectedDate)
@@ -132,7 +163,7 @@ class InstructorController extends Controller
         $price = $this->getPrice($selectedDate);
 
         return [
-            'schedule' => $schedule,
+            'schedule' => $this->canBooking($currentDay, $selectedDate)  ? $schedule : array(),
             'price' => $price,
         ];
     }
@@ -161,8 +192,21 @@ class InstructorController extends Controller
             ], 422);
         }
 
+        $instructor = Instructor::with('disciplines')->find($instructorId);
+        if (!$instructor) {
+            return response()->json(['errors' => ['dublicate' => 'Инструктор не найден']], 404);
+        }
+
+        if (!$instructor->disciplines->contains('id', $disciplineId)) {
+            return response()->json([
+                'errors' => ['dublicate' => 'У данного инструктора нет выбранной дисциплины']
+            ], 422);
+        }
+
+
         $price = $this->getPrice($selectedDate)[$selectedCount] ?? 0;
         $sum = $price * count($timeIds);
+
 
         DB::beginTransaction();
 
@@ -198,8 +242,9 @@ class InstructorController extends Controller
         }
 
         $data = array();
-        $data['orderNumber'] = $order->id;
+        $data['orderNumber'] = 'I-'.$order->id;
         $data['amount'] = $order->sum * 100;
+        $data['description'] = 'Заказ №I-'.$order->id.' Услуги инструктора';
 
         $pageUrl = $request->session()->previousUrl();
         $pageUrl = explode('?', $pageUrl)[0];
@@ -229,6 +274,14 @@ class InstructorController extends Controller
                         'tax' => array(
                             'taxType' => 0,
                             'taxSum' => 0
+                        ),
+                        'itemAttributes' => array(
+                            'attributes' => array(
+                                array('name' => 'agent_info.type', 'value' => 7),
+                                array('name' => 'supplier_info.name', 'value' => "ИП Пересторонин Илья Сергеевич"),
+                                array('name' => 'supplier_info.inn', 'value' => "591807415006"),
+                                array('name' => 'supplier_info.phones', 'value' => "+79504742814"),
+                            ),
                         ),
                     ],
                 ],
